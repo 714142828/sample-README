@@ -145,6 +145,15 @@
     >![](public_sys-resources/icon-note.gif) **说明：**   
     >-   注意参数填写时不需要使用“”符号。  
 
+3. 执行deploy脚本， 进行配置参数调整及第三方库下载编译
+    打开Mind Studio工具的Terminal，此时默认在代码主目录下，执行如下命令在后台指执行deploy脚本，进行环境部署。如下图所示。
+    
+    ![](figures/deploy.png)
+    
+    >![](public_sys-resources/icon-note.gif) **说明：**   
+    >-   首次deploy时，没有部署第三方库时会自动下载并编译，耗时可能比较久，请耐心等待。后续再重新编译时，不会重复下载编译，部署如上图所示。
+    >-   deploy时，需要选择与开发板通信的主机侧ip，一般为虚拟网卡配置的ip。如果此ip和开发板ip属于同网段，则会自动选择并部署。如果非同网段，则需要手动输入与开发板通信的主机侧ip才能完成deploy。
+
 3.  开始编译，打开Mindstudio工具，在工具栏中点击**Build \> Build \> Build-Configuration**。如[图 编译操作及生成文件](#fig1625447397)所示，会在目录下生成build和run文件夹。
 
     **图 4**  编译操作及生成文件<a name="fig1487710597597"></a>  
