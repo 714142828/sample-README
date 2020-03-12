@@ -19,7 +19,7 @@ Before running the application, obtain the source code package and configure the
 
 1.  <a name="zh-cn_topic_0203223294_li953280133816"></a>Obtain the source code package.
 
-    Download all the code in the sample-facedetection repository at  [https://github.com/Atlas200DKTest/sample-facedetection/tree/1-3x-0-0/](https://github.com/Atlas200DKTest/sample-facedetection/tree/1-3x-0-0/) to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  **$HOME/AscendProjects/sample-facedetection**.
+    Download all the code in the sample-facedetection repository at  [https://github.com/Atlas200dk/sample-facedetection/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-facedetection/tree/1-3x-0-0/) to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  **$HOME/AscendProjects/sample-facedetection**.
 
 2.  <a name="zh-cn_topic_0203223294_li1365682471610"></a>Obtain the source network model required by the application.
 

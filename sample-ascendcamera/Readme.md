@@ -18,7 +18,7 @@ Before running the application, obtain the source code package and configure the
 
 1.  <a name="zh-cn_topic_0203223312_li953280133816"></a>Obtain the source code package.
 
-    Download all the code in the sample-ascendcamera repository at  [https://github.com/Atlas200DKTest/sample-ascendcamera/tree/1-3x-0-0/](https://github.com/Atlas200DKTest/sample-ascendcamera/tree/1-3x-0-0/) to any directory on Ubuntu Server where Mind Studio is located as the Mind Studio installation user, for example, **$HOME/sample-ascendcamera**.
+    Download all the code in the sample-ascendcamera repository at  [https://github.com/Atlas200dk/sample-ascendcamera/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-ascendcamera/tree/1-3x-0-0/) to any directory on Ubuntu Server where Mind Studio is located as the Mind Studio installation user, for example, **$HOME/sample-ascendcamera**.
 
 2.  Log in to Ubuntu Server where Mind Studio is located as the Mind Studio installation user, confirm current DDK version and set the  environment variable  **DDK\_HOME**, **tools\_version**, **NPU\_DEVICE\_LIB** and **LD\_LIBRARY\_PATH**.
 

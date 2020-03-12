@@ -17,7 +17,7 @@ Before running the application, obtain the source code package and configure the
 
 1.  <a name="zh-cn_topic_0203223340_li953280133816"></a>Obtain the source code package.
 
-    ownload all the code in the sample-facialrecognition repository at  [https://github.com/Atlas200DKTest/sample-facialrecognition/tree/1-3x-0-0/](https://github.com/Atlas200DKTest/sample-facialrecognition/tree/1-3x-0-0/)to any directory on Ubuntu Server where  Mind Studio  is located as the **Mind Studio**  installation user, for example,  **$HOME/AscendProjects/sample-facialrecognition**.
+    ownload all the code in the sample-facialrecognition repository at  [https://github.com/Atlas200dk/sample-facialrecognition/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-facialrecognition/tree/1-3x-0-0/)to any directory on Ubuntu Server where  Mind Studio  is located as the **Mind Studio**  installation user, for example,  **$HOME/AscendProjects/sample-facialrecognition**.
 
 2.  <a name="zh-cn_topic_0203223340_li99811487013"></a>Obtain the source network model required by the application.
 

@@ -16,7 +16,7 @@ CN|[EN](Readme.md)
 
 1.  <a name="zh-cn_topic_0203223303_li953280133816"></a>获取源码包。
 
-    将[https://github.com/Atlas200DKTest/sample-videoanalysiscar/tree/1-3x-0-0/](https://github.com/Atlas200DKTest/sample-videoanalysiscar/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-videoanalysiscar。
+    将[https://github.com/Atlas200dk/sample-videoanalysiscar/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-videoanalysiscar/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-videoanalysiscar。
 
 2.  <a name="zh-cn_topic_0203223303_li8221184418455"></a>获取此应用中所需要的原始网络模型。
 
