@@ -116,10 +116,21 @@ Before running the application, obtain the source code package and configure the
     >![](public_sys-resources/icon-note.gif) **NOTE：**   
     >Note that the "" symbol is no need to be used when filling in parameters.
 
-3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 4](#zh-cn_topic_0203223312_fig5350165415161), **build** and **run** folders will be generated under the directory.
+3.  Run the deployment script to adjust the configuration parameters, download and compile 3rd party libraries. Open the Terminal of **Mind Studio** tool, which is under the main code directory, run the following command to execute environment deployment in the backstage, as shown in [Figure 4](#zh-cn_topic_0182554577_fig19292258105419).
+    
+    **Figure 4**  Execute deployment script<a name="zh-cn_topic_0182554577_fig19292258105419"></a>  
+    
+    ![](figures/deploy.png)
+    
+    >![](public_sys-resources/icon-note.gif) **NOTE：**   
+    >-   Automatic download and compilation will perform if 3rd party libraries are not deployed for the first time of deployment. This process might take some time, please wait patiently. It will not download and compilation repeatedly when recompiling later, deployment is shown as above. 
+    >-   Select the HOST IP connected to the developer board when deploying, which is usually the IP of virtual network card. If this IP belongs to the same segment as the developer board IP, it will be selected automatically and deployed. Otherwise, manual entering the IP connected to developer board is required for deployment.
 
 
-    **Figure 4**  Compilation operation and generated files<a name="zh-cn_topic_0203223312_fig5350165415161"></a>  
+3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 5](#zh-cn_topic_0203223312_fig5350165415161), **build** and **run** folders will be generated under the directory.
+
+
+    **Figure 5**  Compilation operation and generated files<a name="zh-cn_topic_0203223312_fig5350165415161"></a>  
     
 
     ![](figures/ascendcamera_build.png)
@@ -130,39 +141,39 @@ Before running the application, obtain the source code package and configure the
 
 4.  <a name="zh-cn_topic_0203223312_li043217442034"></a>Start Presenter Server.
 
-     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1](#zh-cn_topic_0203223312_li953280133816) by default, run the following command to start the **Presenter Server** main program of the **Video Analysiscar**application, as shown in [Figure 5](#zh-cn_topic_0203223312_fig815812478221).
+     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1](#zh-cn_topic_0203223312_li953280133816) by default, run the following command to start the **Presenter Server** main program of the **Video Analysiscar**application, as shown in [Figure 6](#zh-cn_topic_0203223312_fig815812478221).
 
     **bash run\_present\_server.sh**
 
-    **Figure 5**  Start PresenterServer<a name="zh-cn_topic_0203223312_fig815812478221"></a>  
+    **Figure 6**  Start PresenterServer<a name="zh-cn_topic_0203223312_fig815812478221"></a>  
     
 
     ![](figures/ascend_camera_present_1.png)
 
     -   When the message "Please choose one to show the presenter in browser (default: 127.0.0.1):" is displayed, enter the IP address used for accessing the **Presenter Server** service in the browser. Generally, the IP address is the IP address for accessing the **Mind Studio** service.
 
-    As shown in [Figure 6](#zh-cn_topic_0203223312_fig20890201582816), Select the IP address used by the browser to access the **Presenter Server** service in "Current environment valid ip list" and enter the path for storing video analysis data.
+    As shown in [Figure 7](#zh-cn_topic_0203223312_fig20890201582816), Select the IP address used by the browser to access the **Presenter Server** service in "Current environment valid ip list" and enter the path for storing video analysis data.
 
-    **Figure 6**  Project deployment<a name="zh-cn_topic_0203223312_fig20890201582816"></a>  
+    **Figure 7**  Project deployment<a name="zh-cn_topic_0203223312_fig20890201582816"></a>  
     
 
     ![](figures/ascend_camera_present_2.png)
 
-     As shown in [Figure 7](#zh-cn_topic_0203223312_fig143112216312) it means **presenter\_server**  service starts successfully.
+     As shown in [Figure 8](#zh-cn_topic_0203223312_fig143112216312) it means **presenter\_server**  service starts successfully.
 
-    **Figure 7**  Starting the Presenter Server process<a name="zh-cn_topic_0203223312_fig143112216312"></a>  
+    **Figure 8**  Starting the Presenter Server process<a name="zh-cn_topic_0203223312_fig143112216312"></a>  
     
 
     ![](figures/ascendcamera_present_3.png)
 
-     Use the URL shown in the preceding figure to log in to **Presenter Server** (only the Chrome browser is supported). The IP address is that entered in [Figure 6](#zh-cn_topic_0203223312_fig20890201582816) and the default port number is 7003. The following figure indicates that Presenter Server is started successfully.
+     Use the URL shown in the preceding figure to log in to **Presenter Server** (only the Chrome browser is supported). The IP address is that entered in [Figure 7](#zh-cn_topic_0203223312_fig20890201582816) and the default port number is 7003. The following figure indicates that Presenter Server is started successfully.
 
-    **Figure 8**  Home page<a name="zh-cn_topic_0203223312_fig3338812171913"></a>  
+    **Figure 9**  Home page<a name="zh-cn_topic_0203223312_fig3338812171913"></a>  
     ![](figures/主页显示.png "Home page")
 
     The following figure shows the IP address used by the **Presenter Server** and **Mind Studio** to communicate with the Atlas 200 DK.
 
-    **Figure 9**  Example IP Address<a name="zh-cn_topic_0203223312_fig633991291914"></a>  
+    **Figure 10**  Example IP Address<a name="zh-cn_topic_0203223312_fig633991291914"></a>  
     ![](figures/IP地址示例.png "Example IP Address")
 
     -   The IP address of the Atlas 200 DK developer board is 192.168.1.2 (connected in USB mode).
@@ -174,9 +185,9 @@ Before running the application, obtain the source code package and configure the
 
 Run the Ascend Camera application.
 
-Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-ascendcamera'**, run the program on the developer board, as shown in [Figure 10](#zh-cn_topic_0203223312_fig19482184244914).
+Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-ascendcamera'**, run the program on the developer board, as shown in [Figure 11](#zh-cn_topic_0203223312_fig19482184244914).
 
-**Figure 10**  Program execution<a name="zh-cn_topic_0203223312_fig19482184244914"></a>  
+**Figure 11**  Program execution<a name="zh-cn_topic_0203223312_fig19482184244914"></a>  
 
 
 ![](figures/ascend_camera_run.png)
@@ -236,7 +247,7 @@ Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run '
     -   **--fps**: Indicates the frame rate of a saved video. The value range is 1\~20. The default video frame rate is 10 fps.
     -   **-w**: Indicates the width of a saved video.
     -   **-h**: Indicates the height of a saved video.
-    -   **_192.168.1.223_** behind **-s** is the IP address corresponding to the 7002 port in **Presenter Server** (the IP address used for communicating with the Atlas 200 DK developer board entered in as shown in [Step 4](#zh-cn_topic_0203223312_li043217442034)), The default port number of**Presenter Server** corresponding to the Ascendcamera application is 7002.
+    -   **_192.168.1.223_** behind **-s** is the IP address corresponding to the 7002 port in **Presenter Server** (the IP address used for communicating with the Atlas 200 DK developer board entered in as shown in [Step 5](#zh-cn_topic_0203223312_li043217442034)), The default port number of**Presenter Server** corresponding to the Ascendcamera application is 7002.
     -   **_presenter\_view\_app\_name_**：indicates  **View Name**  displayed on the **Presenter Server** page, which is user-defined. The value of this parameter must be unique on the **Presenter Server** page. It can only be a combination of uppercase and lowercase letters, numbers, and "_", with a digit of 3 \~20.   
 
     For other parameters, run the   **./workspace\_mind\_studio\_sample\_ascendcamera**  command or the **./workspace\_mind\_studio\_sample\_ascendcamera** **--help** command. For details, see the help information.
