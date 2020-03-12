@@ -267,7 +267,7 @@ Before running the application, obtain the source code package and configure the
 
 4.  <a name="zh-cn_topic_0203223340_li1364788188"></a>Start Presenter Server.
 
-     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1] by default(#zh-cn_topic_0203223340_li953280133816), run the following command to start the **Presenter Server** main program of the **_facialrecognition_** application, as shown in [Figure 11](#zh-cn_topic_0203223340_fig156364995016).
+     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1](#zh-cn_topic_0203223340_li953280133816) by default, run the following command to start the **Presenter Server** main program of the **_facialrecognition_** application, as shown in [Figure 11](#zh-cn_topic_0203223340_fig156364995016).
 
     **bash run\_present\_server.sh**
 
@@ -302,7 +302,7 @@ Before running the application, obtain the source code package and configure the
 
     The following figure shows the IP address used by the **Presenter Server** and **Mind Studio** to communicate with the Atlas 200 DK.
 
-    **Figure 14**  Example IP Address<a name="zh-cn_topic_0203223340_fig1627210116351"></a>  
+    **Figure 15**  Example IP Address<a name="zh-cn_topic_0203223340_fig1627210116351"></a>  
     ![](figures/IP地址示例.png "Example IP Address")
 
     -   The IP address of the Atlas 200 DK developer board is 192.168.1.2 (connected in USB mode).
@@ -314,18 +314,18 @@ Before running the application, obtain the source code package and configure the
 
 1.  Run the Facial Recognition application
 
-    Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-facialrecognition'**, as shown in [Figure 15](#zh-cn_topic_0203223340_fig182957429910), the executable program has been executed on the developer board.
+    Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-facialrecognition'**, as shown in [Figure 16](#zh-cn_topic_0203223340_fig182957429910), the executable program has been executed on the developer board.
 
-    **Figure 15**   Executed program<a name="zh-cn_topic_0203223340_fig182957429910"></a>  
+    **Figure 16**   Executed program<a name="zh-cn_topic_0203223340_fig182957429910"></a>  
     
 
     ![](figures/facial_run3.png)
 
-2.   Log in to the **Presenter Server** website using the URL promoted when starting the **Presenter Server** service（only supports Chrome browser）, for details, please refer to [Step 4](#zh-cn_topic_0203223340_li1364788188) .
+2.   Log in to the **Presenter Server** website using the URL promoted when starting the **Presenter Server** service（only supports Chrome browser）, for details, please refer to [Step 5](#zh-cn_topic_0203223340_li1364788188) .
 
-      Web page for **Presenter Server** is shown as [Figure 16](#zh-cn_topic_0203223340_fig1189774382115).
+      Web page for **Presenter Server** is shown as [Figure 17](#zh-cn_topic_0203223340_fig1189774382115).
 
-     **Figure 16**   Web page for **Presenter Server**<a name="zh-cn_topic_0203223340_fig1189774382115"></a>  
+     **Figure 17**   Web page for **Presenter Server**<a name="zh-cn_topic_0203223340_fig1189774382115"></a>  
      ![](figures/Presenter-Server界面.png "Web page for **Presenter Server**")
 
      >![](public_sys-resources/icon-note.gif) **NOTE：**   
@@ -334,7 +334,7 @@ Before running the application, obtain the source code package and configure the
 3.  Facial registration
     1.  Click the **Face Library** tab and enter a user name in the **Username** text box.
 
-        **Figure 17**  Facial registration page<a name="zh-cn_topic_0203223340_fig12445181112163"></a>  
+        **Figure 18**  Facial registration page<a name="zh-cn_topic_0203223340_fig12445181112163"></a>  
         ![](figures/人脸注册界面.png "Facial registration page")
 
     2.  Click **Browse** to upload a face image. Crop the face image based on the ratio of **Example Photo**.
@@ -353,16 +353,16 @@ Before running the application, obtain the source code package and configure the
 
     **Facial Recognition** is running continually after being executed. To stop it, perform the following operation:
 
-    Click the button shown in [Figure 18](#zh-cn_topic_0203223340_fig12461162791610) to stop **Facial Recognition**.
+    Click the button shown in [Figure 19](#zh-cn_topic_0203223340_fig12461162791610) to stop **Facial Recognition**.
 
-    **Figure 18**  Stopping **Facial Recognition** application<a name="zh-cn_topic_0203223340_fig12461162791610"></a>  
+    **Figure 19**  Stopping **Facial Recognition** application<a name="zh-cn_topic_0203223340_fig12461162791610"></a>  
     
 
     ![](figures/facial_stopping.png)
 
-    The application has been stopped as shown in [Figure 19](#zh-cn_topic_0203223340_fig5786125319165).
+    The application has been stopped as shown in [Figure 20](#zh-cn_topic_0203223340_fig5786125319165).
 
-    **Figure 19**  **Facial Recognition** has been stopped<a name="zh-cn_topic_0203223340_fig5786125319165"></a>  
+    **Figure 20**  **Facial Recognition** has been stopped<a name="zh-cn_topic_0203223340_fig5786125319165"></a>  
     
 
     ![](figures/facial_stopped.png)
