@@ -215,10 +215,20 @@ Before running the application, obtain the source code package and configure the
     >![](public_sys-resources/icon-note.gif) **NOTE：**   
     >-   All the three parameters must be filled in, otherwise build cannot be passed.
     >-   Note that the "" symbol is no need to be used when filling in parameters.
-    
-3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 8](#zh-cn_topic_0203223294_fig1625447397), **build** and **run** folders will be generated under the directory.
 
-    **Figure 8**  Compilation operation and generated files<a name="zh-cn_topic_0203223294_fig1625447397"></a>  
+3.  Run the deployment script to adjust the configuration parameters, download and compile 3rd party libraries. Open the Terminal of **Mind Studio** tool, which is under the main code directory, run the following command to execute environment deployment in the backstage, as shown in [Figure 8](#zh-cn_topic_0182554577_fig19292258105419).
+    
+    **Figure 8**  Execute deployment script<a name="zh-cn_topic_0182554577_fig19292258105419"></a>  
+    
+    ![](figures/deploy.png)
+    
+    >![](public_sys-resources/icon-note.gif) **NOTE：**   
+    >-   Automatic download and compilation will perform if 3rd party libraries are not deployed for the first time of deployment. This process might take some time, please wait patiently. It will not download and compilation repeatedly when recompiling later, deployment is shown as above. 
+    >-   Select the HOST IP connected to the developer board when deploying, which is usually the IP of virtual network card. If this IP belongs to the same segment as the developer board IP, it will be selected automatically and deployed. Otherwise, manual entering the IP connected to developer board is required for deployment.
+    
+3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 9](#zh-cn_topic_0203223294_fig1625447397), **build** and **run** folders will be generated under the directory.
+
+    **Figure 9**  Compilation operation and generated files<a name="zh-cn_topic_0203223294_fig1625447397"></a>  
     
 
     ![](figures/face_detection_build.png)
@@ -229,40 +239,40 @@ Before running the application, obtain the source code package and configure the
 
 4.  <a name="zh-cn_topic_0203223294_li499911453439"></a>Start Presenter Server.
 
-     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1] by default(#zh-cn_topic_0203223294_li953280133816), run the following command to start the **Presenter Server** main program of the **Face Detection**application, as shown in [Figure 9](#zh-cn_topic_0203223294_fig423515251067).
+     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1](#zh-cn_topic_0203223294_li953280133816) by default, run the following command to start the **Presenter Server** main program of the **Face Detection**application, as shown in [Figure 10](#zh-cn_topic_0203223294_fig423515251067).
 
     **bash run\_present\_server.sh**
 
-    **Figure 9**  Start PresenterServer<a name="zh-cn_topic_0203223294_fig423515251067"></a>  
+    **Figure 10**  Start PresenterServer<a name="zh-cn_topic_0203223294_fig423515251067"></a>  
     
 
     ![](figures/face_detection_presentserver1.png)
 
      -   When the message "Please choose one to show the presenter in browser (default: 127.0.0.1):" is displayed, enter the IP address used for accessing the **Presenter Server** service in the browser. Generally, the IP address is the IP address for accessing the **Mind Studio** service.
 
-    As shown in [Figure 10](#zh-cn_topic_0203223294_fig999812514814), Select the IP address used by the browser to access the Presenter Server service in "Current environment valid ip list" and enter the path for storing video analysis data.
+    As shown in [Figure 11](#zh-cn_topic_0203223294_fig999812514814), Select the IP address used by the browser to access the Presenter Server service in "Current environment valid ip list" and enter the path for storing video analysis data.
 
-    **Figure 10**  Project deployment<a name="zh-cn_topic_0203223294_fig999812514814"></a>  
+    **Figure 11**  Project deployment<a name="zh-cn_topic_0203223294_fig999812514814"></a>  
     
 
     ![](figures/face_detection_presentserver2.png)
 
-    As shown in [Figure 11](#zh-cn_topic_0203223294_fig69531305324) it means **presenter\_server**  service starts successfully.
+    As shown in [Figure 12](#zh-cn_topic_0203223294_fig69531305324) it means **presenter\_server**  service starts successfully.
 
-    **Figure 11**  Starting the Presenter Server process<a name="zh-cn_topic_0203223294_fig69531305324"></a>  
+    **Figure 12**  Starting the Presenter Server process<a name="zh-cn_topic_0203223294_fig69531305324"></a>  
     
 
     ![](figures/face_detection_presentserver3.png)
 
-    Use the URL shown in the preceding figure to log in to **Presenter Server** (only the Chrome browser is supported). The IP address is that entered in [Figure 12](#zh-cn_topic_0203223294_fig999812514814) and the default port number is 7007. The following figure indicates that **Presenter Server** is started successfully.
+    Use the URL shown in the preceding figure to log in to **Presenter Server** (only the Chrome browser is supported). The IP address is that entered in [Figure 13](#zh-cn_topic_0203223294_fig999812514814) and the default port number is 7007. The following figure indicates that **Presenter Server** is started successfully.
 
-    **Figure 12**  Home page<a name="zh-cn_topic_0203223294_fig64391558352"></a>  
+    **Figure 13**  Home page<a name="zh-cn_topic_0203223294_fig64391558352"></a>  
     ![](figures/主页显示.png "Home page")
 
     The following figure shows the IP address used by the **Presenter Server** and **Mind Studio** to communicate with the Atlas 200 DK.
     
 
-    **Figure 13**  Example IP Address<a name="zh-cn_topic_0203223294_fig1881532172010"></a>  
+    **Figure 14**  Example IP Address<a name="zh-cn_topic_0203223294_fig1881532172010"></a>  
     ![](figures/IP地址示例.png "Example IP Address")
 
     -   The IP address of the Atlas 200 DK developer board is 192.168.1.2 (connected in USB mode).
@@ -273,18 +283,18 @@ Before running the application, obtain the source code package and configure the
 
 1.  Run the Face Detection application.
 
-    Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-facedetection'**, as shown in [Figure 14](#zh-cn_topic_0203223294_fig93931954162719), the executable program has been executed on the developer board.
+    Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-facedetection'**, as shown in [Figure 15](#zh-cn_topic_0203223294_fig93931954162719), the executable program has been executed on the developer board.
     
-    **Figure 14**  Executed program<a name="zh-cn_topic_0203223294_fig93931954162719"></a>  
+    **Figure 15**  Executed program<a name="zh-cn_topic_0203223294_fig93931954162719"></a>  
     
 
     ![](figures/face_detection_run.png)
 
-2.  Log in to the **Presenter Server** website using the URL promoted when starting the **Presenter Server** service（only supports Chrome browser）, for details, please refer to [Step 4](#zh-cn_topic_0203223294_li499911453439).
+2.  Log in to the **Presenter Server** website using the URL promoted when starting the **Presenter Server** service（only supports Chrome browser）, for details, please refer to [Step 5](#zh-cn_topic_0203223294_li499911453439).
 
-    ait for Presenter Agent to transmit data to the server. Click  **Refresh**. When there is data, the icon in the  **Status**  column for the corresponding channel changes to green, as shown in  [Figure 15](#zh-cn_topic_0203223294_fig113691556202312).
+    ait for Presenter Agent to transmit data to the server. Click  **Refresh**. When there is data, the icon in the  **Status**  column for the corresponding channel changes to green, as shown in  [Figure 16](#zh-cn_topic_0203223294_fig113691556202312).
 
-    **Figure 15**  Presenter Server page<a name="zh-cn_topic_0203223294_fig113691556202312"></a>  
+    **Figure 16**  Presenter Server page<a name="zh-cn_topic_0203223294_fig113691556202312"></a>  
     ![](figures/Presenter-Server界面.png "Presenter Server page")
 
     >![](public_sys-resources/icon-note.gif) **NOTE：**   
@@ -298,15 +308,15 @@ Before running the application, obtain the source code package and configure the
 
     Face Detection is running continually after being executed. To stop it, perform the following operation:
 
-    Click the stop button to stop Face Detection application as shown in [Figure 16](#zh-cn_topic_0203223294_fig14326454172518).
+    Click the stop button to stop Face Detection application as shown in [Figure 17](#zh-cn_topic_0203223294_fig14326454172518).
 
-    **Figure 16**  Stopping Face Detection application<a name="zh-cn_topic_0203223294_fig14326454172518"></a>  
+    **Figure 17**  Stopping Face Detection application<a name="zh-cn_topic_0203223294_fig14326454172518"></a>  
     
     ![](figures/face_detection_stopping.png)
 
-    As shown in [Figure 17](#zh-cn_topic_0203223294_fig2182182518112), the application has been stopped.
+    As shown in [Figure 18](#zh-cn_topic_0203223294_fig2182182518112), the application has been stopped.
 
-    **Figure 17**  Face Detection application stops<a name="zh-cn_topic_0203223294_fig2182182518112"></a>  
+    **Figure 18**  Face Detection application stops<a name="zh-cn_topic_0203223294_fig2182182518112"></a>  
     
 
     ![](figures/face_detection_stoped.png)
