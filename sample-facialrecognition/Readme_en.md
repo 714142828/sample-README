@@ -245,9 +245,19 @@ Before running the application, obtain the source code package and configure the
     >-   All the three parameters must be filled in, otherwise build cannot be passed.
     >-   Note that the "" symbol is no need to be used when filling in parameters.
 
-3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 9](#zh-cn_topic_0203223340_fig1629455494718), **build** and **run** folders will be generated under the directory.
+3.  Run the deployment script to adjust the configuration parameters, download and compile 3rd party libraries. Open the Terminal of **Mind Studio** tool, which is under the main code directory, run the following command to execute environment deployment in the backstage, as shown in [Figure 9](#zh-cn_topic_0182554577_fig19292258105419).
+    
+    **Figure 9**  Execute deployment script<a name="zh-cn_topic_0182554577_fig19292258105419"></a>  
+    
+    ![](figures/deploy.png)
+    
+    >![](public_sys-resources/icon-note.gif) **NOTE：**   
+    >-   Automatic download and compilation will perform if 3rd party libraries are not deployed for the first time of deployment. This process might take some time, please wait patiently. It will not download and compilation repeatedly when recompiling later, deployment is shown as above. 
+    >-   Select the HOST IP connected to the developer board when deploying, which is usually the IP of virtual network card. If this IP belongs to the same segment as the developer board IP, it will be selected automatically and deployed. Otherwise, manual entering the IP connected to developer board is required for deployment.
+    
+3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 10](#zh-cn_topic_0203223340_fig1629455494718), **build** and **run** folders will be generated under the directory.
 
-    **Figure 9**  Compilation operation and generated files<a name="zh-cn_topic_0203223340_fig1629455494718"></a>  
+    **Figure 10**  Compilation operation and generated files<a name="zh-cn_topic_0203223340_fig1629455494718"></a>  
     ![](figures/编译操作及生成文件.png "Compilation operation and generated files")
 
     >![](public_sys-resources/icon-note.gif) **NOTE：**   
@@ -257,11 +267,11 @@ Before running the application, obtain the source code package and configure the
 
 4.  <a name="zh-cn_topic_0203223340_li1364788188"></a>Start Presenter Server.
 
-     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1] by default(#zh-cn_topic_0203223340_li953280133816), run the following command to start the **Presenter Server** main program of the **_facialrecognition_** application, as shown in [Figure 10](#zh-cn_topic_0203223340_fig156364995016).
+     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1] by default(#zh-cn_topic_0203223340_li953280133816), run the following command to start the **Presenter Server** main program of the **_facialrecognition_** application, as shown in [Figure 11](#zh-cn_topic_0203223340_fig156364995016).
 
     **bash run\_present\_server.sh**
 
-    **Figure 10**  Start PresenterServer<a name="zh-cn_topic_0203223340_fig156364995016"></a>  
+    **Figure 11**  Start PresenterServer<a name="zh-cn_topic_0203223340_fig156364995016"></a>  
     
 
     ![](figures/facial_run_1.png)
@@ -269,25 +279,25 @@ Before running the application, obtain the source code package and configure the
     -   When the message "Please choose one to show the presenter in browser (default: 127.0.0.1):" is displayed, enter the IP address used for accessing the Presenter Server service in the browser. Generally, the IP address is the IP address for accessing the Mind Studio service.
     -   When the message  "**Please input a absolute path to storage facial recognition data:**" ,is displayed, enter the path for storing face registration data and parsing data in **Mind Studio**. The **Mind Studio** user must have the read and write permissions. If the path does not exist, the script is automatically created.
 
-    As shown in [Figure 11](#zh-cn_topic_0203223340_fig157571218181018), Select the IP address used by the browser to access the Presenter Server service in "Current environment valid ip list" and enter the path for face detection parsing data.
+    As shown in [Figure 12](#zh-cn_topic_0203223340_fig157571218181018), Select the IP address used by the browser to access the Presenter Server service in "Current environment valid ip list" and enter the path for face detection parsing data.
 
 
-    **Figure 11**  Project deployment<a name="zh-cn_topic_0203223340_fig157571218181018"></a>  
+    **Figure 12**  Project deployment<a name="zh-cn_topic_0203223340_fig157571218181018"></a>  
     
 
     ![](figures/facial_run_2.png)
 
-    As shown in [Figure 12](#zh-cn_topic_0203223340_fig123741843161320),  it means **presenter\_server** service starts successfully.
+    As shown in [Figure 13](#zh-cn_topic_0203223340_fig123741843161320),  it means **presenter\_server** service starts successfully.
 
-    **Figure 12** Starting the **Presenter Server** process<a name="zh-cn_topic_0203223340_fig123741843161320"></a>  
+    **Figure 13** Starting the **Presenter Server** process<a name="zh-cn_topic_0203223340_fig123741843161320"></a>  
     
 
     ![](figures/facial_runOK.png)
 
-    Use the URL shown in the preceding figure to log in to Presenter Server (only the Chrome browser is supported). The IP address is that entered in  [Figure 11](#zh-cn_topic_0203223340_fig157571218181018) and the default port number is 7009. The following figure indicates that Presenter Server is started successfully.
+    Use the URL shown in the preceding figure to log in to Presenter Server (only the Chrome browser is supported). The IP address is that entered in  [Figure 12](#zh-cn_topic_0203223340_fig157571218181018) and the default port number is 7009. The following figure indicates that Presenter Server is started successfully.
     
 
-    **Figure 13**  Home page<a name="zh-cn_topic_0203223340_fig98461795813"></a>  
+    **Figure 14**  Home page<a name="zh-cn_topic_0203223340_fig98461795813"></a>  
     ![](figures/主页显示.png "Home page")
 
     The following figure shows the IP address used by the **Presenter Server** and **Mind Studio** to communicate with the Atlas 200 DK.
