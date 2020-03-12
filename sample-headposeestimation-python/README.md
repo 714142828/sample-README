@@ -39,14 +39,14 @@
     <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0220049620_p151818183718"><a name="zh-cn_topic_0220049620_p151818183718"></a><a name="zh-cn_topic_0220049620_p151818183718"></a>人脸检测网络模型。</p>
     <p id="zh-cn_topic_0220049620_p11121816373"><a name="zh-cn_topic_0220049620_p11121816373"></a><a name="zh-cn_topic_0220049620_p11121816373"></a>此模型是基于Caffe的Resnet10-SSD300模型转换后的网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0220049620_p611318163718"><a name="zh-cn_topic_0220049620_p611318163718"></a><a name="zh-cn_topic_0220049620_p611318163718"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0220049620_p611318163718"><a name="zh-cn_topic_0220049620_p611318163718"></a><a name="zh-cn_topic_0220049620_p611318163718"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/face_detection</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     <tr id="zh-cn_topic_0220049620_row1517495918114"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="zh-cn_topic_0220049620_p16541181214"><a name="zh-cn_topic_0220049620_p16541181214"></a><a name="zh-cn_topic_0220049620_p16541181214"></a>head_pose_estimation</p>
     </td>
     <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0220049620_p175415131212"><a name="zh-cn_topic_0220049620_p175415131212"></a><a name="zh-cn_topic_0220049620_p175415131212"></a>头部姿势估计网络模型。此模型是基于Caffe的VGG-SSD模型转换后的网络模型</p>
     </td>
-    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0220049620_p192971113151219"><a name="zh-cn_topic_0220049620_p192971113151219"></a><a name="zh-cn_topic_0220049620_p192971113151219"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0220049620_p192971113151219"><a name="zh-cn_topic_0220049620_p192971113151219"></a><a name="zh-cn_topic_0220049620_p192971113151219"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/head_pose_estimation" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/head_pose_estimation</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>
@@ -177,7 +177,7 @@
 
         执行脚本安装hiai，hiai的安装脚本可以在码云的tools仓中获取，将脚本内容复制到开发板中。
 
-        安装脚本路径：[https://github.com/HuaweiAscend/tools/blob/master/python2\_hiai\_install.sh](https://github.com/HuaweiAscend/tools/blob/master/python2_hiai_install.sh)。
+        安装脚本路径：[https://github.com/AscendHuawei/tools/blob/master/python2\_hiai\_install.sh](https://github.com/AscendHuawei/tools/blob/master/python2_hiai_install.sh)。
 
         在开发板的root用户下执行脚本进行hiai库安装：
 

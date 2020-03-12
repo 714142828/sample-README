@@ -38,7 +38,7 @@
     </td>
     <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0219905762_p13106171831710"><a name="zh-cn_topic_0219905762_p13106171831710"></a><a name="zh-cn_topic_0219905762_p13106171831710"></a>密集人群人数统计网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0219905762_p110671813170"><a name="zh-cn_topic_0219905762_p110671813170"></a><a name="zh-cn_topic_0219905762_p110671813170"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/crowd_counting" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/crowd_counting</a>目录中Readme_cn.md下载原始网络模型文件。</p>
+    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0219905762_p110671813170"><a name="zh-cn_topic_0219905762_p110671813170"></a><a name="zh-cn_topic_0219905762_p110671813170"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/crowd_counting" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/crowd_counting</a>目录中Readme_cn.md下载原始网络模型文件。</p>
     </td>
     </tr>
     </tbody>
@@ -169,7 +169,7 @@
 
         执行脚本安装hiai，hiai的安装脚本可以在码云的tools仓中获取，将脚本内容复制到开发板中。
 
-        安装脚本路径：[https://github.com/HuaweiAscend/tools/blob/master/python2\_hiai\_install.sh](https://github.com/HuaweiAscend/tools/blob/master/python2_hiai_install.sh)。
+        安装脚本路径：[https://github.com/AscendHuawei/tools/blob/master/python2\_hiai\_install.sh](https://github.com/AscendHuawei/tools/blob/master/python2_hiai_install.sh)。
 
         在开发板的root用户下执行脚本进行hiai库安装：
 
