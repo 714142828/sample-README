@@ -278,9 +278,19 @@ Before running the application, obtain the source code package and configure the
     >-   Current RTSP video streams only support rtsp://ip:port/path format, if other urls format is need to be used, the **IsValidRtsp**  function in the **video\_decode.cpp** should be removed, or directly return true to skip regular expression matching.
     >-   The RTSP streams address in this example cannot be used directly. If you need to use RTSP, please use live555 or other methods to make RTSP video streams locally, and it can be played in VLC, then fill the URL of the locally made RTSP video streams into the corresponding parameters of the configuration file.  
 
-3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 10](#zh-cn_topic_0203223303_fig13819202814301), **build** and **run** folders will be generated under the directory.
+3.  Run the deployment script to adjust the configuration parameters, download and compile 3rd party libraries. Open the Terminal of **Mind Studio** tool, which is under the main code directory, run the following command to execute environment deployment in the backstage, as shown in [Figure 10](#zh-cn_topic_0182554577_fig19292258105419).
+    
+    **Figure 10**  Execute deployment script<a name="zh-cn_topic_0182554577_fig19292258105419"></a>  
+    
+    ![](figures/deploy_car.png)
+    
+    >![](public_sys-resources/icon-note.gif) **NOTE：**   
+    >-   Automatic download and compilation will perform if 3rd party libraries are not deployed for the first time of deployment. This process might take some time, please wait patiently. It will not download and compilation repeatedly when recompiling later, deployment is shown as above. 
+    >-   Select the HOST IP connected to the developer board when deploying, which is usually the IP of virtual network card. If this IP belongs to the same segment as the developer board IP, it will be selected automatically and deployed. Otherwise, manual entering the IP connected to developer board is required for deployment.
+    
+4.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 11](#zh-cn_topic_0203223303_fig13819202814301), **build** and **run** folders will be generated under the directory.
 
-    **Figure 10**  Compilation operation and generated files<a name="zh-cn_topic_0203223303_fig13819202814301"></a>  
+    **Figure 11**  Compilation operation and generated files<a name="zh-cn_topic_0203223303_fig13819202814301"></a>  
     
 
     ![](figures/videocar_build.png)
@@ -289,13 +299,13 @@ Before running the application, obtain the source code package and configure the
     >When you compile the project for the first time, **Build \> Build** is gray and not clickable. Your need to click **Build \> Edit Build Configuration**, configure the compilation parameters and then compile.  
     >![](figures/build_configuration.png)  
 
-4.  <a name="zh-cn_topic_0203223303_li499911453439"></a>Start Presenter Server.
+5.  <a name="zh-cn_topic_0203223303_li499911453439"></a>Start Presenter Server.
 
-    Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1] by default(#zh-cn_topic_0203223303_li953280133816), run the following command to start the **Presenter Server** main program of the **Video Analysiscar** application, as shown in [Figure 11](zh-cn_topic_0203223303.md#fig423515251067).
+    Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1](#zh-cn_topic_0203223303_li953280133816) by default, run the following command to start the **Presenter Server** main program of the **Video Analysiscar** application, as shown in [Figure 12](zh-cn_topic_0203223303.md#fig423515251067).
 
     **bash run\_present\_server.sh**
 
-    **Figure 11**  Start PresenterServer<a name="zh-cn_topic_0203223303_fig102142024389"></a>  
+    **Figure 12**  Start PresenterServer<a name="zh-cn_topic_0203223303_fig102142024389"></a>  
     
 
     ![](figures/videocar_run_1.png)
@@ -304,7 +314,7 @@ Before running the application, obtain the source code package and configure the
     
         As shown in [Figure 12](#zh-cn_topic_0203223303_fig73590910118), Select the IP address used by the browser to access the Presenter Server service in **"Current environment valid ip list"** and enter the path for storing video analysis data.
 
-        **Figure 12**  Project deployment<a name="zh-cn_topic_0203223303_fig73590910118"></a>  
+        **Figure 13**  Project deployment<a name="zh-cn_topic_0203223303_fig73590910118"></a>  
         
 
         ![](figures/videocar_run_2.png)
@@ -312,9 +322,9 @@ Before running the application, obtain the source code package and configure the
     -   When the message **"Please input an absolute path to storage video analysis data:"** is displayed, enter the absolute path for storing video analysis data in **Mind Studio**. The **Mind Studio** user must have the read and write permissions. If the path does not exist, the script is automatically created.
     
 
-    As shown in [Figure 13](#zh-cn_topic_0203223303_fig19953175965417) it means **presenter\_server**  service starts successfully.
+    As shown in [Figure 14](#zh-cn_topic_0203223303_fig19953175965417) it means **presenter\_server**  service starts successfully.
 
-    **Figure 13**  Starting the Presenter Server process<a name="zh-cn_topic_0203223303_fig19953175965417"></a>  
+    **Figure 14**  Starting the Presenter Server process<a name="zh-cn_topic_0203223303_fig19953175965417"></a>  
     
 
     ![](figures/videocar_run_3.png)
@@ -322,12 +332,12 @@ Before running the application, obtain the source code package and configure the
     Use the URL shown in the preceding figure to log in to **Presenter Server** (only the Chrome browser is supported). The IP address is that entered in [Figure 12](#zh-cn_topic_0203223303_fig73590910118) and the default port number is 7005. The following figure indicates that **Presenter Server** is started successfully.
     
    
-     **Figure 14**  Home page<a name="zh-cn_topic_0203223303_fig129539592546"></a>  
+     **Figure 15**  Home page<a name="zh-cn_topic_0203223303_fig129539592546"></a>  
     ![](figures/主页显示.png "Home page")
      
     The following figure shows the IP address used by the **Presenter Server** and **Mind Studio** to communicate with the Atlas 200 DK.
     
-    **Figure 15**  Example IP Address<a name="zh-cn_topic_0203223303_fig195318596543"></a>  
+    **Figure 16**  Example IP Address<a name="zh-cn_topic_0203223303_fig195318596543"></a>  
     ![](figures/IP地址示例.png "Example IP Address")
 
     -   The IP address of the Atlas 200 DK developer board is 192.168.1.2 (connected in USB mode).
@@ -350,15 +360,15 @@ Before running the application, obtain the source code package and configure the
 1.  Run the Car Detection application
 
 
-    Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-videoanalysiscar'**, as shown in [Figure 16](#zh-cn_topic_0203223303_fig12953163061713), the executable program has been executed on the developer board.
+    Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-videoanalysiscar'**, as shown in [Figure 17](#zh-cn_topic_0203223303_fig12953163061713), the executable program has been executed on the developer board.
 
 
-    **Figure 16**  Executed program<a name="zh-cn_topic_0203223303_fig12953163061713"></a>  
+    **Figure 17**  Executed program<a name="zh-cn_topic_0203223303_fig12953163061713"></a>  
     
 
     ![](figures/videocar_run4.png)
 
-2.  Log in to the **Presenter Server** website using the URL promoted when starting the **Presenter Server** service（only supports Chrome browser）, for details, please refer to [Step 4](#zh-cn_topic_0203223303_li499911453439)。
+2.  Log in to the **Presenter Server** website using the URL promoted when starting the **Presenter Server** service（only supports Chrome browser）, for details, please refer to [Step 5](#zh-cn_topic_0203223303_li499911453439)。
 
     >![](public_sys-resources/icon-note.gif) **NOTE：**   
     >**Presenter Server** of car detection supports up to two **_presenter\_view\_app\_name_** to display at the same time.
@@ -375,9 +385,9 @@ Before running the application, obtain the source code package and configure the
 
 -   **Stopping Car Detection Application**
 
-     After the video program is analyzed, it will automatically stop and exit, as shown in[Figure 17](#zh-cn_topic_0203223303_fig464152917203).
+     After the video program is analyzed, it will automatically stop and exit, as shown in[Figure 18](#zh-cn_topic_0203223303_fig464152917203).
 
-    **Figure 17**  Video Analysiscar application stops<a name="zh-cn_topic_0203223303_fig464152917203"></a>  
+    **Figure 18**  Video Analysiscar application stops<a name="zh-cn_topic_0203223303_fig464152917203"></a>  
     
 
     ![](figures/videocar_stop.png)
@@ -419,5 +429,5 @@ Before running the application, obtain the source code package and configure the
 
         When this condition is met, there is no need to restart the **Presenter Server**.
 
-    3.  if restart the **Presenter Server** and then run the car detection application, please modify the path for saving the video parsing data when starting **Presenter Server**（do not duplicate the previous saving path），refer to [Step 4](#zh-cn_topic_0203223303_li499911453439).
+    3.  if restart the **Presenter Server** and then run the car detection application, please modify the path for saving the video parsing data when starting **Presenter Server**（do not duplicate the previous saving path），refer to [Step 5](#zh-cn_topic_0203223303_li499911453439).
 
