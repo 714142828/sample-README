@@ -39,7 +39,7 @@
     <td class="cellrowborder" valign="top" width="17.53%" headers="mcps1.2.4.1.2 "><p id="p2010681612020"><a name="p2010681612020"></a><a name="p2010681612020"></a>图片语义分割推理模型。</p>
     <p id="p1710615162207"><a name="p1710615162207"></a><a name="p1710615162207"></a>是基于Caffe的erfnet模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="70.32000000000001%" headers="mcps1.2.4.1.3 "><p id="p910617162206"><a name="p910617162206"></a><a name="p910617162206"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/segmentation/erfnet</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="70.32000000000001%" headers="mcps1.2.4.1.3 "><p id="p910617162206"><a name="p910617162206"></a><a name="p910617162206"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>

@@ -39,14 +39,14 @@
     <td class="cellrowborder" valign="top" width="10.03%" headers="mcps1.2.4.1.2 "><p id="p12737172817172"><a name="p12737172817172"></a><a name="p12737172817172"></a>人脸检测网络模型。</p>
     <p id="p6737102815173"><a name="p6737102815173"></a><a name="p6737102815173"></a>此模型是基于Caffe的Resnet10-SSD300模型转换后的网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="p147371628111713"><a name="p147371628111713"></a><a name="p147371628111713"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/face_detection</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="p147371628111713"><a name="p147371628111713"></a><a name="p147371628111713"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/face_detection</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     <tr id="row20991341914"><td class="cellrowborder" valign="top" width="13.61%" headers="mcps1.2.4.1.1 "><p id="p177378282173"><a name="p177378282173"></a><a name="p177378282173"></a>Face_emotion</p>
     </td>
     <td class="cellrowborder" valign="top" width="10.03%" headers="mcps1.2.4.1.2 "><p id="p19737192811710"><a name="p19737192811710"></a><a name="p19737192811710"></a>人脸表情识别网络模型。此模型是基于Caffe转换后的网络模型</p>
     </td>
-    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="p963916373173"><a name="p963916373173"></a><a name="p963916373173"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/face_emotion" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/face_emotion</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="p963916373173"><a name="p963916373173"></a><a name="p963916373173"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/face_emotion" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/face_emotion</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>

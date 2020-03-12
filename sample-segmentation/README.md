@@ -38,14 +38,14 @@
     </td>
     <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p22704571258"><a name="p22704571258"></a><a name="p22704571258"></a>基于caffe的语义分割模型erfnet，是本应用的可选模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p3270135716250"><a name="p3270135716250"></a><a name="p3270135716250"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/segmentation/erfnet</a> 目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p3270135716250"><a name="p3270135716250"></a><a name="p3270135716250"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet</a> 目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     <tr id="row1714516557254"><td class="cellrowborder" valign="top" width="11.959999999999999%" headers="mcps1.2.4.1.1 "><p id="p1927010574259"><a name="p1927010574259"></a><a name="p1927010574259"></a>Fcn8s</p>
     </td>
     <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p13270135742510"><a name="p13270135742510"></a><a name="p13270135742510"></a>基于caffe的语义分割模型fcn，是本应用的可选模型</p>
     </td>
-    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p1227065782511"><a name="p1227065782511"></a><a name="p1227065782511"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/segmentation/fcn-8s" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/segmentation/fcn-8s</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p1227065782511"><a name="p1227065782511"></a><a name="p1227065782511"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/fcn-8s" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/fcn-8s</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>

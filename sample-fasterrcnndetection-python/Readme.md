@@ -41,7 +41,7 @@
     <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="p151818183718"><a name="p151818183718"></a><a name="p151818183718"></a>目标检测网络模型。</p>
     <p id="p11121816373"><a name="p11121816373"></a><a name="p11121816373"></a>是基于Caffe的Faster RCNN模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="p611318163718"><a name="p611318163718"></a><a name="p611318163718"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/faster_rcnn" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/object_detect/faster_rcnn</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="p611318163718"><a name="p611318163718"></a><a name="p611318163718"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/faster_rcnn" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/faster_rcnn</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>
@@ -167,7 +167,7 @@
 
         执行脚本安装hiai，hiai的安装脚本可以在码云的tools仓中获取，将脚本内容复制到开发板中。
 
-        安装脚本路径：[https://github.com/AscendHuawei/tools/blob/master/python2_hiai_install.sh](https://github.com/AscendHuawei/tools/blob/master/python2_hiai_install.sh)。
+        安装脚本路径：[https://github.com/Ascend-Huawei/tools/blob/master/python2_hiai_install.sh](https://github.com/Ascend-Huawei/tools/blob/master/python2_hiai_install.sh)。
 
         在开发板的root用户下执行脚本进行hiai库安装：
 

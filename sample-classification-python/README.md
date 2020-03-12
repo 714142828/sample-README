@@ -41,7 +41,7 @@
     <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p7774245122713"><a name="p7774245122713"></a><a name="p7774245122713"></a>图片分类推理模型。</p>
     <p id="p577494517271"><a name="p577494517271"></a><a name="p577494517271"></a>是基于Caffe的ResNet 18模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p16774144510270"><a name="p16774144510270"></a><a name="p16774144510270"></a>请参考<a href="https://github.com/AscendHuawei/models/tree/master/computer_vision/classification/resnet18" target="_blank" rel="noopener noreferrer">https://github.com/AscendHuawei/models/tree/master/computer_vision/classification/resnet18</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p16774144510270"><a name="p16774144510270"></a><a name="p16774144510270"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet18" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet18</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>
