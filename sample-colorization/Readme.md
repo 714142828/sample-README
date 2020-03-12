@@ -17,7 +17,7 @@
 
 1.  <a name="li953280133816"></a>获取源码包。
 
-    将[https://gitee.com/Atlas200DK/sample-colorization/tree/1.3x.0.0/](https://gitee.com/Atlas200DK/sample-colorization/tree/1.3x.0.0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如代码存放路径为：$HOME/AscendProjects/sample-colorization。
+    将[https://github.com/Atlas200dk/sample-colorization/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-colorization/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如代码存放路径为：$HOME/AscendProjects/sample-colorization。
 
 2.  <a name="li2074865610364"></a>获取此应用中所需要的原始网络模型。
 
@@ -38,7 +38,7 @@
     </td>
     <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p1874515218391"><a name="p1874515218391"></a><a name="p1874515218391"></a>黑白图像上色模型</p>
     </td>
-    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p611318163718"><a name="p611318163718"></a><a name="p611318163718"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/colorization" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/colorization</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p611318163718"><a name="p611318163718"></a><a name="p611318163718"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/colorization" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/colorization</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>

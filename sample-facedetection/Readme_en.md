@@ -1,4 +1,4 @@
-EN|[CN](Readme.md)
+EN|[CN](Readme_cn.md)
 
 # Face Detection<a name="ZH-CN_TOPIC_0208834076"></a>
 
@@ -19,7 +19,7 @@ Before running the application, obtain the source code package and configure the
 
 1.  <a name="zh-cn_topic_0203223294_li953280133816"></a>Obtain the source code package.
 
-    Download all the code in the sample-facedetection repository at  [https://github.com/Atlas200DKTest/sample-facedetection/tree/1.3x.0.0/](https://github.com/Atlas200DKTest/sample-facedetection/tree/1.3x.0.0/) to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  **$HOME/AscendProjects/sample-facedetection**.
+    Download all the code in the sample-facedetection repository at  [https://github.com/Atlas200DKTest/sample-facedetection/tree/1-3x-0-0/](https://github.com/Atlas200DKTest/sample-facedetection/tree/1-3x-0-0/) to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  **$HOME/AscendProjects/sample-facedetection**.
 
 2.  <a name="zh-cn_topic_0203223294_li1365682471610"></a>Obtain the source network model required by the application.
 
@@ -41,7 +41,7 @@ Before running the application, obtain the source code package and configure the
     <td class="cellrowborder" valign="top" width="10.03%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0203223294_p13106171831710"><a name="zh-cn_topic_0203223294_p13106171831710"></a><a name="zh-cn_topic_0203223294_p13106171831710"></a>Network model for face detection.</p>
     <p id="zh-cn_topic_0203223294_p18106718131714"><a name="zh-cn_topic_0203223294_p18106718131714"></a><a name="zh-cn_topic_0203223294_p18106718131714"></a>It is a network model converted from ResNet10-SSD300 model based on Caffe.</p>
     </td>
-    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0203223294_p110671813170"><a name="zh-cn_topic_0203223294_p110671813170"></a><a name="zh-cn_topic_0203223294_p110671813170"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554577_b10408165011127"><a name="en-us_topic_0182554577_b10408165011127"></a><a name="en-us_topic_0182554577_b10408165011127"></a> README.md</strong> in <a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection</a>.</p>
+    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0203223294_p110671813170"><a name="zh-cn_topic_0203223294_p110671813170"></a><a name="zh-cn_topic_0203223294_p110671813170"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554577_b10408165011127"><a name="en-us_topic_0182554577_b10408165011127"></a><a name="en-us_topic_0182554577_b10408165011127"></a> Readme_cn.md</strong> in <a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection</a>.</p>
     </td>
     </tr>
     </tbody>

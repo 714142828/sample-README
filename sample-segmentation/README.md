@@ -17,7 +17,7 @@
 
 1.  <a name="li953280133816"></a>获取源码包。
 
-    将[https://gitee.com/Atlas200DK/sample-segmentation/tree/1.3x.0.0/](https://gitee.com/Atlas200DK/sample-segmentation/tree/1.3x.0.0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如代码存放路径为：$HOME/AscendProjects/sample-segmentation。
+    将[https://github.com/Atlas200dk/sample-segmentation/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-segmentation/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如代码存放路径为：$HOME/AscendProjects/sample-segmentation。
 
 2.  <a name="li2074865610364"></a>获取此应用中所需要的原始网络模型。
 
@@ -38,14 +38,14 @@
     </td>
     <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p22704571258"><a name="p22704571258"></a><a name="p22704571258"></a>基于caffe的语义分割模型erfnet，是本应用的可选模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p3270135716250"><a name="p3270135716250"></a><a name="p3270135716250"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/segmentation/erfnet</a> 目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p3270135716250"><a name="p3270135716250"></a><a name="p3270135716250"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/segmentation/erfnet</a> 目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     <tr id="row1714516557254"><td class="cellrowborder" valign="top" width="11.959999999999999%" headers="mcps1.2.4.1.1 "><p id="p1927010574259"><a name="p1927010574259"></a><a name="p1927010574259"></a>Fcn8s</p>
     </td>
     <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p13270135742510"><a name="p13270135742510"></a><a name="p13270135742510"></a>基于caffe的语义分割模型fcn，是本应用的可选模型</p>
     </td>
-    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p1227065782511"><a name="p1227065782511"></a><a name="p1227065782511"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/segmentation/fcn-8s" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/segmentation/fcn-8s</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p1227065782511"><a name="p1227065782511"></a><a name="p1227065782511"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/segmentation/fcn-8s" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/segmentation/fcn-8s</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>

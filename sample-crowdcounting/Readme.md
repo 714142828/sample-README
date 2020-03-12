@@ -17,7 +17,7 @@
 
 1.  <a name="li953280133816"></a>获取源码包。
 
-    将[https://gitee.com/Atlas200DK/sample-crowdcounting/tree/1.3x.0.0/](https://gitee.com/Atlas200DK/sample-crowdcounting/tree/1.3x.0.0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-crowdcounting
+    将[https://github.com/Atlas200dk/sample-crowdcounting/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-crowdcounting/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-crowdcounting
 
 2.  <a name="li8221184418455"></a>获取此应用中所需要的原始网络模型。
 
@@ -38,7 +38,7 @@
     </td>
     <td class="cellrowborder" valign="top" width="9.68096809680968%" headers="mcps1.2.4.1.2 "><p id="p13106171831710"><a name="p13106171831710"></a><a name="p13106171831710"></a>密集人群人数统计网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="72.997299729973%" headers="mcps1.2.4.1.3 "><p id="p110671813170"><a name="p110671813170"></a><a name="p110671813170"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/crowd_counting" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/crowd_counting</a>目录中README.md下载原始网络模型文件。</p>
+    <td class="cellrowborder" valign="top" width="72.997299729973%" headers="mcps1.2.4.1.3 "><p id="p110671813170"><a name="p110671813170"></a><a name="p110671813170"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/crowd_counting" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/crowd_counting</a>目录中Readme_cn.md下载原始网络模型文件。</p>
     </td>
     </tr>
     </tbody>

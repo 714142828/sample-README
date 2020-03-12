@@ -17,7 +17,7 @@
 
 1.  <a name="li953280133816"></a>获取源码包。
 
-    将[https://gitee.com/Atlas200DK/sample-objectdetctionbyyolov3/tree/1.3x.0.0/](https://gitee.com/Atlas200DK/sample-objectdetection/tree/1.3x.0.0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录。例如代码存放路径为：$HOME/AscendProjects/sample-objectdetctionbyyolov3。
+    将[https://github.com/Atlas200dk/sample-objectdetctionbyyolov3/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-objectdetection/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录。例如代码存放路径为：$HOME/AscendProjects/sample-objectdetctionbyyolov3。
 
 2.  <a name="li2074865610364"></a>获取此应用中所需要的原始网络模型。
 
@@ -39,7 +39,7 @@
     <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p1664611982613"><a name="p1664611982613"></a><a name="p1664611982613"></a>目标检测网络模型。</p>
     <p id="p176461899265"><a name="p176461899265"></a><a name="p176461899265"></a>是基于Caffe的yolov3模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p146461397261"><a name="p146461397261"></a><a name="p146461397261"></a>请参考 <a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/yolov3" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/yolov3</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p146461397261"><a name="p146461397261"></a><a name="p146461397261"></a>请参考 <a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/yolov3" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/yolov3</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>

@@ -17,7 +17,7 @@
 
 1.  <a name="zh-cn_topic_0220049620_li953280133816"></a>获取源码包。
 
-    将[https://gitee.com/Atlas200DK/sample-headposeestimation-python](https://gitee.com/Atlas200DK/sample-headposeestimation-python)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/sample-headposeestimation-python。
+    将[https://github.com/Atlas200dk/sample-headposeestimation-python](https://github.com/Atlas200dk/sample-headposeestimation-python)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/sample-headposeestimation-python。
 
 2.  <a name="zh-cn_topic_0220049620_li12291771229"></a>获取此应用中所需要的网络模型。
 
@@ -39,14 +39,14 @@
     <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0220049620_p151818183718"><a name="zh-cn_topic_0220049620_p151818183718"></a><a name="zh-cn_topic_0220049620_p151818183718"></a>人脸检测网络模型。</p>
     <p id="zh-cn_topic_0220049620_p11121816373"><a name="zh-cn_topic_0220049620_p11121816373"></a><a name="zh-cn_topic_0220049620_p11121816373"></a>此模型是基于Caffe的Resnet10-SSD300模型转换后的网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0220049620_p611318163718"><a name="zh-cn_topic_0220049620_p611318163718"></a><a name="zh-cn_topic_0220049620_p611318163718"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0220049620_p611318163718"><a name="zh-cn_topic_0220049620_p611318163718"></a><a name="zh-cn_topic_0220049620_p611318163718"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     <tr id="zh-cn_topic_0220049620_row1517495918114"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="zh-cn_topic_0220049620_p16541181214"><a name="zh-cn_topic_0220049620_p16541181214"></a><a name="zh-cn_topic_0220049620_p16541181214"></a>head_pose_estimation</p>
     </td>
     <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0220049620_p175415131212"><a name="zh-cn_topic_0220049620_p175415131212"></a><a name="zh-cn_topic_0220049620_p175415131212"></a>头部姿势估计网络模型。此模型是基于Caffe的VGG-SSD模型转换后的网络模型</p>
     </td>
-    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0220049620_p192971113151219"><a name="zh-cn_topic_0220049620_p192971113151219"></a><a name="zh-cn_topic_0220049620_p192971113151219"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="75.11%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0220049620_p192971113151219"><a name="zh-cn_topic_0220049620_p192971113151219"></a><a name="zh-cn_topic_0220049620_p192971113151219"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>
@@ -177,7 +177,7 @@
 
         执行脚本安装hiai，hiai的安装脚本可以在码云的tools仓中获取，将脚本内容复制到开发板中。
 
-        安装脚本路径：[https://gitee.com/HuaweiAscend/tools/blob/master/python2\_hiai\_install.sh](https://gitee.com/HuaweiAscend/tools/blob/master/python2_hiai_install.sh)。
+        安装脚本路径：[https://github.com/HuaweiAscend/tools/blob/master/python2\_hiai\_install.sh](https://github.com/HuaweiAscend/tools/blob/master/python2_hiai_install.sh)。
 
         在开发板的root用户下执行脚本进行hiai库安装：
 

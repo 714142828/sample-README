@@ -17,7 +17,7 @@
 
 1.  <a name="li953280133816"></a>获取源码包。
 
-    将[https://gitee.com/Atlas200DK/sample-faceantispoofing](https://gitee.com/Atlas200DK/sample-headposeestimation)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-faceantispoofing。
+    将[https://github.com/Atlas200dk/sample-faceantispoofing](https://github.com/Atlas200dk/sample-headposeestimation)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-faceantispoofing。
 
 2.  <a name="li1365682471610"></a>获取此应用中所需要的原始网络模型。
 
@@ -39,14 +39,14 @@
     <td class="cellrowborder" valign="top" width="10.03%" headers="mcps1.2.4.1.2 "><p id="p1456731819318"><a name="p1456731819318"></a><a name="p1456731819318"></a>人脸检测网络模型。</p>
     <p id="p256717183312"><a name="p256717183312"></a><a name="p256717183312"></a>此模型是基于Caffe的Resnet10-SSD300模型转换后的网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="p1956741833120"><a name="p1956741833120"></a><a name="p1956741833120"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="p1956741833120"><a name="p1956741833120"></a><a name="p1956741833120"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/face_detection</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     <tr id="row8833411314"><td class="cellrowborder" valign="top" width="13.61%" headers="mcps1.2.4.1.1 "><p id="p65671018123118"><a name="p65671018123118"></a><a name="p65671018123118"></a>depl</p>
     </td>
     <td class="cellrowborder" valign="top" width="10.03%" headers="mcps1.2.4.1.2 "><p id="p9567131833116"><a name="p9567131833116"></a><a name="p9567131833116"></a>面部特征点网络模型。此模型是基于Caffe的VGG-SSD模型转换后的网络模型</p>
     </td>
-    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="p981712263315"><a name="p981712263315"></a><a name="p981712263315"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="76.36%" headers="mcps1.2.4.1.3 "><p id="p981712263315"><a name="p981712263315"></a><a name="p981712263315"></a>请参考<a href="https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation" target="_blank" rel="noopener noreferrer">https://github.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/head_pose_estimation</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>
