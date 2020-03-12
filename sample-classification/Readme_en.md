@@ -297,17 +297,27 @@ Before running the application, obtain the source code package and configure the
     >-   All the parameters must be filled in，otherwise build cannot be passed.
     >-   Note that the "" symbol is no need to be used when filling in parameters.
     >-   Only one single model name can be filled in the configuration file, the filled model must be one of the models saved in  [Step 5](#zh-cn_topic_0203223265_li470213205618). **googlenet** is used as an example here, it can be replaced by other models listed in this application. 
-    
-3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 6](#zh-cn_topic_0203223265_fig1741464713019), **build** and **run** folders will be generated under the directory.
 
-    **Figure 6**  Compilation operation and generated files<a name="zh-cn_topic_0203223265_fig1741464713019"></a>  
+3.  Run the deployment script to adjust the configuration parameters, download and compile 3rd party libraries. Open the Terminal of **Mind Studio** tool, which is under the main code directory, run the following command to execute environment deployment in the backstage, as shown in [Figure 6](#zh-cn_topic_0182554577_fig19292258105419).
+    
+    **Figure 6**  Execute deployment script<a name="zh-cn_topic_0182554577_fig19292258105419"></a>  
+    
+    ![](figures/deploy.png)
+    
+    >![](public_sys-resources/icon-note.gif) **NOTE：**   
+    >-   Automatic download and compilation will perform if 3rd party libraries are not deployed for the first time of deployment. This process might take some time, please wait patiently. It will not download and compilation repeatedly when recompiling later, deployment is shown as above. 
+    >-   Select the HOST IP connected to the developer board when deploying, which is usually the IP of virtual network card. If this IP belongs to the same segment as the developer board IP, it will be selected automatically and deployed. Otherwise, manual entering the IP connected to developer board is required for deployment.
+    
+4.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 7](#zh-cn_topic_0203223265_fig1741464713019), **build** and **run** folders will be generated under the directory.
+
+    **Figure 7**  Compilation operation and generated files<a name="zh-cn_topic_0203223265_fig1741464713019"></a>  
     ![](figures/编译操作及生成文件.png "Compilation operation and generated files")
 
     >![](public_sys-resources/icon-note.gif) **NOTE：**   
     >When you compile the project for the first time, **Build \> Build** is gray and not clickable. Your need to click **Build \> Edit Build Configuration**, configure the compilation parameters and then compile.  
     >![](figures/build_configuration.png)  
 
-4. Upload the images to be inferred to the directory of the  **HwHiAiUser**  user on the host.
+5. Upload the images to be inferred to the directory of the  **HwHiAiUser**  user on the host.
 
     The image requirements are as follows:
 
@@ -318,9 +328,9 @@ Before running the application, obtain the source code package and configure the
 
 ## Running<a name="zh-cn_topic_0203223265_section372782554919"></a>
 
-1. Find the **Run** button in the toolbar in **Mind Studio** tool, click **Run \> Run 'sample-classification'**, as shown in[Figure 7](#zh-cn_topic_0203223265_fig93931954162719), the executable program has been executed on the developer board.
+1. Find the **Run** button in the toolbar in **Mind Studio** tool, click **Run \> Run 'sample-classification'**, as shown in[Figure 8](#zh-cn_topic_0203223265_fig93931954162719), the executable program has been executed on the developer board.
 
-    **Figure 7**  Executed program<a name="zh-cn_topic_0203223265_fig93931954162719"></a>  
+    **Figure 8**  Executed program<a name="zh-cn_topic_0203223265_fig93931954162719"></a>  
     ![](figures/程序已执行示意图.png "Executed program")
 
     Please ignore the above error, because **Mind Studio** cannot pass parameters for executable programs.  The above steps are to deploy the executable program and the dependent library files to the developer board. This step requires ssh to developer board to the corresponding directory file and execute manually. For details, refer to the following steps.
