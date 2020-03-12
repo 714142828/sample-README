@@ -1,4 +1,4 @@
-中文|[英文](Readme_en.md)
+CN|[EN](Readme_en.md)
 
 # Faster-R-CNN检测网络应用<a name="ZH-CN_TOPIC_0208837806"></a>
 
