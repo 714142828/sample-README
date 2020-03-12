@@ -160,10 +160,20 @@ Before running the application, obtain the source code package and configure the
 
     >![](public_sys-resources/icon-note.gif) **NOTE：**   
     >-   Note that the "" symbol is no need to be used when filling in parameters.
-    
-3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 4](zh-cn_topic_0203223280.md#fig1625447397), **build** and **run** folders will be generated under the directory.
 
-    **Figure 4**  Compilation operation and generated files<a name="zh-cn_topic_0203223280_fig21857144016"></a>  
+3.  Run the deployment script to adjust the configuration parameters, download and compile 3rd party libraries. Open the Terminal of **Mind Studio** tool, which is under the main code directory, run the following command to execute environment deployment in the backstage, as shown in [Figure 4](#zh-cn_topic_0182554577_fig19292258105419).
+    
+    **Figure 4**  Execute deployment script<a name="zh-cn_topic_0182554577_fig19292258105419"></a>  
+    
+    ![](figures/deploy.png)
+    
+    >![](public_sys-resources/icon-note.gif) **NOTE：**   
+    >-   Automatic download and compilation will perform if 3rd party libraries are not deployed for the first time of deployment. This process might take some time, please wait patiently. It will not download and compilation repeatedly when recompiling later, deployment is shown as above. 
+    >-   Select the HOST IP connected to the developer board when deploying, which is usually the IP of virtual network card. If this IP belongs to the same segment as the developer board IP, it will be selected automatically and deployed. Otherwise, manual entering the IP connected to developer board is required for deployment.
+    
+3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 5](zh-cn_topic_0203223280.md#fig1625447397), **build** and **run** folders will be generated under the directory.
+
+    **Figure 5**  Compilation operation and generated files<a name="zh-cn_topic_0203223280_fig21857144016"></a>  
     
 
     ![](figures/zh-cn_image_0208253041.png)
@@ -184,9 +194,9 @@ Before running the application, obtain the source code package and configure the
 
 ## Running<a name="zh-cn_topic_0203223280_section1620073406"></a>
 
-1. Find the **Run** button in the toolbar in **Mind Studio** tool, click  **Run \> Run 'sample-objectdetection'**, as shown in[Figure 5](zh-cn_topic_0203223280.md#fig93931954162719), the executable program has been executed on the developer board.
+1. Find the **Run** button in the toolbar in **Mind Studio** tool, click  **Run \> Run 'sample-objectdetection'**, as shown in[Figure 6](zh-cn_topic_0203223280.md#fig93931954162719), the executable program has been executed on the developer board.
 
-    **Figure 5**  Executed program<a name="zh-cn_topic_0203223280_fig8208744013"></a>  
+    **Figure 6**  Executed program<a name="zh-cn_topic_0203223280_fig8208744013"></a>  
     
 
     ![](figures/zh-cn_image_0208253044.png)
