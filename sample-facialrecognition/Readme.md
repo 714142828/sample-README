@@ -1,225 +1,226 @@
-EN|[CN](Readme_cn.md)
+English|[中文](Readme_CN.md)
 
-# Facial Recognition<a name="ZH-CN_TOPIC_0208835545"></a>
+# Facial Recognition<a name="EN-US_TOPIC_0203223340"></a>
 
-Developers can deploy the application on the Atlas 200 DK to register a face, predict the face information in the video by using the camera, and compare the predicted face with the registered face to predict the most possible user.
+Developers can deploy the application on the Atlas 200 DK to implement face registrations, predict the face information in a video by using cameras, and compare the predicted face with the registered face to output the most possible user.
 
-## Prerequisites<a name="zh-cn_topic_0203223340_section137245294533"></a>
+The applications in the current version branch adapt to  [DDK&RunTime](https://ascend.huawei.com/resources) **1.32.0.0 and later**.
 
-Before using an open source application, ensure that:
+## Prerequisites<a name="section137245294533"></a>
+
+Before deploying this sample, ensure that:
 
 -   Mind Studio  has been installed.
 -   The Atlas 200 DK developer board has been connected to  Mind Studio, the cross compiler has been installed, the SD card has been prepared, and basic information has been configured.
 
-## Software Preparation<a name="zh-cn_topic_0203223340_section8534138124114"></a>
+## Software Preparation<a name="section8534138124114"></a>
 
-Before running the application, obtain the source code package and configure the environment as follows.
+Before running the sample, obtain the source code package and configure the environment as follows:
 
-1.  <a name="zh-cn_topic_0203223340_li953280133816"></a>Obtain the source code package.
+1.  <a name="li953280133816"></a>Obtain the source code package.
+    1.  By downloading the package
 
-    ownload all the code in the sample-facialrecognition repository at  [https://github.com/Atlas200dk/sample-facialrecognition/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-facialrecognition/tree/1-3x-0-0/)to any directory on Ubuntu Server where  Mind Studio  is located as the **Mind Studio**  installation user, for example,  **$HOME/AscendProjects/sample-facialrecognition**.
+        Download all the code in the repository at  [https://github.com/Atlas200dk/sample-facialrecognition/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-facialrecognition/tree/1-3x-0-0/)  to any directory on Ubuntu Server where Mind Studio is located as the Mind Studio installation user, for example,  **$HOME/AscendProjects/sample-facialrecognition**.
 
-2.  <a name="zh-cn_topic_0203223340_li99811487013"></a>Obtain the source network model required by the application.
+    2.  By running the  **git**  command
 
+        Run the following command in the  **$HOME/AscendProjects**  directory to download code:
 
-    Obtain the source network model and its weight file used in the application by referring to  [Table 1](#zh-cn_topic_0203223340_table97791025517), and save them to any directory on the Ubuntu server where  Mind Studio  is located (for example, **$HOME/models/facialrecognition**.)
+        **git clone https://github.com/Atlas200dk/sample-facialrecognition.git --branch 1-3x-0-0**
 
-    **Table  1**  Models used for Facial Recognition
+2.  <a name="li99811487013"></a>Obtain the source network model required by the application.
 
-    <a name="zh-cn_topic_0203223340_table97791025517"></a>
-    <table><thead align="left"><tr id="zh-cn_topic_0203223340_row48791253115"><th class="cellrowborder" valign="top" width="13.309999999999999%" id="mcps1.2.4.1.1"><p id="zh-cn_topic_0203223340_p187902511114"><a name="zh-cn_topic_0203223340_p187902511114"></a><a name="zh-cn_topic_0203223340_p187902511114"></a>Model Name</p>
+    Obtain the source network model and its weight file used in the application by referring to  [Table 1](#table97791025517)  and save them to the same directory on Ubuntu Server where Mind Studio is located, for example,  **$HOME/models/facialrecognition**.
+
+    **Table  1**  Models used in facial recognition
+
+    <a name="table97791025517"></a>
+    <table><thead align="left"><tr id="row48791253115"><th class="cellrowborder" valign="top" width="19%" id="mcps1.2.4.1.1"><p id="p187902511114"><a name="p187902511114"></a><a name="p187902511114"></a>Model Name</p>
     </th>
-    <th class="cellrowborder" valign="top" width="12.04%" id="mcps1.2.4.1.2"><p id="zh-cn_topic_0203223340_p148791259118"><a name="zh-cn_topic_0203223340_p148791259118"></a><a name="zh-cn_topic_0203223340_p148791259118"></a>Model Description</p>
+    <th class="cellrowborder" valign="top" width="23%" id="mcps1.2.4.1.2"><p id="p148791259118"><a name="p148791259118"></a><a name="p148791259118"></a>Description</p>
     </th>
-    <th class="cellrowborder" valign="top" width="74.65%" id="mcps1.2.4.1.3"><p id="zh-cn_topic_0203223340_p987922511111"><a name="zh-cn_topic_0203223340_p987922511111"></a><a name="zh-cn_topic_0203223340_p987922511111"></a>Model Download Path</p>
+    <th class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.2.4.1.3"><p id="p987922511111"><a name="p987922511111"></a><a name="p987922511111"></a>Download Path</p>
     </th>
     </tr>
     </thead>
-    <tbody><tr id="zh-cn_topic_0203223340_row38791825912"><td class="cellrowborder" valign="top" width="13.309999999999999%" headers="mcps1.2.4.1.1 "><p id="zh-cn_topic_0203223340_p0879152519115"><a name="zh-cn_topic_0203223340_p0879152519115"></a><a name="zh-cn_topic_0203223340_p0879152519115"></a>face_detection</p>
+    <tbody><tr id="row38791825912"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.2.4.1.1 "><p id="p0879152519115"><a name="p0879152519115"></a><a name="p0879152519115"></a>face_detection</p>
     </td>
-    <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0203223340_p9879112516111"><a name="zh-cn_topic_0203223340_p9879112516111"></a><a name="zh-cn_topic_0203223340_p9879112516111"></a>Network model for face detection.</p>
-    <p id="zh-cn_topic_0203223340_p1087912253112"><a name="zh-cn_topic_0203223340_p1087912253112"></a><a name="zh-cn_topic_0203223340_p1087912253112"></a>It is a network model converted from ResNet0-SSD300 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p9879112516111"><a name="p9879112516111"></a><a name="p9879112516111"></a>Network model for face detection.</p>
+    <p id="p1087912253112"><a name="p1087912253112"></a><a name="p1087912253112"></a>It is converted from the Caffe-based ResNet10-SSD300 model.</p>
     </td>
-    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0203223340_p188801525813"><a name="zh-cn_topic_0203223340_p188801525813"></a><a name="zh-cn_topic_0203223340_p188801525813"></a>>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554631_b6722175014127"><a name="en-us_topic_0182554631_b6722175014127"></a><a name="en-us_topic_0182554631_b6722175014127"></a> Readme_cn.md</strong> in <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/face_detection</a>.</p>
-    </td>
-    </tr>
-    <tr id="zh-cn_topic_0203223340_row11880162511114"><td class="cellrowborder" valign="top" width="13.309999999999999%" headers="mcps1.2.4.1.1 "><p id="zh-cn_topic_0203223340_p1388012251117"><a name="zh-cn_topic_0203223340_p1388012251117"></a><a name="zh-cn_topic_0203223340_p1388012251117"></a>vanillacnn</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0203223340_p1988018251110"><a name="zh-cn_topic_0203223340_p1988018251110"></a><a name="zh-cn_topic_0203223340_p1988018251110"></a>>Network model for marking facial feature points.</p>
-    <p id="zh-cn_topic_0203223340_p588013251514"><a name="zh-cn_topic_0203223340_p588013251514"></a><a name="zh-cn_topic_0203223340_p588013251514"></a>It is a network model converted from the VanillaCNN model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0203223340_p28801025319"><a name="zh-cn_topic_0203223340_p28801025319"></a><a name="zh-cn_topic_0203223340_p28801025319"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554631_b47241650201210"><a name="en-us_topic_0182554631_b47241650201210"></a><a name="en-us_topic_0182554631_b47241650201210"></a> Readme_cn.md</strong> in <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/vanillacnn" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/vanillacnn</a><span>.</p>
+    <td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.2.4.1.3 "><p id="p188801525813"><a name="p188801525813"></a><a name="p188801525813"></a>Download the source network model file and its weight file by referring to<strong id="b59791410131920"><a name="b59791410131920"></a><a name="b59791410131920"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/face_detection" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/face_detection</a>.</p>
     </td>
     </tr>
-    <tr id="zh-cn_topic_0203223340_row988092511120"><td class="cellrowborder" valign="top" width="13.309999999999999%" headers="mcps1.2.4.1.1 "><p id="zh-cn_topic_0203223340_p108806251513"><a name="zh-cn_topic_0203223340_p108806251513"></a><a name="zh-cn_topic_0203223340_p108806251513"></a>sphereface</p>
+    <tr id="row11880162511114"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.2.4.1.1 "><p id="p1388012251117"><a name="p1388012251117"></a><a name="p1388012251117"></a>vanillacnn</p>
     </td>
-    <td class="cellrowborder" valign="top" width="12.04%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0203223340_p68802251019"><a name="zh-cn_topic_0203223340_p68802251019"></a><a name="zh-cn_topic_0203223340_p68802251019"></a>Network model for obtaining feature vectors.</p>
-    <p id="zh-cn_topic_0203223340_p148801125512"><a name="zh-cn_topic_0203223340_p148801125512"></a><a name="zh-cn_topic_0203223340_p148801125512"></a>It is a network model converted from the SphereFace model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p1988018251110"><a name="p1988018251110"></a><a name="p1988018251110"></a>Network model for marking facial feature points.</p>
+    <p id="p588013251514"><a name="p588013251514"></a><a name="p588013251514"></a>It is a network model converted from the VanillaCNN model based on Caffe.</p>
     </td>
-    <td class="cellrowborder" valign="top" width="74.65%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0203223340_p128806251116"><a name="zh-cn_topic_0203223340_p128806251116"></a><a name="zh-cn_topic_0203223340_p128806251116"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0182554631_b27251650191215"><a name="en-us_topic_0182554631_b27251650191215"></a><a name="en-us_topic_0182554631_b27251650191215"></a> Readme_cn.md</strong> in <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/sphereface" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/sphereface</a><span>.</p>
+    <td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.2.4.1.3 "><p id="p28801025319"><a name="p28801025319"></a><a name="p28801025319"></a>Download the source network model file and its weight file by referring to<strong id="b1992849103910"><a name="b1992849103910"></a><a name="b1992849103910"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/vanillacnn" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/vanillacnn</a>.</p>
+    </td>
+    </tr>
+    <tr id="row988092511120"><td class="cellrowborder" valign="top" width="19%" headers="mcps1.2.4.1.1 "><p id="p108806251513"><a name="p108806251513"></a><a name="p108806251513"></a>sphereface</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p68802251019"><a name="p68802251019"></a><a name="p68802251019"></a>Network model for obtaining feature vectors.</p>
+    <p id="p148801125512"><a name="p148801125512"></a><a name="p148801125512"></a>It is a network model converted from the SphereFace model based on Caffe.</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.2.4.1.3 "><p id="p128806251116"><a name="p128806251116"></a><a name="p128806251116"></a>Download the source network model file and its weight file by referring to<strong id="b290214112396"><a name="b290214112396"></a><a name="b290214112396"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/sphereface" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/sphereface</a>.</p>
     </td>
     </tr>
     </tbody>
     </table>
 
-3.   Log in to Ubuntu Server where Mind Studio is located as the Mind Studio installation user, confirm current DDK version and set the  environment variable  **DDK\_HOME**, **tools\_version**, **NPU\_DEVICE\_LIB** and **LD\_LIBRARY\_PATH**.
+3.  Log in to Ubuntu Server where Mind Studio is located as the Mind Studio installation user, determine the current DDK version number, and set the environment variables  **DDK\_HOME**,  **tools\_version**,  **LD\_LIBRARY\_PATH**.
+    1.  <a name="en-us_topic_0203223294_li61417158198"></a>Query the current DDK version number.
 
-     1.  <a name="zh-cn_topic_0203223340_zh-cn_topic_0203223294_li61417158198"></a>Find current DDK version number.
+        A DDK version number can be queried by using either Mind Studio or the DDK software package.
 
-         Current DDK version number can be obtained by either Mind studio tool or DDK packages.
+        -   Using Mind Studio
 
-         -    Using Mind studio tool.
-        
-              choose **File \> Settings \> System Settings \> Ascend DDK** from the main menu of Mind Studio, DDK version inquiry page will display as [Figure 1](zh-cn_topic_0203223294.md#fig94023140222).
- 
-              **Figure 1** DDK version inquiry page<a name="zh-cn_topic_0203223340_zh-cn_topic_0203223294_fig17553193319118"></a>  
-              ![](figures/DDK版本号查询.png "DDK version inquiry page")
- 
-              **DDK Version** shows in this page is current DDK version, for example, **1.31.T15.B150**.
-             
-         -   Using DDK package
-             
-             Obtain DDK version by installed DDK package name.
-             
-             The format of DDK package name is: **Ascend\_DDK-\{software version}-\{interface version}-x86\_64.ubuntu16.04.tar.gz**
-             
-             Where **software version** represents the DDK version.
-             
-             For example:
-             
-             If the name of DDK package is **Ascend\_DDK-1.31.T15.B150-1.1.1-x86\_64.ubuntu16.04.tar.gz**, the DDK version would be **1.31.T15.B150**.
-             
-     2.  Set the environment variable.
+            On the project page of Mind Studio, choose  **File \> Settings \> System Settings \> Ascend DDK**  to access  [Querying the DDK version number](#en-us_topic_0203223294_fig17553193319118).
 
-         **vim \~/.bashrc**
+            **Figure  1**  Querying the DDK version number<a name="en-us_topic_0203223294_fig17553193319118"></a>  
+            ![](figures/querying-the-ddk-version-number.png "querying-the-ddk-version-number")
 
-          Run the following commands to add the environment variables  **DDK\_HOME**  and  **LD\_LIBRARY\_PATH**  to the last line:
+            The displayed  **DDK Version**  is the current DDK version number, for example,  **1.31.T15.B150**.
 
-         **export tools\_version=_1.31.X.X_**
+        -   Using the DDK software package
 
-         **export DDK\_HOME=\\$HOME/.mindstudio/huawei/ddk/\\$tools\_version/ddk**
+            Obtain the DDK version number based on the DDK package name.
 
-         **export NPU\_DEVICE\_LIB=$DDK\_HOME/../RC/host-aarch64\_Ubuntu16.04.3/lib**
+            DDK package name format:  **Ascend\_DDK-\{software version\}-\{interface version\}-x86\_64.ubuntu16.04.tar.gz**
 
-         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
+            _Software version_  indicates the DDK software version number.
 
-         >![](public_sys-resources/icon-note.gif) **NOTE：**   
-         >-   **_1.31.X.X_** is the DDK version obtained from [Figure 1](#zh-cn_topic_0203223340_zh-cn_topic_0203223294_li61417158198)中it needs be filled according to the inquiry result，for example, **1.31.T15.B150**  
-         >-   If the environment variables have been added, this step can be skipped.
+            For example:
 
+            If the DDK package name is  **Ascend\_DDK-1.31.T15.B150-1.1.1-x86\_64.ubuntu16.04.tar.gz**, the DDK version is  **1.31.T15.B150**.
 
-         Enter  **:wq!**  to save and exit.
+    2.  Set environment variables.
 
-         Run the following command for the environment variable to take effect:
+        **vim \~/.bashrc**
+
+        Run the following commands to add the environment variables  **DDK\_HOME**  and  **LD\_LIBRARY\_PATH**  to the last line:
+
+        **export tools\_version=_1.31.X.X_**
+
+        **export DDK\_HOME=\\$HOME/.mindstudio/huawei/ddk/\\$tools\_version/ddk**
+
+        **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
+
+        >![](public_sys-resources/icon-note.gif) **NOTE:**   
+        >-   **_1.31.X.X_**  indicates the DDK version queried in  [a](#en-us_topic_0203223294_li61417158198). Set this parameter based on the query result, for example,  **1.31.T15.B150**.  
+        >-   If the environment variables have been added, skip this step.  
+
+        Type  **:wq!**  to save settings and exit.
+
+        Run the following command for the environment variable to take effect:
 
         **source \~/.bashrc**
 
-4.  Convert the source network to a model supported by Ascend AI processor. There are two ways for model conversion:  Mind Studio tool conversion and command line conversion. 
+4.  Convert the source network model to a model supported by the Ascend AI processor. A model can be converted either using Mind Studio or in CLI mode.
+    -   Convert a model using Mind Studio.
+        1.  Choose  **Tools \> Model Convert**  from the main menu of Mind Studio.
+        2.  On the  **Model Conversion**  page that is displayed, configure model conversion.
+            -   Select the model file downloaded in  [Step 2](#li99811487013)  for  **Model File**. The weight file is automatically matched and filled in  **Weight File**.
+            -   Set  **Model Name**  to the model name in  [Table 1](#table97791025517).
+            -   Set the following parameters for vanilla CNN model conversion:
 
-    -    Model conversion using Mind Studio tool
-         1.  Choose **Tool \> Convert** Model from the main menu of Mind Studio. The Convert Model page is displayed.
-         2.  On the **Model** **Convert** page, perform model conversion configuration.
-             -    Set **Model File** to model file installed in [Step 2](#zh-cn_topic_0203223340_li99811487013), the weight file would be automatically matched and filled in **Weight File**.
-             -    Set **Model Name** to model name in [Table 1](#zh-cn_topic_0203223340_table97791025517).
-             -    The non-default configuration of **VanillaCNNModel** model conversion is as follows:
+                -   In the  **Nodes**  configuration, change the value of  **N**  in  **Input Node:data**  to  **4**. The value of this parameter must be the same as that of  **batch\_size**  of the corresponding model in  **graph\_template.config**. Retain the default values of  **C**,  **H**, and  **W**, as shown in  [Figure 2](#fig5158834193915).
+                -   In the  **AIPP**  configuration, set  **Image Preprocess**  to  **off**.
 
-                  -  Set the value of **N** in "**Input Node:data**" in Nodes configuration to **4**，this parameter needs to be consistent with the value of "**batch\_size**" of the corresponding model in "**graph\_template.config**, retain **C**、**H**、**W** to the default value, as shown in [Figure 2](#zh-cn_topic_0203223340_fig5158834193915)。
-                  -   Set “"**Image Preprocess**" to **off** in AIPP configuration.
-
-                  **Figure 2**  Nodes configuration during **VanillaCNNModel** conversion<a name="zh-cn_topic_0203223340_fig5158834193915"></a>  
-                
- 
-                  ![](figures/model_facial_1.png)
-
-             -   The non-default configuration of **SpherefaceModel** conversion is as follows:
-
-                  -    For **Input Shape** in AIPP configuration,  **N:8**  indicates that 8 images are processed each time for the facial recognition application. The value of this parameter must be the same as the value of  **batch\_size**  of the corresponding model in  **graph.config**.
-                  -   Set **Input Image Format** in AIPP configuration to  **RGB888\_U8**.
-                  -   Set  **Input Image Size**  in AIPP configuration to  **96**  and  **112** as required by the model. In this example, the input image format is  **RGB8888\_U8**. Therefore, 128 x 16 alignment is not required.
-                  -   Set **Model Image Format** in AIPP configuration to  **RGB888\_U8**.
-                  -   Set  **Mean Less[B|G|R]**  in AIPP configuration to the mean value of the images used in the model training. The value can be obtained from the  **sphereface\_model.prototxt**  file of the model.
-                  -   Set  **Multiplying Factor[B|G|R]** in AIPP configuration to the multiplication factor of the images used in the model training. The value can be obtained from the** sphereface\_model.prototxt**  file of the model, that is, the value of  **scale**. 
-
-                  **Figure 3**  Nodes configuration for **SpherefaceModel** conversion<a name="zh-cn_topic_0203223340_fig188415461909"></a>  
+                **Figure  2**  Nodes configuration for vanilla CNN model conversion<a name="fig5158834193915"></a>  
                 
 
-                  ![](figures/model_facial_3.png)
+                ![](figures/model_facial_1.png)
 
-                  **Figure 4**  AIPP configuration for **SpherefaceModel** conversion<a name="zh-cn_topic_0203223340_fig159362210546"></a>  
+            -   Set the following parameters for SphereFace model conversion:
+
+                -   In the  **Nodes**  configuration,  **N:8**  in  **Input Node:data**  indicates that 8 images are processed each time for the facial recognition application. The value of this parameter must be the same as the value of  **batch\_size**  of the corresponding model in  **graph.config**.
+                -   In the  **AIPP**  configuration, set** Input Image Format **to  **RGB888\_U8**.
+                -   In the  **AIPP**  configuration, set  **Input Image Size**  to  **96**  and  **112**. In this example, the input image format is  **RGB8888\_U8**. Therefore, 128 x 16 alignment is not required.
+                -   In the  **AIPP**  configuration, set** Model Image Format **to  **BGR888\_U8**.
+                -   In the  **AIPP**  configuration, set  **Mean Less**  to the mean value of the images used in the model training. The value can be obtained from the  **sphereface\_model.prototxt**  file of the model.
+                -   In the  **AIPP**  configuration, set  **Multiplying Factor**  to the multiplication factor of the images used in the model training. The value can be obtained from the** sphereface\_model.prototxt**  file of the model, that is, the value of  **scale**.
+
+                **Figure  3**  Nodes configuration for SphereFace model conversion<a name="fig188415461909"></a>  
                 
 
-                  ![](figures/model_facial_4.png)
+                ![](figures/model_facial_3.png)
 
-              -   **Input Image Size** in **face\_detection** model needs to be set to 384,304，  128 \*16 alignment is required here, for **Model Image Format**, select BGR888\_U8, other parameters retain the default vaule.
-
-                  **Figure 5**  The non-default configuration for **face\_detection**<a name="zh-cn_topic_0203223340_fig525743174114"></a>  
+                **Figure  4**  AIPP configuration for SphereFace model conversion<a name="fig159362210546"></a>  
                 
 
-                  ![](figures/model_facial_5.png)
+                ![](figures/model_facial_4.png)
 
-          3.  Click **OK** to start model conversion.
+            -   In the face\_detection model, change the values of  **Input Image Size**  to  **384**  and  **304**  respectively. The values must be 128 x 16 aligned. Select  **BGR888\_U8**  for  **Model Image Format**. Retain the default values for other parameters.
 
-              During the conversion of the  **face\_detection**, the following error will be reported, as shown in [Figure 6](#zh-cn_topic_0203223340_fig19683520164211).
+                **Figure  5**  Parameter settings for face\_detection model conversion<a name="fig525743174114"></a>  
+                
 
-              **Figure 6**  Model conversion error<a name="zh-cn_topic_0203223340_fig19683520164211"></a>  
+                ![](figures/model_facial_5.png)
+
+        3.  Click  **OK**  to start model conversion.
+
+            During the conversion of the face\_detection model, an error shown in  [Figure 6](#fig19683520164211)  is displayed.
+
+            **Figure  6**  Model conversion error<a name="fig19683520164211"></a>  
             
 
-              ![](figures/model_facial_conversionfailed.png)
+            ![](figures/model_facial_conversionfailed.png)
 
-              Select **SSDDetectionOutput** from the **Suggestion** drop-down list box at the **DetectionOutput** layer and click Retry.
+            Select  **SSDDetectionOutput**  from the  **Suggestion**  drop-down list box at the  **DetectionOutput**  layer and click  **Retry**.
 
-              After successful conversion, a **.om** offline model is generated in the **$HOME/modelzoo/XXX/device**.
+            After successful conversion, an .om offline model is generated in the  **$HOME/modelzoo/XXX/device**  directory.
 
-              >![](public_sys-resources/icon-note.gif) **NOTE：**   
-              >-  he specific meaning and parameter description in each step of **Mind Studio** model conversion can refer to[https://ascend.huawei.com/doc/mindstudio/2.1.0\(beta\)/zh/zh-cn\_topic\_0188462651.html](https://ascend.huawei.com/doc/mindstudio/2.1.0(beta)/zh/zh-cn_topic_0188462651.html)  
-              >-   XXX indicates the name of currently converted model, for example, **face\_detection.om** is saved in: **$HOME/modelzoo/face\_detection/device**.  
-
-
-     -   Model conversion in command line mode:
-        
-         1.  Enter the folder where the source model is saved as the Mind Studio installation user.
+            >![](public_sys-resources/icon-note.gif) **NOTE:**   
+            >-   For details about the descriptions of each step and parameters in model conversion on Mind Studio, see "Model Conversion" in the  [Mind Studio User Guide](https://ascend.huawei.com/doc/mindstudio/).  
+            >-   **XXX**  indicates the name of the model to be converted. For example,  **face\_detection.om**  is stored in  **$HOME/modelzoo/face\_detection/device**.  
 
 
-             **cd $HOME/ascend/models/facialrecognition**
+    -   Convert a model in CLI mode.
+        1.  Go to the folder for storing original models as the Mind Studio installation user.
 
-         2.  Using omg tool to run the following command to perform model conversion.
+            **cd $HOME/ascend/models/facialrecognition**
 
-             ```
-              ${DDK_HOME}/uihost/bin/omg --output="./XXX" --model="./XXX.prototxt" --framework=0 --ddk_version=${tools_version} --weight="./XXX.caffemodel" --input_shape=`head -1 $HOME/AscendProjects/sample-facialrecognition/MyModel/shape_XXX` --insert_op_conf=$HOME/AscendProjects/sample-facialrecognition/MyModel/aipp_XXX.cfg --op_name_map=$HOME/AscendProjects/sample-facialrecognition/MyModel/reassign_operators
-             ```
+        2.  Run the following command to convert the model using OMG:
 
-             >![](public_sys-resources/icon-note.gif) **NOTE：**   
-             >-   All files required for **input\_shape**、**insert\_op\_conf**、**op\_name\_mapare**are in the "**sample-facialrecognition/MyModel**"directory under the path where the source code is located，please configure these file paths according to the path where your actual source code is located.
-             >-    **XXX** is the name of model in [Table 1](#zh-cn_topic_0203223340_table97791025517), please fill in the name of model to be converted during conversion.
-             >-   **vanillacnn** model does not need **insert\_op\_conf**、**op\_name\_map** parameters for conversion, and sphereface** model does not need the **op\_name\_map** parameter for model conversion. An error will be reported during model conversion if the unnecessary parameters are not deleted. 
-             >-   The specific meaning of each parameter can be found in the following documents[https://ascend.huawei.com/doc/Atlas200DK/1.3.0.0/zh/zh-cn\_topic\_0165968579.html](https://ascend.huawei.com/doc/Atlas200DK/1.3.0.0/zh/zh-cn_topic_0165968579.html)  
+            ```
+            ${DDK_HOME}/uihost/bin/omg --output="./XXX" --model="./XXX.prototxt" --framework=0 --ddk_version=${tools_version} --weight="./XXX.caffemodel" --input_shape=`head -1 $HOME/AscendProjects/sample-facialrecognition/script/shape_XXX` --insert_op_conf=$HOME/AscendProjects/sample-facialrecognition/script/aipp_XXX.cfg --op_name_map=$HOME/AscendProjects/sample-facialrecognition/script/reassign_operators
+            ```
+
+            >![](public_sys-resources/icon-note.gif) **NOTE:**   
+            >-   The files required by  **input\_shape**,  **insert\_op\_conf**, and  **op\_name\_map**  are stored in the  **sample-facialrecognition/script**  directory under the source code path. Configure the file paths based on the actual source code path.  
+            >-   **XXX**  indicates the name of the model used in  [Table 1](#table97791025517). Replace it with the name of the model to be converted.  
+            >-   Parameters  **insert\_op\_conf**  and  **op\_name\_map**  are not required during vanilla CNN model conversion, and the  **op\_name\_map**  parameter is not required during SphereFace model conversion. If unnecessary parameters are not deleted, an error is reported during model conversion.  
+            >-   For details about parameter descriptions, see "Model Conversion" in the  [Atlas 200 DK User Guide](https://ascend.huawei.com/doc/atlas200dk/).  
 
 
-5.  Upload the converted model file（.om file）to "**sample-facialrecognition/script”**" directory  in the source code path in [Step 1](#zh-cn_topic_0203223340_li953280133816).
+5.  Upload the converted .om model file to the  **sample-facialrecognition/script**  directory in the source code path in  [Step 1](#li953280133816).
 
-## Compile<a name="zh-cn_topic_0203223340_section147911829155918"></a>
+## Building a Project<a name="section147911829155918"></a>
 
-1.  Open the corresponding project.
+1.  Open the project.
 
-    Enter the “**MindStudio-ubuntu/bin**” directory after decompressing the installation package in the command line, for example, **$HOME/MindStudio-ubuntu/bin**. Run the following command to start **Mind Studio**:
-    
+    Go to the directory that stores the decompressed installation package as the Mind Studio installation user in CLI mode, for example,  **$HOME/MindStudio-ubuntu/bin**. Run the following command to start Mind Studio:
+
     **./MindStudio.sh**
 
-    After successfully starting Mind Studio, open **sample-facialrecognition** project，as shown in [Figure 7](#zh-cn_topic_0203223340_fig28591855104218).
+    After the startup is successful, open the  **sample-facialrecognition**  project, as shown in  [Figure 7](#fig28591855104218).
 
-    **Figure 7**  Open sample-facialrecognition project<a name="zh-cn_topic_0203223340_fig28591855104218"></a>  
-    ![](figures/打开sample-facialrecognition工程.png "Open sample-facialrecognition project")
+    **Figure  7**  Opening the sample-facialrecognition project<a name="fig28591855104218"></a>  
+    ![](figures/opening-the-sample-facialrecognition-project.png "opening-the-sample-facialrecognition-project")
 
-2.  Configure related project information in the **src/param\_configure.conf**.
+2.  Configure project information in the  **src/param\_configure.conf**  file.
 
-    As shown in [Figure 8](#zh-cn_topic_0203223340_fig1338571124515).
+    For details, see  [Figure 8](#fig1338571124515).
 
-    **Figure 8**  Configuration file path<a name="zh-cn_topic_0203223340_fig1338571124515"></a>  
+    **Figure  8**  Configuration file path<a name="fig1338571124515"></a>  
     
 
     ![](figures/facial_open_src.png)
 
-    The configuration file is as follows:
+    Content of the configuration file:
 
     ```
     remote_host=
@@ -227,13 +228,13 @@ Before running the application, obtain the source code package and configure the
     presenter_view_app_name=
     ```
 
-    Following parameter configuration needs to be added manually：
+    Parameter settings to be manually added:
 
-    -   remote\_host：this parameter indicates the IP address of Atlas 200 DK developer board.
-    -   data\_source: configure the channel to which the camera belongs, the value can be **Channel-1** or **Channel-2**. For checking the channel to which camera belongs, refer to **"View the Channel to which the camera belongs"**[Atlas 200 DK User Guidance](https://ascend.huawei.com/doc).
-    -   presenter\_view\_app\_name: The user-defined View Name on the PresenterServer interface, this View Name needs to be unique  on the Presenter Server. It can only be a combination of uppercase and lowercase letters, numbers, and "\_", with a digit of 3 \~20.
+    -   **remote\_host**: IP address of the Atlas 200 DK developer board
+    -   **data\_source**: camera channel. The value can be  **Channel-1**  or  **Channel-2**. For details, see  **Viewing the Channel to Which a Camera Belongs**  in  [Atlas 200 DK User Guide](https://ascend.huawei.com/doc/Atlas200DK/).
+    -   **presenter\_view\_app\_name**: indicates the value of  **View Name**  on the  **Presenter Server**  page, which must be unique. The value consists of 3 to 20 characters and supports only uppercase letters, lowercase letters, digits, and underscores \(\_\).
 
-     An example of video file configuration is as follows:
+    Configuration example:
 
     ```
     remote_host=192.168.1.2
@@ -241,137 +242,134 @@ Before running the application, obtain the source code package and configure the
     presenter_view_app_name=video
     ```
 
-    >![](public_sys-resources/icon-note.gif) **NOTE：**   
-    >-   All the three parameters must be filled in, otherwise build cannot be passed.
-    >-   Note that the "" symbol is no need to be used when filling in parameters.
+    >![](public_sys-resources/icon-note.gif) **NOTE:**   
+    >-   All the three parameters must be set. Otherwise, the build fails.  
+    >-   Do not use double quotation marks \(""\) during parameter settings.  
 
-3.  Run the deployment script to adjust the configuration parameters, download and compile 3rd party libraries. Open the Terminal of **Mind Studio** tool, which is under the main code directory, run the following command to execute environment deployment in the backstage, as shown in [Figure 9](#zh-cn_topic_0182554577_fig19292258105419).
-    
-    **Figure 9**  Execute deployment script<a name="zh-cn_topic_0182554577_fig19292258105419"></a>  
-    
-    ![](figures/deploy.png)
-    
-    >![](public_sys-resources/icon-note.gif) **NOTE：**   
-    >-   Automatic download and compilation will perform if 3rd party libraries are not deployed for the first time of deployment. This process might take some time, please wait patiently. It will not download and compilation repeatedly when recompiling later, deployment is shown as above. 
-    >-   Select the HOST IP connected to the developer board when deploying, which is usually the IP of virtual network card. If this IP belongs to the same segment as the developer board IP, it will be selected automatically and deployed. Otherwise, manual entering the IP connected to developer board is required for deployment.
-    
-3.  Begin to compile, open **Mind Studio** tool, click **Build \> Build \> Build-Configuration** in the toolbar, shown as [Figure 10](#zh-cn_topic_0203223340_fig1629455494718), **build** and **run** folders will be generated under the directory.
+3.  Run the  **deploy.sh**  script to adjust configuration parameters and download and compile the third-party library. Open the  **Terminal**  window of Mind Studio. By default, the home directory of the code is used. Run the  **deploy.sh**  script in the background to deploy the environment, as shown in  [Figure 9](#fig16909182592016).
 
-    **Figure 10**  Compilation operation and generated files<a name="zh-cn_topic_0203223340_fig1629455494718"></a>  
-    ![](figures/编译操作及生成文件.png "Compilation operation and generated files")
+    **Figure  9**  Running the deploy.sh script<a name="fig16909182592016"></a>  
+    ![](figures/running-the-deploy-sh-script.png "running-the-deploy-sh-script")
 
-    >![](public_sys-resources/icon-note.gif) **NOTE：**   
-    >When you compile the project for the first time, **Build \> Build** is gray and not clickable. Your need to click **Build \> Edit Build Configuration**, configure the compilation parameters and then compile.  
-    
-    >![](figures/build_configuration.png)  
+    >![](public_sys-resources/icon-note.gif) **NOTE:**   
+    >-   During the first deployment, if no third-party library is used, the system automatically downloads and builds the third-party library, which may take a long time. The third-party library can be directly used for the subsequent compilation.  
+    >-   During deployment, select the IP address of the host that communicates with the developer board. Generally, the IP address is the IP address configured for the virtual NIC. If the IP address is in the same network segment as the IP address of the developer board, it is automatically selected for deployment. If they are not in the same network segment, you need to manually type the IP address of the host that communicates with the developer board to complete the deployment.  
 
-4.  <a name="zh-cn_topic_0203223340_li1364788188"></a>Start Presenter Server.
+4.  Start the build. Open Mind Studio and choose  **Build \> Build \> Build-Configuration**  from the main menu. The  **build**  and  **run**  folders are generated in the directory, as shown in  [Figure 10](#fig1629455494718).
 
-     Open **Terminal** of **Mind Studio** tool, it is in the path where code saved in [Step 1](#zh-cn_topic_0203223340_li953280133816) by default, run the following command to start the **Presenter Server** main program of the **_facialrecognition_** application, as shown in [Figure 11](#zh-cn_topic_0203223340_fig156364995016).
+    **Figure  10**  Build and file generating<a name="fig1629455494718"></a>  
+    ![](figures/build-and-file-generating.png "build-and-file-generating")
+
+    >![](public_sys-resources/icon-notice.gif) **NOTICE:**   
+    >When you build a project for the first time,  **Build \> Build**  is unavailable. You need to choose  **Build \> Edit Build Configuration**  to set parameters before the build.  
+
+5.  <a name="li1364788188"></a>Start Presenter Server.
+
+    Open the  **Terminal**  window of Mind Studio. By default, under the code storage path, run the following command to start the Presenter Server program of the facial recognition application on the server, as shown in  [Figure 11](#fig156364995016):
 
     **bash run\_present\_server.sh**
 
-    **Figure 11**  Start PresenterServer<a name="zh-cn_topic_0203223340_fig156364995016"></a>  
+    **Figure  11**  Starting Presenter Server<a name="fig156364995016"></a>  
     
 
     ![](figures/facial_run_1.png)
 
-    -   When the message "Please choose one to show the presenter in browser (default: 127.0.0.1):" is displayed, enter the IP address used for accessing the Presenter Server service in the browser. Generally, the IP address is the IP address for accessing the Mind Studio service.
-    -   When the message  "**Please input a absolute path to storage facial recognition data:**" ,is displayed, enter the path for storing face registration data and parsing data in **Mind Studio**. The **Mind Studio** user must have the read and write permissions. If the path does not exist, the script is automatically created.
+    -   When the message  **Please choose one to show the presenter in browser\(default: 127.0.0.1\):**  is displayed, type the IP address \(usually IP address for accessing Mind Studio\) used for accessing the Presenter Server service in the browser.
+    -   When the message  **Please input a absolute path to storage facial recognition data:**  is displayed, type the path for storing face registration data and parsing data on Mind Studio. The  Mind Studio  user must have the read and write permissions. If the path does not exist, the script will automatically create it.
 
-    As shown in [Figure 12](#zh-cn_topic_0203223340_fig157571218181018), Select the IP address used by the browser to access the Presenter Server service in "Current environment valid ip list" and enter the path for face detection parsing data.
+    Select the IP address used by the browser to access the Presenter Server service in  **Current environment valid ip list**  and type the path for storing facial recognition data, as shown in  [Figure 12](#fig157571218181018).
 
-
-    **Figure 12**  Project deployment<a name="zh-cn_topic_0203223340_fig157571218181018"></a>  
+    **Figure  12**  Project deployment<a name="fig157571218181018"></a>  
     
 
     ![](figures/facial_run_2.png)
 
-    As shown in [Figure 13](#zh-cn_topic_0203223340_fig123741843161320),  it means **presenter\_server** service starts successfully.
+    [Figure 13](#fig123741843161320)  shows that the presenter\_server service has been started successfully.
 
-    **Figure 13** Starting the **Presenter Server** process<a name="zh-cn_topic_0203223340_fig123741843161320"></a>  
+    **Figure  13**  Starting the Presenter Server process<a name="fig123741843161320"></a>  
     
 
-    ![](figures/facial_runOK.png)
+    ![](figures/facial_runok.png)
 
-    Use the URL shown in the preceding figure to log in to Presenter Server (only the Chrome browser is supported). The IP address is that entered in  [Figure 12](#zh-cn_topic_0203223340_fig157571218181018) and the default port number is 7009. The following figure indicates that Presenter Server is started successfully.
-    
+    Use the URL shown in the preceding figure to log in to Presenter Server \(only the Chrome browser is supported\). The IP address is that typed in  [Figure 12](#fig157571218181018)  and the default port number is  **7009**. The following figure indicates that Presenter Server has been started successfully.
 
-    **Figure 14**  Home page<a name="zh-cn_topic_0203223340_fig98461795813"></a>  
-    ![](figures/主页显示.png "Home page")
+    **Figure  14**  Home page<a name="fig98461795813"></a>  
+    ![](figures/home-page-0.png "home-page-0")
 
-    The following figure shows the IP address used by the **Presenter Server** and **Mind Studio** to communicate with the Atlas 200 DK.
+    The following figure shows the IP address used by Presenter Server and  Mind Studio  to communicate with the Atlas 200 DK.
 
-    **Figure 15**  Example IP Address<a name="zh-cn_topic_0203223340_fig1627210116351"></a>  
-    ![](figures/IP地址示例.png "Example IP Address")
+    **Figure  15**  IP address example<a name="fig1627210116351"></a>  
+    ![](figures/ip-address-example-1.png "ip-address-example-1")
 
-    -   The IP address of the Atlas 200 DK developer board is 192.168.1.2 (connected in USB mode).
-    -   The IP address used by the **Presenter Server** to communicate with the Atlas 200 DK is in the same network segment as the IP address of the Atlas 200 DK on the UI Host server. For example: 192.168.1.223.
-    -   The following is an example of accessing the IP address of the **Presenter Server** using a browser: 10.10.0.1, because the Presenter Server and **Mind Studio** are deployed on the same server, the IP address is also the IP address for accessing the Mind Studio through the browser.
+    Where:
+
+    -   The IP address of the Atlas 200 DK developer board is 192.168.1.2 \(connected in USB mode\).
+    -   The IP address used by the Presenter Server to communicate with the Atlas 200 DK is in the same network segment as the IP address of the Atlas 200 DK on the UI Host server. For example: 192.168.1.223.
+    -   The following describes how to access the IP address \(such as  **10.10.0.1**\) of Presenter Server using a browser. Because Presenter Server and  Mind Studio  are deployed on the same server, you can access  Mind Studio  through the browser using the same IP address. 
 
 
-## Running<a name="zh-cn_topic_0203223340_section1676879104"></a>
+## Running<a name="section1676879104"></a>
 
-1.  Run the Facial Recognition application
+1.  Run the facial recognition application.
 
-    Find **Run** button in the toolbar of **Mind Studio** tool, click **Run \> Run 'sample-facialrecognition'**, as shown in [Figure 16](#zh-cn_topic_0203223340_fig182957429910), the executable program has been executed on the developer board.
+    On the toolbar of Mind Studio, click  **Run**  and choose  **Run \> Run 'sample-facialrecognition'**. As shown in  [Figure 16](#fig182957429910), the executable program is running on the developer board.
 
-    **Figure 16**   Executed program<a name="zh-cn_topic_0203223340_fig182957429910"></a>  
+    **Figure  16**  Running program<a name="fig182957429910"></a>  
     
 
     ![](figures/facial_run3.png)
 
-2.   Log in to the **Presenter Server** website using the URL promoted when starting the **Presenter Server** service（only supports Chrome browser）, for details, please refer to [Step 5](#zh-cn_topic_0203223340_li1364788188) .
+2.  Use the URL displayed upon the start of the Presenter Server service to log in to Presenter Server. For details, see  [Start Presenter Server](#li1364788188).
 
-      Web page for **Presenter Server** is shown as [Figure 17](#zh-cn_topic_0203223340_fig1189774382115).
+    [Figure 17](#fig1189774382115)  shows the Presenter Server page.
 
-     **Figure 17**   Web page for **Presenter Server**<a name="zh-cn_topic_0203223340_fig1189774382115"></a>  
-     ![](figures/Presenter-Server界面.png "Web page for **Presenter Server**")
+    **Figure  17**  Presenter Server page<a name="fig1189774382115"></a>  
+    ![](figures/presenter-server-page-2.png "presenter-server-page-2")
 
-     >![](public_sys-resources/icon-note.gif) **NOTE：**   
-     >-   **Presenter Server** of Facial Recognition supports up to two Channels for display at the same time, each ** _presenter\_view\_app\_name_** corresponds to one Channel.
-     >-   Due to hardware limitations, the maximum frame rate supported by each channel is 20fps, a lower frame rate is automatically used when the network bandwidth is low.
-3.  Facial registration
-    1.  Click the **Face Library** tab and enter a user name in the **Username** text box.
+    >![](public_sys-resources/icon-note.gif) **NOTE:**   
+    >-   Presenter Server of the facial recognition application supports a maximum of two channels at the same time \(each  _presenter\_view\_app\_name_  corresponds to a channel\).  
+    >-   Due to hardware limitations, each channel supports a maximum frame rate of 20 fps. A lower frame rate is automatically used when the network bandwidth is low.  
 
-        **Figure 18**  Facial registration page<a name="zh-cn_topic_0203223340_fig12445181112163"></a>  
-        ![](figures/人脸注册界面.png "Facial registration page")
+3.  Register a face.
+    1.  Click the  **Face Library**  tab and enter a user name in the  **Username**  text box.
 
-    2.  Click **Browse** to upload a face image. Crop the face image based on the ratio of **Example Photo**.
+        **Figure  18**  Face registration page<a name="fig12445181112163"></a>  
+        ![](figures/face-registration-page.png "face-registration-page")
 
-    1.  Click **Submit**. If the upload fails, you can change the cropping ratio.
+    2.  Click  **Browse**  to upload a face image. Crop the face image based on the ratio of  **Example Photo**.
+
+    1.  Click  **Submit**. If the upload fails, you can change the cropping ratio.
+
+4.  Perform facial recognition and comparison.
+
+    On the  **App List**  tab page, click  _video_  for example in the  **App Name**  column. If a face is displayed in the camera and matches the registered face, the name and similarity information of the person are displayed.
 
 
-4.  Facial recognition and comparison.
-  
-    On the **App List** tab page, click ** _video_** for example in the **App Name** column. If a face is displayed in the camera and matches the registered face, the name and similarity information of the person are displayed.
-   
-
-## Follow-up Operations<a name="zh-cn_topic_0203223340_section1092612277429"></a>
+## Follow-up Operations<a name="section1092612277429"></a>
 
 -   **Stopping the Facial Recognition Application**
 
-    **Facial Recognition** is running continually after being executed. To stop it, perform the following operation:
+    The facial recognition application is running continually after being executed. To stop it, perform the following operation:
 
-    Click the button shown in [Figure 19](#zh-cn_topic_0203223340_fig12461162791610) to stop **Facial Recognition**.
+    Click the stop button shown in  [Figure 19](#fig12461162791610)  to stop the facial recognition application.
 
-    **Figure 19**  Stopping **Facial Recognition** application<a name="zh-cn_topic_0203223340_fig12461162791610"></a>  
+    **Figure  19**  Stop of the facial recognition application<a name="fig12461162791610"></a>  
     
 
     ![](figures/facial_stopping.png)
 
-    The application has been stopped as shown in [Figure 20](#zh-cn_topic_0203223340_fig5786125319165).
+    [Figure 20](#fig5786125319165)  shows that the application has been stopped.
 
-    **Figure 20**  **Facial Recognition** has been stopped<a name="zh-cn_topic_0203223340_fig5786125319165"></a>  
+    **Figure  20**  Stop of the facial recognition application<a name="fig5786125319165"></a>  
     
 
     ![](figures/facial_stopped.png)
 
 -   **Stopping the Presenter Server Service**
 
-    The Presenter Server service is always in the running state after being started. To stop the Presenter Server service of the facial recognition application, perform the following operations:
+    The Presenter Server service is always in running state after being started. To stop the Presenter Server service of the facial recognition application, perform the following operations:
 
-    Run the following command to check the process of the **Presenter Server** service corresponding to the facial recognition application in **Mind Studio** as the **Mind Studio** installation user:
+    Run the following command to check the process of the Presenter Server service corresponding to the facial recognition application as the  Mind Studio  installation user:
 
     **ps -ef | grep presenter | grep facial\_recognition**
 
@@ -380,7 +378,7 @@ Before running the application, obtain the source code package and configure the
     ascend 22294 20313 22 14:45 pts/24?? 00:00:01 python3 presenterserver/presenter_server.py --app facial_recognition
     ```
 
-    Where  _22294_  indicates the process ID of the **Presenter Server** service corresponding to the facial recognition application.
+    In the preceding information,  _22294_  indicates the process ID of the Presenter Server service corresponding to the facial recognition application.
 
     To stop the service, run the following command:
 

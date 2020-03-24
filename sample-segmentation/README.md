@@ -1,240 +1,246 @@
-# 语义分割网络应用（C++）<a name="ZH-CN_TOPIC_0219037582"></a>
+English|[中文](Readme_CN.md)
 
-本Application支持运行在Atlas 200 DK或者AI加速云服务器上，实现了对常见的语义分割网络的推理功能。
+# Semantic Segmentation Network Application \(C++\)<a name="EN-US_TOPIC_0219037582"></a>
 
-当前分支中的应用适配**1.31.0.0及以上**版本的[DDK&RunTime](https://ascend.huawei.com/resources)。
+This application runs on the Atlas 200 DK or the AI acceleration cloud server to implement the inference function by using a semantic segmentation network.
 
-## 前提条件<a name="section137245294533"></a>
+The applications in the current version branch adapt to  [DDK&RunTime](https://ascend.huawei.com/resources) **1.32.0.0 and later**.
 
-部署此Sample前，需要准备好以下环境：
+## Prerequisites<a name="section137245294533"></a>
 
--   已完成Mind Studio的安装。
--   已完成Atlas 200 DK开发者板与Mind Studio的连接，交叉编译器的安装，SD卡的制作及基本信息的配置等。
+Before deploying this sample, ensure that:
 
-## 软件准备<a name="section181111827718"></a>
+-   Mind Studio  has been installed.
+-   The Atlas 200 DK developer board has been connected to  Mind Studio, the cross compiler has been installed, the SD card has been prepared, and basic information has been configured.
 
-运行此Sample前，需要按照此章节获取源码包，并进行相关的环境配置。
+## Software Preparation<a name="section181111827718"></a>
 
-1.  <a name="li953280133816"></a>获取源码包。
+Before running the sample, obtain the source code package and configure the environment as follows:
 
-    将[https://github.com/Atlas200dk/sample-segmentation/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-segmentation/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如代码存放路径为：$HOME/AscendProjects/sample-segmentation。
+1.  <a name="li953280133816"></a>Obtain the source code package.
+    1.  By downloading the package
 
-2.  <a name="li2074865610364"></a>获取此应用中所需要的原始网络模型。
+        Download the code from the repository at  [https://github.com/Atlas200dk/sample-segmentation/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-classification/tree/1-3x-0-0/)  as the Mind Studio installation user to any directory on the Ubuntu server where Mind Studio is located. For example, the code can be stored in  **$HOME/AscendProjects/sample-segmentation**.
 
-    参考[表 通用语义分割网络应用使用模型](#table19942111763710)获取此应用中所用到的原始网络模型及其对应的权重文件，并将其存放到Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如：$HOME/models/segmentation。
+    2.  By running the  **git**  command
 
-    **表 1**  通用语义分割网络应用使用模型
+        Run the following command in the  **$HOME/AscendProjects**  directory to download code:
+
+        **git clone https://github.com/Atlas200dk/sample-segmentation.git --branch 1-3x-0-0**
+
+2.  <a name="li2074865610364"></a>Obtain the source network model required by the application.
+
+    Obtain the source network model and its weight file used in the application by referring to  [Table 1](#table19942111763710)  and save them to the same directory on Ubuntu Server where  Mind Studio  is located, for example,  **$HOME/models/segmentation**.
+
+    **Table  1**  Models used in a general semantic segmentation network application
 
     <a name="table19942111763710"></a>
-    <table><thead align="left"><tr id="row611318123710"><th class="cellrowborder" valign="top" width="11.959999999999999%" id="mcps1.2.4.1.1"><p id="p81141820376"><a name="p81141820376"></a><a name="p81141820376"></a>模型名称</p>
+    <table><thead align="left"><tr id="row611318123710"><th class="cellrowborder" valign="top" width="11.959999999999999%" id="mcps1.2.4.1.1"><p id="p81141820376"><a name="p81141820376"></a><a name="p81141820376"></a>Model Name</p>
     </th>
-    <th class="cellrowborder" valign="top" width="8.07%" id="mcps1.2.4.1.2"><p id="p13181823711"><a name="p13181823711"></a><a name="p13181823711"></a>模型说明</p>
+    <th class="cellrowborder" valign="top" width="8.07%" id="mcps1.2.4.1.2"><p id="p13181823711"><a name="p13181823711"></a><a name="p13181823711"></a>Description</p>
     </th>
-    <th class="cellrowborder" valign="top" width="79.97%" id="mcps1.2.4.1.3"><p id="p1717182378"><a name="p1717182378"></a><a name="p1717182378"></a>模型下载路径</p>
+    <th class="cellrowborder" valign="top" width="79.97%" id="mcps1.2.4.1.3"><p id="p1717182378"><a name="p1717182378"></a><a name="p1717182378"></a>Download Path</p>
     </th>
     </tr>
     </thead>
-    <tbody><tr id="row1119187377"><td class="cellrowborder" valign="top" width="11.959999999999999%" headers="mcps1.2.4.1.1 "><p id="p2027020573255"><a name="p2027020573255"></a><a name="p2027020573255"></a>erfnet</p>
+    <tbody><tr id="row1119187377"><td class="cellrowborder" valign="top" width="11.959999999999999%" headers="mcps1.2.4.1.1 "><p id="p2027020573255"><a name="p2027020573255"></a><a name="p2027020573255"></a>ERFNet</p>
     </td>
-    <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p22704571258"><a name="p22704571258"></a><a name="p22704571258"></a>基于caffe的语义分割模型erfnet，是本应用的可选模型。</p>
+    <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p22704571258"><a name="p22704571258"></a><a name="p22704571258"></a>Caffe-based semantic segmentation model, an optional model of this application</p>
     </td>
-    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p3270135716250"><a name="p3270135716250"></a><a name="p3270135716250"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet</a> 目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p3270135716250"><a name="p3270135716250"></a><a name="p3270135716250"></a>Download the source network model file and its weight file by referring to<strong id="b107405353372"><a name="b107405353372"></a><a name="b107405353372"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet</a>.</p>
     </td>
     </tr>
-    <tr id="row1714516557254"><td class="cellrowborder" valign="top" width="11.959999999999999%" headers="mcps1.2.4.1.1 "><p id="p1927010574259"><a name="p1927010574259"></a><a name="p1927010574259"></a>Fcn8s</p>
+    <tr id="row1714516557254"><td class="cellrowborder" valign="top" width="11.959999999999999%" headers="mcps1.2.4.1.1 "><p id="p1927010574259"><a name="p1927010574259"></a><a name="p1927010574259"></a>FCN8s</p>
     </td>
-    <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p13270135742510"><a name="p13270135742510"></a><a name="p13270135742510"></a>基于caffe的语义分割模型fcn，是本应用的可选模型</p>
+    <td class="cellrowborder" valign="top" width="8.07%" headers="mcps1.2.4.1.2 "><p id="p13270135742510"><a name="p13270135742510"></a><a name="p13270135742510"></a>Caffe-based semantic segmentation model, an optional model of this application</p>
     </td>
-    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p1227065782511"><a name="p1227065782511"></a><a name="p1227065782511"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/fcn-8s" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/fcn-8s</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="79.97%" headers="mcps1.2.4.1.3 "><p id="p1227065782511"><a name="p1227065782511"></a><a name="p1227065782511"></a>Download the source network model file and its weight file by referring to<strong id="b05921841193914"><a name="b05921841193914"></a><a name="b05921841193914"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/fcn8s" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/fcn8s</a>.</p>
     </td>
     </tr>
     </tbody>
     </table>
 
-3.  以Mind Studio安装用户登录Mind Studio所在Ubuntu服务器，确定当前使用的DDK版本号并设置环境变量DDK\_HOME，tools\_version，NPU\_DEVICE\_LIB和LD\_LIBRARY\_PATH。
-    1.  <a name="zh-cn_topic_0203223294_li61417158198"></a>查询当前使用的DDK版本号。
+3.  Log in to Ubuntu Server where Mind Studio is located as the Mind Studio installation user, determine the current DDK version number, and set the environment variables  **DDK\_HOME**,  **tools\_version**,  **LD\_LIBRARY\_PATH**.
+    1.  <a name="en-us_topic_0203223294_li61417158198"></a>Query the current DDK version number.
 
-        可通过Mind Studio工具查询，也可以通过DDK软件包进行获取。
+        A DDK version number can be queried by using either Mind Studio or the DDK software package.
 
-        -   使用Mind Studio工具查询。
+        -   Using Mind Studio
 
-            在Mind Studio工程界面依次选择“File \> Settings \> System Settings \> Ascend DDK“，弹出如[图 DDK版本号查询](zh-cn_topic_0203223294.md#fig94023140222)所示界面。
+            On the project page of Mind Studio, choose  **File \> Settings \> System Settings \> Ascend DDK**  to access  [Querying the DDK version number](#en-us_topic_0203223294_fig17553193319118).
 
-            **图 1**  DDK版本号查询<a name="zh-cn_topic_0203223294_fig17553193319118"></a>  
-            ![](figures/DDK版本号查询.png "DDK版本号查询")
+            **Figure  1**  Querying the DDK version number<a name="en-us_topic_0203223294_fig17553193319118"></a>  
+            ![](figures/querying-the-ddk-version-number.png "querying-the-ddk-version-number")
 
-            其中显示的**DDK Version**就是当前使用的DDK版本号，如**1.31.T15.B150**。
+            The displayed  **DDK Version**  is the current DDK version number, for example,  **1.31.T15.B150**.
 
-        -   通过DDK软件包进行查询。
+        -   Using the DDK software package
 
-            通过安装的DDK的包名获取DDK的版本号。
+            Obtain the DDK version number based on the DDK package name.
 
-            DDK包的包名格式为：**Ascend\_DDK-\{software version\}-\{interface version\}-x86\_64.ubuntu16.04.tar.gz**
+            DDK package name format:  **Ascend\_DDK-\{software version\}-\{interface version\}-x86\_64.ubuntu16.04.tar.gz**
 
-            其中**software version**就是DDK的软件版本号。
+            _Software version_  indicates the DDK software version number.
 
-            例如：
+            For example:
 
-            DDK包的包名为Ascend\_DDK-1.31.T15.B150-1.1.1-x86\_64.ubuntu16.04.tar.gz，则此DDK的版本号为1.31.T15.B150。
+            If the DDK package name is  **Ascend\_DDK-1.31.T15.B150-1.1.1-x86\_64.ubuntu16.04.tar.gz**, the DDK version is  **1.31.T15.B150**.
 
-    2.  设置环境变量。
+    2.  Set environment variables.
 
         **vim \~/.bashrc**
 
-        执行如下命令在最后一行添加DDK\_HOME及LD\_LIBRARY\_PATH的环境变量。
+        Run the following commands to add the environment variables  **DDK\_HOME**  and  **LD\_LIBRARY\_PATH**  to the last line:
 
         **export tools\_version=_1.31.X.X_**
 
         **export DDK\_HOME=\\$HOME/.mindstudio/huawei/ddk/\\$tools\_version/ddk**
 
-        **export NPU\_DEVICE\_LIB=$DDK\_HOME/../RC/host-aarch64\_Ubuntu16.04.3/lib**
-
         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
 
-        >![](public_sys-resources/icon-note.gif) **说明：**   
-        >-   **_1.31.X.X_**是[a](#zh-cn_topic_0203223294_li61417158198)中查询到的DDK版本号，需要根据查询结果对应填写，如**1.31.T15.B150**  
-        >-   如果此环境变量已经添加，则此步骤可跳过。  
+        >![](public_sys-resources/icon-note.gif) **NOTE:**   
+        >-   **_1.31.X.X_**  indicates the DDK version queried in  [a](#en-us_topic_0203223294_li61417158198). Set this parameter based on the query result, for example,  **1.31.T15.B150**.  
+        >-   If the environment variables have been added, skip this step.  
 
-        输入**:wq!**保存退出。
+        Type  **:wq!**  to save settings and exit.
 
-        执行如下命令使环境变量生效。
+        Run the following command for the environment variable to take effect:
 
         **source \~/.bashrc**
 
-4.  将原始网络模型转换为适配昇腾AI处理器的模型。
-    1.  在Mind Studio操作界面的顶部菜单栏中选择**Tool \> Convert Model**，进入模型转换界面。
-    2.  在弹出的**Convert Model**操作界面中，进行模型转换配置。
-        -   Model File选择[步骤2](#li2074865610364)中下载的模型文件，此时会自动匹配到权重文件并填写在Weight File中。
-        -   Model Name填写为[表1](#table19942111763710)对应的**模型名称**。
-        -   erfnet、fcn-8s模型转换时中AIPP配置中的**Input Image Size\[W\]\[H\]**需要分别修改为128\*16对齐，**Model Image Format**  选择BGR888\_U8，关闭Mean Less\[B|G|R\]选项，其他使用默认值。
+4.  Convert the source network model to a model supported by the Ascend AI processor.
+    1.  Choose  **Tools \> Model Convert**  from the main menu of  Mind Studio.
+    2.  On the  **Model Conversion**  page that is displayed, configure model conversion.
+        -   Select the model file downloaded in  [Step 2](#li2074865610364)  for  **Model File**. The weight file is automatically matched and filled in  **Weight File**.
+        -   Set  **Model Name**  to the model name in  [Table 1](#table19942111763710).
+        -   During the conversion of the ERFNet and FCN8s models, set  **Input Image Size**  in the AIPP configuration to 128 x 16 alignment, set  **Model Image Format**  to  **BGR888\_U8**, and disable  **Mean Less\[B|G|R\]**. Use the default values for other parameters.
 
-    3.  单击Finish开始转换模型。
+    3.  Click  **Finish**  to start model conversion.
 
-        模型转换成功后，后缀为.om的离线模型存放地址为：$HOME/modelzoo/XXX/device。
+        After successful conversion, an .om offline model is generated in the  **$HOME/modelzoo/XXX/device**  directory.
 
-        >![](public_sys-resources/icon-note.gif) **说明：**   
-        >-   Mind Studio模型转换中每一步的具体意义和参数说明可以参考[Mind  
-Studio用户手册](https://ascend.huawei.com/doc/mindstudio/)中的“模型转换”章节。  
-        >-   XXX表示当前转换的模型名称，如erfnet.om存放地址为：$HOME/modelzoo/erfnet/device。  
+        >![](public_sys-resources/icon-note.gif) **NOTE:**   
+        >-   For details about the descriptions of each step and parameters in model conversion on Mind Studio, see "Model Conversion" in the  [Mind Studio User Guide](https://ascend.huawei.com/doc/mindstudio/).  
+        >-   **XXX**  indicates the name of the model to be converted. For example,  **erfnet.om**  is stored in  **$HOME/modelzoo/erfnet/device**.  
 
 
-5.  将转换好的模型文件（.om文件）上传到[步骤1](#li953280133816)中源码所在路径下的“**sample-segmentation/script**”目录下。
+5.  <a name="li647582712452"></a>Upload the converted .om model file to the  **sample-segmentation/script**  directory under the source code path in  [Step 1](#li953280133816).
 
-## 编译<a name="section3723145213347"></a>
+## Build<a name="section3723145213347"></a>
 
-1.  打开对应的工程。
+1.  Open the project.
 
-    以Mind Studio安装用户在命令行中进入安装包解压后的“MindStudio-ubuntu/bin”目录，如：$HOME/MindStudio-ubuntu/bin。执行如下命令启动Mind Studio。
+    Go to the directory that stores the decompressed installation package as the Mind Studio installation user in CLI mode, for example,  **$HOME/MindStudio-ubuntu/bin**. Run the following command to start Mind Studio:
 
     **./MindStudio.sh**
 
-    启动成功后，打开**sample-segmentation**工程，如[图 打开segmentation工程](#fig9485154817568)所示。
+    Open the  **sample-segmentation**  project, as shown in  [Figure 2](#fig9485154817568).
 
-    **图 2**  打开segmentation工程<a name="fig9485154817568"></a>  
+    **Figure  2**  Opening the segmentation project<a name="fig9485154817568"></a>  
     
 
     ![](figures/dc1cf05640f1aa5d105a16b9ce590cd.png)
 
-2.  在**src/param\_configure.conf**文件中配置相关工程信息。
+2.  Configure project information in the  **src/param\_configure.conf**  file.
 
-    **图 3**  配置文件路径<a name="fig1777213106583"></a>  
+    **Figure  3**  Configuration file path<a name="fig1777213106583"></a>  
     
 
     ![](figures/a77616cc0ab2803023e54d0dce6708c.png)
 
-    该配置文件内容如下：
+    Content of the configuration file:
 
     ```
     remote_host= 
     model_name=
     ```
 
-    需要手动添加参数配置：
+    Parameter settings to be manually added:
 
-    -   remote\_host：Atlas 200 DK开发者板的IP地址。
-    -   model\_name : 离线模型名称。
+    -   **remote\_host**: IP address of the Atlas 200 DK developer board
+    -   **model\_name**: offline model name
 
-    配置示例：
+    Configuration example:
 
     ```
     remote_host=192.168.1.2 
     model_name=Fcn8s.om
     ```
 
-    >![](public_sys-resources/icon-note.gif) **说明：**   
-    >-   参数必须全部填写，否则无法通过build。  
-    >-   注意参数填写时不需要使用“”符号。  
-    >-   配置文件中只能填入单个模型名称，填入的模型必须为步骤5中存储的模型之一。本示例是以fcn举例，用户可以使用本样例列举的其它模型按照文档步骤进行替换运行。  
+    >![](public_sys-resources/icon-note.gif) **NOTE:**   
+    >-   All the three parameters must be set. Otherwise, the build fails.  
+    >-   Do not use double quotation marks \(""\) during parameter settings.  
+    >-   Only one model name can be typed into the configuration file. The typed model must be one of the models stored in  [Step 5](#li647582712452). FCN8s is used as an example. You can use any of other models listed in this sample and execute it by performing the preceding steps.  
 
-3. 执行deploy脚本， 进行配置参数调整及第三方库下载编译
-    打开Mind Studio工具的Terminal，此时默认在代码主目录下，执行如下命令在后台指执行deploy脚本，进行环境部署。如下图所示。
-    
-    ![](figures/deploy.png)
-    
-    >![](public_sys-resources/icon-note.gif) **说明：**   
-    >-   首次deploy时，没有部署第三方库时会自动下载并编译，耗时可能比较久，请耐心等待。后续再重新编译时，不会重复下载编译，部署如上图所示。
-    >-   deploy时，需要选择与开发板通信的主机侧ip，一般为虚拟网卡配置的ip。如果此ip和开发板ip属于同网段，则会自动选择并部署。如果非同网段，则需要手动输入与开发板通信的主机侧ip才能完成deploy。
+3.  Run the  **deploy.sh**  script to adjust configuration parameters and download and compile the third-party library. Open the  **Terminal**  window of Mind Studio. By default, the home directory of the code is used. Run the  **deploy.sh**  script in the background to deploy the environment, as shown in  [Figure 4](#fig11388946153414).
 
-3.  开始编译，打开Mindstudio工具，在工具栏中点击**Build \> Build \> Build-Configuration**。如[图 编译操作及生成文件](#fig1625447397)所示，会在目录下生成build和run文件夹。
+    **Figure  4**  Running the deploy.sh script<a name="fig11388946153414"></a>  
+    ![](figures/running-the-deploy-sh-script-23.png "running-the-deploy-sh-script-23")
 
-    **图 4**  编译操作及生成文件<a name="fig1487710597597"></a>  
+    >![](public_sys-resources/icon-note.gif) **NOTE:**   
+    >-   During the first deployment, if no third-party library is used, the system automatically downloads and compiles the third-party library, which may take a long time. The third-party library can be directly used for the subsequent compilation.  
+    >-   During deployment, select the IP address of the host that communicates with the developer board. Generally, the IP address is the IP address configured for the virtual NIC. If the IP address is in the same network segment as the IP address of the developer board, it is automatically selected for deployment. If they are not in the same network segment, you need to manually type the IP address of the host that communicates with the Atlas DK to complete the deployment.  
+
+4.  Start the build. Open Mind Studio and choose  **Build \> Build \> Build-Configuration**  from the main menu. The  **build**  and  **run**  folders are generated in the directory, as shown in  [Figure 5](#fig1487710597597).
+
+    **Figure  5**  Build and file generation<a name="fig1487710597597"></a>  
     
 
     ![](figures/dd705e18dfdcfdfdb6eaa21fde48134.png)
 
-    注意：
+    Notes:
 
-    首次编译工程时，**Build \> Build**为灰色不可点击状态。需要点击**Build \> Edit Build Configuration**，配置编译参数后再进行编译。
+    When you build a project for the first time,  **Build \> Build**  is unavailable. You need to choose  **Build \> Edit Build Configuration**  to set parameters before the build.
 
-    ![](figures/build_configuration.png)
+    ![](figures/build_configuration-24.png)
 
-4.  将需要推理的图片复制到$HOME/AscendProjects/sample-segmentation/run/out 目录。
+5.  Copy the image to be inferred to the  **$HOME/AscendProjects/sample-segmentation/run/out**  directory.
 
-    fcn模型使用/sample-segmentation/ImageNetRaw文件夹图片测试， erfnet模型使用/sample-segmentation/ImageCity文件夹图片测试。
+    The FCN model is tested using the sample image in the  **/sample-segmentation/ImageNetRaw**  folder, and the ERFNet model is tested using the sample image in the  **/sample-segmentation/ImageCity**  folder.
 
-    图片要求如下：
+    The image requirements are as follows:
 
-    -   格式：jpg、png、bmp。
-    -   输入图片宽度：16px\~4096px之间的整数。
-    -   输入图片高度：16px\~4096px之间的整数。
+    -   Format: jpg, png, and bmp
+    -   Width of the input image: an integer ranging from 16px to 4096px
+    -   Height of the input image: an integer ranging from 16px to 4096px
 
 
-## 运行<a name="section1620073406"></a>
+## Run<a name="section1620073406"></a>
 
-1.  在Mindstudio工具的工具栏中找到Run按钮，点击  **Run \> Run 'sample-segmentation'**，如[图 程序已执行示意图](#fig18918132273612)所示，可执行程序已经在开发板执行。
+1.  On the toolbar of Mind Studio, click  **Run**  and choose  **Run \> Run 'sample-segmentation'**. As shown in  [Figure 6](#fig18918132273612), the executable application is running on the developer board.
 
-    **图 5**  程序已执行示意图<a name="fig18918132273612"></a>  
+    **Figure  6**  Running application<a name="fig18918132273612"></a>  
     
 
     ![](figures/6ed93ff8910f175d1b2a97b32c3ff75.png)
 
-    以上报错信息请忽略，因为Mind Studio无法为可执行程序传参，上述步骤是将可执行程序与依赖的库文件部署到开发者板，此步骤需要ssh登录到开发者板至相应的目录文件下手动执行，具体请参考以下步骤。
+    You can ignore the error information reported during the execution because Mind Studio cannot transfer parameters for an executable application. In the preceding steps, the executable application and dependent library files are deployed to the developer board. You need to log in to the developer board in SSH mode and manually execute the files in the corresponding directory. For details, see the following steps.
 
-2.  在Mind Studio所在Ubuntu服务器中，以HwHiAiUser用户SSH登录到Host侧。
+2.  Log in to the host side as the  **HwHiAiUser**  user in SSH mode on Ubuntu Server where  Mind Studio  is located.
 
     **ssh HwHiAiUser@**_host\_ip_
 
-    对于Atlas 200 DK，host\_ip默认为192.168.1.2（USB连接）或者192.168.0.2（NIC连接）。
+    For the Atlas 200 DK, the default value of  _**host\_ip**_  is  **192.168.1.2**  \(USB connection mode\) or  **192.168.0.2**  \(NIC connection mode\).
 
-3.  进入语义分割网络应用的可执行文件所在路径。
+3.  Go to the path of the executable files of the semantic segmentation network application.
 
-    命令举例如下：
+    Command example:
 
-    **cd  /home/HwHiAiUser/HIAI\_PROJECTS/workspace\_mind\_studio//sample-segmentation\_xxxx/out**
+    **cd  /home/HwHiAiUser/HIAI\_PROJECTS/workspace\_mind\_studio/sample-segmentation\_xxxx/out**
 
-4.  执行应用程序。
+4.  Run the application.
 
-    执行**run\_segmentation.py**脚本会将推理生成的图片保存至指定路径。
+    Run the  **run\_segmentation.py**  script to save the images which are generated by inference to the specified path.
 
-    命令示例如下所示：
+    Command example:
 
-    **python3 run\_segmentation.py  -w 500 -h 500 -i  _./example.jpg_  -c  _19_ **
+    **python3 run\_segmentation.py  -w  _500_  -h  _500_  -i** **_./example.jpg -c 19_** 
 
-    -   -w/model\_width：模型的输入图片宽度，为16\~4096之间的整数，请参考[表 通用语义分割网络应用使用模型](#table19942111763710)在Gitee上查看所使用模型文件的Readme，获取模型要求的输入数据的宽和高。
-    -   -h/model\_height：模型的输入图片高度，为16\~4096之间的整数，请参考[表 通用语义分割网络应用使用模型](#table19942111763710)在Gitee上查看所使用模型文件的Readme，获取模型要求的输入数据的宽和高。
-    -   -i/input\_path：输入图片的路径，可以是目录，表示当前目录下的所有图片都作为输入（可以指定多个输入）。
-    -   -o/output\_path： 模型推理结果图片位置。
-    -   -c/output\_categories： 模型推理结果类别。
+    -   **-w/model\_width**: width of the input image of a model. The value is an integer ranging from 16px to 4096px. Obtain the input width and height required by each model by referring to the  **README**  file of each model file. For details, see  [Table 1](#table19942111763710).
+    -   **-h/model\_height**: height of the input image of a model. The value is an integer ranging from 16px to 4096px. Obtain the input width and height required by each model by referring to the  **README**  file of each model file. For details, see  [Table 1](#table19942111763710).
+    -   **-i/input\_path**: path of the input image. It can be a directory, indicating that all images in the current directory are used as input. \(Multiple inputs can be specified\).
+    -   **-o/output\_path**: location of the model inference result image.
+    -   **-c/output\_categories**: model inference result category. The value is  **21**  for the FCN model and  **19**  for the ERFNet model.
 
-5.  其他详细参数请执行**python3 run\_segmentaion.py --help**命令参见帮助信息。
+5.  For other parameters, run the  **python3 run\_segmentation.py --help**  command. For details, see the help information.
 

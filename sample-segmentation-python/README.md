@@ -1,225 +1,161 @@
-# 语义分割网络应用（Python）<a name="ZH-CN_TOPIC_0219036254"></a>
+English|[中文](Readme_CN.md)
 
-本应用支持运行在Atlas200DK上，实现了erfnet网络的推理功能并输出根据语义分割着色的图片。
+# Semantic Segmentation Network Application \(Python\)<a name="EN-US_TOPIC_0228757085"></a>
 
-## 前提条件<a name="section137245294533"></a>
+This application can run on the Atlas 200 DK to implement the inference function of the ERFNet network and output images with inference result.
 
-部署此Sample前，需要准备好以下环境：
+The current application adapts to  [DDK&RunTime](https://ascend.huawei.com/resources)  of 1.3.0.0 as well as 1.32.0.0 and later versions.
 
--   已完成Mind Studio的安装。
+## Prerequisites<a name="section137245294533"></a>
 
--   已完成Atlas 200 DK开发者板与Mind Studio的连接，SD卡的制作、编译环境的配置等。
--   由于需要配置开发板联网，默认设置为USB连接，开发板地址为192.168.1.2
+Before deploying this sample, ensure that:
 
-## 软件准备<a name="section8534138124114"></a>
+-   Mind Studio  has been installed.
 
-运行此应用前，需要按照此章节进行相关的环境配置并获取源码包。
+-   The Atlas 200 DK developer board has been connected to  Mind Studio, the SD card has been created, and the compilation environment has been configured.
+-   The developer board is connected to the Internet over the USB port by default. The IP address of the developer board is  **192.168.1.2**.
 
-1.  <a name="li953280133816"></a>获取源码包。
+## Software Preparation<a name="section8534138124114"></a>
 
-    将[https://github.com/Atlas200dk/sample-segmentation-python](https://github.com/Atlas200dk/sample-classification-python)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/sample-segmentation-python。
+Before running this application, obtain the source code package and configure the environment as follows.
 
-2.  获取此应用中所需要的网络模型。
+1.  <a name="li953280133816"></a>Obtain the source code package.
+    1.  By downloading the package
 
-    参考[表1 语义分割网络应用\(python\)使用模型](#table1119094515272)获取此应用中所用到的原始网络模型及其对应的权重文件，并将其存放到Mind Studio所在Ubuntu服务器的任意目录，例如：$HOME/ascend/models/sample-segmentation-python。
+        Download all code in the repository at  [https://github.com/Atlas200dk/sample-segmentation-python](https://github.com/Atlas200dk/sample-classification-python)  to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  **$HOME/sample-segmentation-python**.
 
-    **表 1**  语义分割网络应用\(python\)使用模型
+    2.  By running the  **git**  command
+
+        Run the following command in the  **$HOME/AscendProjects**  directory to download code:
+
+        **git clone https://github.com/Atlas200dk/sample-segmentation-python.git**
+
+2.  Obtain the network model required by the application.
+
+    Refer to  [Table 1](#table1119094515272)  to obtain the source network model used in this application and the corresponding weight file. Save them to any directory of the Ubuntu server with  Mind Studio  installed, for example,  **$HOME/ascend/models/sample-segmentation-python**.
+
+    **Table  1**  Models used in a semantic segmentation network application
 
     <a name="table1119094515272"></a>
-    <table><thead align="left"><tr id="row677354502719"><th class="cellrowborder" valign="top" width="12.15%" id="mcps1.2.4.1.1"><p id="p167731845122717"><a name="p167731845122717"></a><a name="p167731845122717"></a>模型名称</p>
+    <table><thead align="left"><tr id="row677354502719"><th class="cellrowborder" valign="top" width="12.15%" id="mcps1.2.4.1.1"><p id="p167731845122717"><a name="p167731845122717"></a><a name="p167731845122717"></a>Model Name</p>
     </th>
-    <th class="cellrowborder" valign="top" width="17.53%" id="mcps1.2.4.1.2"><p id="p277317459276"><a name="p277317459276"></a><a name="p277317459276"></a>模型说明</p>
+    <th class="cellrowborder" valign="top" width="17.53%" id="mcps1.2.4.1.2"><p id="p277317459276"><a name="p277317459276"></a><a name="p277317459276"></a>Description</p>
     </th>
-    <th class="cellrowborder" valign="top" width="70.32000000000001%" id="mcps1.2.4.1.3"><p id="p9773114512270"><a name="p9773114512270"></a><a name="p9773114512270"></a>模型下载路径</p>
+    <th class="cellrowborder" valign="top" width="70.32000000000001%" id="mcps1.2.4.1.3"><p id="p9773114512270"><a name="p9773114512270"></a><a name="p9773114512270"></a>Download Path</p>
     </th>
     </tr>
     </thead>
-    <tbody><tr id="row3122314144215"><td class="cellrowborder" valign="top" width="12.15%" headers="mcps1.2.4.1.1 "><p id="p1910619166207"><a name="p1910619166207"></a><a name="p1910619166207"></a>erfnet</p>
+    <tbody><tr id="row3122314144215"><td class="cellrowborder" valign="top" width="12.15%" headers="mcps1.2.4.1.1 "><p id="p1910619166207"><a name="p1910619166207"></a><a name="p1910619166207"></a>ERFNet</p>
     </td>
-    <td class="cellrowborder" valign="top" width="17.53%" headers="mcps1.2.4.1.2 "><p id="p2010681612020"><a name="p2010681612020"></a><a name="p2010681612020"></a>图片语义分割推理模型。</p>
-    <p id="p1710615162207"><a name="p1710615162207"></a><a name="p1710615162207"></a>是基于Caffe的erfnet模型。</p>
+    <td class="cellrowborder" valign="top" width="17.53%" headers="mcps1.2.4.1.2 "><p id="p2010681612020"><a name="p2010681612020"></a><a name="p2010681612020"></a>Semantic segmentation inference model.</p>
+    <p id="p1710615162207"><a name="p1710615162207"></a><a name="p1710615162207"></a>It is an ERFNet model based on Caffe.</p>
     </td>
-    <td class="cellrowborder" valign="top" width="70.32000000000001%" headers="mcps1.2.4.1.3 "><p id="p910617162206"><a name="p910617162206"></a><a name="p910617162206"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet</a>目录中Readme_cn.md下载原始网络模型文件及其对应的权重文件。</p>
+    <td class="cellrowborder" valign="top" width="70.32000000000001%" headers="mcps1.2.4.1.3 "><p id="p910617162206"><a name="p910617162206"></a><a name="p910617162206"></a>Download the source network model file and its weight file by referring to<strong id="b159782239917"><a name="b159782239917"></a><a name="b159782239917"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet</a>.</p>
     </td>
     </tr>
     </tbody>
     </table>
 
-3.  将原始网络模型转换为适配昇腾AI处理器的模型。
-    1.  在Mind Studio操作界面的顶部菜单栏中选择“Tool \> Convert Model”，进入模型转换界面。
-    2.  在弹出的**Convert Model**操作界面中，Model File与Weight File分别选择[步骤1](#li953280133816)中下载的模型文件和权重文件。
-        -   **Model Name**填写为[表 语义分割网络应用\(python\)使用模型](#table1119094515272)中对应的**模型名称**。
-        -   erfnet模型转换时中AIPP配置中的**Model Image Format**  选择BGR888\_U8，关闭MeanLess选项
-        -   其他参数保持默认值。
+3.  Convert the source network model to a model supported by the Ascend AI processor.
+    1.  Choose  **Tools \> Model Convert**  from the main menu of  Mind Studio.
+    2.  On the  **Model Conversion**  page, set  **Model File**  and  **Weight File**  to the model file and weight file downloaded in  [1](#li953280133816), respectively.
+        -   Set  **Model Name**  to the model name in  [Table 1](#table1119094515272).
+        -   During ERFNet model conversion, set  **Model Image Format**  to  **BGR888\_U8**  and disable  **MeanLess**.
+        -   Retain default values for other parameters.
 
-    3.  单击OK开始转换模型。
+    3.  Click  **OK**  to start model conversion.
 
-        1.1.0.0和1.3.0.0版本模型转换成功后，后缀为.om的离线模型存放地址为：**$HOME/tools/che/model-zoo/my-model/xxx**。
+        After a model of 1.1.0.0 or 1.3.0.0 version is successfully converted, a .om offline model is generated in the  **$HOME/tools/che/model-zoo/my-model/xxx**  directory.
 
-        1.31.0.0及以上版本模型转换成功后，后缀为.om的离线模型存放地址为：**$HOME/modelzoo/xxx/device/xxx.om**。
+        After a model of 1.31.0.0 or a later version is successfully converted, an .om offline model is generated in the  **$HOME/modelzoo/xxx/device/xxx.om**  directory.
 
-    4.  将转换好的模型文件（.om文件）上传到[步骤1](#li953280133816)中源码所在路径下的“sample-segmentation-python/segmentationapp/models”目录下。
+    4.  Upload the converted .om model file to the  **sample-segmentation-python/segmentationapp/models**  directory under the source code path in  [Step 1](#li953280133816).
 
 
-## 环境部署<a name="section1759513564117"></a>
+## Environment Deployment<a name="section218113616146"></a>
 
-1.  应用代码拷贝到开发板。
+1.  Copy the application code to the developer board.
 
-    以Mind Studio安装用户进入语义分割网络应用\(python\)代码所在根目录，如：$HOME/sample-segmentation-python，执行以下命令将应用代码拷贝到开发板。
+    Go to the root directory of the semantic segmentation application \(python\) code as the  Mind Studio  installation user, for example,  **$HOME/sample-segmentation-python**, and run the following command to copy the application code to the developer board:
 
     **scp -r ../sample-segmentation-python/ HwHiAiUser@192.168.1.2:/home/HwHiAiUser/HIAI\_PROJECTS**
 
-    提示password时输入开发板密码，开发板默认密码为**Mind@123**，如[图 应用代码拷贝](#fig1660453512014)。
+    Type the password of the developer board as prompted. The default password is  **Mind@123**, as shown in  [Figure 1](#en-us_topic_0219036254_fig1660453512014).
 
-    **图 1** **应用代码拷贝**<a name="fig1660453512014"></a>  
+    **Figure  1**  Copying application code<a name="en-us_topic_0219036254_fig1660453512014"></a>  
     
 
-    ![](figures/zh-cn_image_0219036256.png)
+    ![](figures/en-us_image_0228836881.png)
 
-2.  配置开发板联网。
-    1.  不断开usb连接的情况下，开发板通过网线与可以上网的网口相连。
-    2.  在Mind Studio所在Ubuntu服务器中，以HwHiAiUser用户SSH登录到Host侧。
+    Log in to the host side as the  **HwHiAiUser**  user in SSH mode on Ubuntu Server where  Mind Studio  is located.
 
-        **ssh HwHiAiUser@192.168.1.2**
+    **ssh HwHiAiUser@192.168.1.2**
 
-        切换到root用户，开发板中root用户默认密码为**Mind@123**。
+    Switch to the  **root**  user. The default password of the  **root**  user on the developer board is  **Mind@123**.
 
-        **su root**
+    **su root**
 
-        打开interfaces配置文件。
+2.  Configure the network connection of the developer board.
 
-        **vim /etc/network/interfaces**
+    Configure the network connection of the developer board by referring to  [https://github.com/Atlas200dk/sample-README/tree/master/DK\_NetworkConnect](https://github.com/Atlas200dk/sample-README/tree/master/DK_NetworkConnect).
 
-        配置dhcp，把eth0的配置修改为如下两行。
+3.  Install the environment dependency.
 
-        **auto eth0**
-
-        **iface eth0 inet dhcp**
-
-        如[图 开发板interface文件配置](#fig151021334153812)所示，输入:wq!保存退出。
-
-        **图 2**  开发板interface文件配置<a name="fig151021334153812"></a>  
-        ![](figures/开发板interface文件配置.png "开发板interface文件配置")
-
-    3.  执行以下命令重启开发板，使配置生效。
-
-        **reboot**
-
-    4.  等开发板四个灯常亮时则证明已经完成重启，此时可以ping外网验证网络是否通畅，如果ping通则已经配置成功；如果ping失败，则执行以下命令。成功后如[图 开发板联网配置成功](#fig4366141165015)所示。
-
-        **ifdown eth0**
-
-        **ifup eth0**
-
-        **图 3**  开发板联网配置成功<a name="fig4366141165015"></a>  
-        ![](figures/开发板联网配置成功.png "开发板联网配置成功")
-
-3.  安装环境依赖。
-    1.  在开发板的root用户下更换源。
-
-        **vim /etc/apt/sources.list**
-
-        把原有源更换为arm源，可用的国内arm源有中科大源和清华源等。
-
-        >![](public_sys-resources/icon-note.gif) **说明：**   
-        >arm源可参考[https://bbs.huaweicloud.com/forum/thread-37023-1-1.html](https://bbs.huaweicloud.com/forum/thread-37023-1-1.html)  
-
-        源更新后，执行以下命令更新软件列表。
-
-        **apt-get update**
-
-    2.  安装相关依赖。
-
-        ```
-        apt-get install python-setuptools python-dev build-essential python-pip
-        ```
-
-        ```
-        pip install numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 enum future unique enum34 funcsigs protobuf
-        ```
-
-        >![](public_sys-resources/icon-note.gif) **说明：**   
-        >pip install安装有报错“SSLError”时，请使用：pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 enum future unique enum34 funcsigs protobuf 安装依赖，表示可信赖的主机解决问题。  
-
-    3.  安装hiai。
-
-        执行脚本安装hiai，hiai的安装脚本在代码路径下的scripts文件夹下。
-
-        **cd /home/HwHiAiUser/HIAI\_PROJECTS/sample-classfiyResnet18-python/scripts**
-
-        **bash python2\_hiai\_install.sh**
-
-        安装后如[图 hiai安装成功验证](#fig89761216122414)所示，则为安装成功。
-
-        **图 4**  hiai安装成功验证<a name="fig89761216122414"></a>  
-        ![](figures/hiai安装成功验证.png "hiai安装成功验证")
-
-4.  安装opencv。
-
-    root用户下安装opencv Python库。
-
-    命令示例：
-
-    **apt-get install python-opencv**
-
-    安装后如[图 opencv安装成功验证](#fig1478418313328)所示，则为安装成功。
-
-    **图 5**  opencv安装成功验证<a name="fig1478418313328"></a>  
-    ![](figures/opencv安装成功验证.png "opencv安装成功验证")
+    Configure the environment dependency by referring to  [https://github.com/Atlas200dk/sample-README/tree/master/DK\_Environment](https://github.com/Atlas200dk/sample-README/tree/master/DK_Environment).
 
 
-## 程序运行<a name="section6245151616426"></a>
+## Application Running<a name="section6245151616426"></a>
 
-1.  切换HwHiAiUser用户，并进入语义分割网络应用代码所在目录。
+1.  Switch to the  **HwHiAiUser**  user and go to the directory where the semantic segmentation network application code is located.
 
     **su HwHiAiUser**
 
     **cd \~/HIAI\_PROJECTS/sample-segmentation-python/segmentationapp**
 
-2.  执行应用程序。
+2.  Run the application.
 
-    执行**segmentation.py**脚本会将推理结果在执行终端直接打印显示。
+    Run the  **segmentation.py**  script to print the inference result on the execution terminal.
 
-    命令示例如下所示：
+    Command example:
 
     **python segmentation.py**
 
-    执行成功后效果如[图 推理成功示意图](#fig1863053617417)所示。
+    [Figure 2](#fig1863053617417)  shows the inference result after the execution is successful.
 
-    **图 6**  推理成功示意图<a name="fig1863053617417"></a>  
+    **Figure  2**  Successful inference<a name="fig1863053617417"></a>  
     
 
-    ![](figures/zh-cn_image_0219037165.png)
+    ![](figures/en-us_image_0228757232.png)
 
-3.  执行结果查看。
+3.  Query the execution result.
 
-    执行结果保存在当前目录下的Result目录下，需要在Ubuntu服务器中用以下命令将结果拷贝到Ubuntu服务器中查看推理结果图片。
+    The execution result is stored in  **Result**  of the current directory. You need to run the following command on the Atlas 200 DK to copy the result to the Ubuntu server to view the inference result image:
 
-    scp -r _username@host\_ip_:/home/_username_/HIAI\_PROJECTS/sample-segmentation-python/Result ~
+    **scp -r username@host\_ip:/home/username/HIAI\_PROJECTS/sample-classification-python/Result \~**
 
-    -   username：开发板用户﻿名，默认为HwHiAiUser。
-    -   host\_ip：开发板ip，USB连接一般为192.168.1.2.网线连接时一般为192.168.0.2
+    -   **username**: user name of the developer board. The default value is  **HwHiAiUser**.
+    -   **host\_ip**: IP address of the developer board. Generally, the IP address is  **192.168.1.2**  for USB connection and  **192.168.0.2**  for network cable connection.
 
-    **命令示例：**
+    **Command example:**
 
-    scp -r HwHiAiUser@192.168.1.2:/home/HwHiAiUser/HIAI\\_PROJECTS/sample-segmentation-python/Result ~
+    **scp -r HwHiAiUser@192.168.1.2:/home/HwHiAiUser/HIAI\_PROJECTS/sample-classification-python/Result \~**
 
-    该命令会把推理结果拷贝到Mindstudio安装用户的家目录中，可以直接查看。
+    This command copies the inference result to the home directory of the Mind Studio installation user. You can view the inference result directly.
 
 
-## 相关说明<a name="section1092612277429"></a>
+## Remarks<a name="section1092612277429"></a>
 
--   **语义分割网络应用（Python）的流程说明如下**：
-    1.  从cityimage目录下读取jpeg图片。
-    2.  将读取的jpeg图片调用opencv resize到1024\*512，并转换成YUV420SP。
-    3.  将转换后的YUV420SP图片数据送入Matrix进行推理。demo采用的是erfnet网络，推理结果是每个像素点的19个分类的置信度
-    4.  后处理阶段，每个像素点选取最高分类置信度，在图片上对同种分类进行涂色。涂色后图片存放在Result目录下。
+-   **The process of the semantic segmentation network application \(Python\) is as follows:**
+    1.  Read a JPEG image from the  **cityimage**  directory.
+    2.  Call OpenCV to resize the read JPEG image to 1024 x 512 and convert it to YUV420SP.
+    3.  Send the converted YUV420SP image data to Matrix for inference. The demo uses the ERFNet network, and the inference result includes the confidence values of 19 categories for each pixel.
+    4.  During post-processing, the category of the highest confidence value is used for each pixel, and pixels of the same category in the image are marked with the same color. A colored image is stored in the  **Result**  directory.
 
--   **语义分割网络应用（Python）的文件架构说明如下**：
-    -   cityimage：存放输入图片
-    -   segmentation.py：主程序
-    -   jpegHandler.py：jpeg图片处理，如resize、色域转换等
-    -   models：存放模型网络
-    -   Result：存放推理后的图片
+-   **The directory structure of the semantic segmentation application \(Python\) is described as follows:**
+    -   **cityimage**: directory of input images
+    -   **segmentation.py**: main program
+    -   **jpegHandler.py: jpeg**: JPEG image processing, such as resizing and color space conversion \(CSC\)
+    -   **models**: directory of model networks
+    -   **Result**: directory of labeled images
 
 
