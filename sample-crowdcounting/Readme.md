@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # Dense Crowd Counting<a name="EN-US_TOPIC_0219059426"></a>
 

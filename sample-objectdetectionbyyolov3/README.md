@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # YOLOv3 Detection Network Application<a name="EN-US_TOPIC_0219028422"></a>
 

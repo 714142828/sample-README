@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # Head Pose Estimation \(Python\)<a name="EN-US_TOPIC_0228757086"></a>
 

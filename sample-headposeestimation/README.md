@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # Head Pose Estimation<a name="EN-US_TOPIC_0219099583"></a>
 

@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # Black and White Image Colorization<a name="EN-US_TOPIC_0219108795"></a>
 

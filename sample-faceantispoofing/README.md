@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # Face Anti-Spoofing<a name="EN-US_TOPIC_0219080565"></a>
 

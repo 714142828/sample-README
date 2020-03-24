@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # Classification Network Application \(Python\)<a name="EN-US_TOPIC_0228757083"></a>
 

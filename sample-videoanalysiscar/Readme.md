@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # Vehicle Detection<a name="EN-US_TOPIC_0203223303"></a>
 

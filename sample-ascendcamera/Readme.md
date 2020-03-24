@@ -1,4 +1,4 @@
-English|[中文](Readme_CN.md)
+English|[中文](Readme_cn.md)
 
 # Ascend Camera<a name="EN-US_TOPIC_0203223312"></a>
 
