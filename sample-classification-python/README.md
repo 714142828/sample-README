@@ -1,161 +1,161 @@
-English|[中文](Readme_cn.md)
+中文|[English](Readme_EN.md)
 
-# Classification Network Application \(Python\)<a name="EN-US_TOPIC_0228757083"></a>
+# 分类网络应用（Python）<a name="ZH-CN_TOPIC_0228757083"></a>
 
-This application can run on the Atlas 200 DK to implement the inference function of the ResNet-18 network and output images with inference result labels and confidence.
+本Application支持运行在Atlas 200 DK上，实现了Resnet18网络的推理功能并输出带有推理结果标签和置信度的图片。
 
-The current application adapts to  [DDK&RunTime](https://ascend.huawei.com/resources)  of 1.3.0.0 as well as 1.32.0.0 and later versions.
+当前分支中的应用适配**1.3.0.0**与**1.32.0.0及以上**版本的[DDK&RunTime](https://ascend.huawei.com/resources)。
 
-## Prerequisites<a name="section137245294533"></a>
+## 前提条件<a name="section137245294533"></a>
 
-Before deploying this sample, ensure that:
+部署此Sample前，需要准备好以下环境：
 
--   Mind Studio  has been installed.
+-   已完成Mind Studio的安装。
 
--   The Atlas 200 DK developer board has been connected to  Mind Studio, the SD card has been created, and the build environment has been configured.
--   The developer board is connected to the Internet over the USB port by default. The IP address of the developer board is  **192.168.1.2**.
+-   已完成Atlas 200 DK开发者板与Mind Studio的连接，SD卡的制作、编译环境的配置等。
+-   由于需要配置开发板联网，默认设置为USB连接，开发板地址为192.168.1.2。
 
-## Software Preparation<a name="section8534138124114"></a>
+## 软件准备<a name="section8534138124114"></a>
 
-Before running this application, obtain the source code package and configure the environment as follows.
+运行此应用前，需要按照此章节进行相关的环境配置并获取源码包。
 
-1.  <a name="li953280133816"></a>Obtain the source code package.
-    1.  By downloading the package
+1.  <a name="li953280133816"></a>获取源码包。
+    1.  下载压缩包方式获取。
 
-        Download all code in the repository at  [https://github.com/Atlas200dk/sample-classification-python](https://github.com/Atlas200dk/sample-classification-python)  to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  **$HOME/sample-classfication-python**.
+        将[https://gitee.com/Atlas200DK/sample-classification-python](https://gitee.com/Atlas200DK/sample-classification-python)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/sample-classfication-python。
 
-    2.  By running the  **git**  command
+    2.  命令行使用git命令方式获取。
 
-        Run the following command in the  **$HOME/AscendProjects**  directory to download code:
+        在命令行中：$HOME/AscendProjects目录下执行以下命令下载代码。
 
-        **git clone https://github.com/Atlas200dk/sample-classfication-python.git**
+        **git clone https://gitee.com/Atlas200DK/sample-classfication-python.git**
 
-2.  Obtain the network model required by the application.
+2.  获取此应用中所需要的网络模型。
 
-    Refer to  [Table 1](#table1119094515272)  to obtain the source network model used in this application and the corresponding weight file. Save them to any directory of the Ubuntu server with  Mind Studio  installed, for example,  **$HOME/ascend/models/classification-python**.
+    参考[表 分类网络应用\(python\)使用模型](#table1119094515272)获取此应用中所用到的原始网络模型及其对应的权重文件，并将其存放到Mind Studio所在Ubuntu服务器的任意目录，例如：$HOME/ascend/models/classification-python。
 
-    **Table  1**  Models used in the classification network application \(Python\)
+    **表 1**  分类网络应用\(python\)使用模型
 
     <a name="table1119094515272"></a>
-    <table><thead align="left"><tr id="row677354502719"><th class="cellrowborder" valign="top" width="13%" id="mcps1.2.4.1.1"><p id="p167731845122717"><a name="p167731845122717"></a><a name="p167731845122717"></a>Model Name</p>
+    <table><thead align="left"><tr id="row677354502719"><th class="cellrowborder" valign="top" width="12.85%" id="mcps1.2.4.1.1"><p id="p167731845122717"><a name="p167731845122717"></a><a name="p167731845122717"></a>模型名称</p>
     </th>
-    <th class="cellrowborder" valign="top" width="26%" id="mcps1.2.4.1.2"><p id="p277317459276"><a name="p277317459276"></a><a name="p277317459276"></a>Description</p>
+    <th class="cellrowborder" valign="top" width="12.57%" id="mcps1.2.4.1.2"><p id="p277317459276"><a name="p277317459276"></a><a name="p277317459276"></a>模型说明</p>
     </th>
-    <th class="cellrowborder" valign="top" width="61%" id="mcps1.2.4.1.3"><p id="p9773114512270"><a name="p9773114512270"></a><a name="p9773114512270"></a>Download Path</p>
+    <th class="cellrowborder" valign="top" width="74.58%" id="mcps1.2.4.1.3"><p id="p9773114512270"><a name="p9773114512270"></a><a name="p9773114512270"></a>模型下载路径</p>
     </th>
     </tr>
     </thead>
-    <tbody><tr id="row3122314144215"><td class="cellrowborder" valign="top" width="13%" headers="mcps1.2.4.1.1 "><p id="p3774194512713"><a name="p3774194512713"></a><a name="p3774194512713"></a>resnet18</p>
+    <tbody><tr id="row3122314144215"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p3774194512713"><a name="p3774194512713"></a><a name="p3774194512713"></a><span>resnet18</span></p>
     </td>
-    <td class="cellrowborder" valign="top" width="26%" headers="mcps1.2.4.1.2 "><p id="p7774245122713"><a name="p7774245122713"></a><a name="p7774245122713"></a>Image classification inference model.</p>
-    <p id="p577494517271"><a name="p577494517271"></a><a name="p577494517271"></a>It is a ResNet 18 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p7774245122713"><a name="p7774245122713"></a><a name="p7774245122713"></a>图片分类推理模型。</p>
+    <p id="p577494517271"><a name="p577494517271"></a><a name="p577494517271"></a>是基于Caffe的ResNet 18模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="61%" headers="mcps1.2.4.1.3 "><p id="p16774144510270"><a name="p16774144510270"></a><a name="p16774144510270"></a>Download the source network model file and its weight file by referring to <strong id="b1728815118918"><a name="b1728815118918"></a><a name="b1728815118918"></a>README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet18" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet18</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p16774144510270"><a name="p16774144510270"></a><a name="p16774144510270"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet18" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet18</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>
     </table>
 
-3.  Convert the source network model to a model supported by the Ascend AI processor.
-    1.  Choose  **Tools \> Model Convert**  from the main menu of  Mind Studio.
-    2.  On the  **Model Conversion**  page, set  **Model File**  and  **Weight File**  to the model file and weight file downloaded in  [1](#li953280133816), respectively.
-        -   Set  **Model Name**  to the model name in  [Table 1](#table1119094515272).
-        -   Retain default values for other parameters.
+3.  将原始网络模型转换为适配昇腾AI处理器的模型。
+    1.  在Mind Studio操作界面的顶部菜单栏中选择**Tools \> Model Convert**，进入模型转换界面。
+    2.  在弹出的**Model Conversion**操作界面中，Model File与Weight File分别选择[步骤1](#li953280133816)中下载的模型文件和权重文件。
+        -   **Model Name**填写为[表 分类网络应用\(python\)使用模型](#table1119094515272)中对应的**模型名称**。
+        -   其他参数保持默认值。
 
-    3.  Click  **OK**  to start model conversion.
+    3.  单击OK开始转换模型。
 
-        After a model of 1.1.0.0 or 1.3.0.0 version is successfully converted, a .om offline model is generated in the  **$HOME/tools/che/model-zoo/my-model/xxx**  directory.
+        1.1.0.0和1.3.0.0版本模型转换成功后，后缀为.om的离线模型存放地址为 **：$HOME/tools/che/model-zoo/my-model/xxx**。
 
-        After a model of 1.32.0.0 or a later version is successfully converted, an .om offline model is generated in the  **$HOME/modelzoo/xxx/device/xxx.om**  directory.
+        1.32.0.0及以上版本模型转换成功后，后缀为.om的离线模型存放地址为 **：$HOME/modelzoo/xxx/device/xxx.om**。
 
-    4.  Upload the converted .om model file to the  **sample-classification-python/classificationapp/models**  directory under the source code path in  [Step 1](#li953280133816).
+    4.  将转换好的模型文件（.om文件）上传到[步骤1](#li953280133816)中源码所在路径下的“sample-classification-python/classificationapp/models”目录下。
 
 
-## Environment Deployment<a name="section1759513564117"></a>
+## 环境部署<a name="section1759513564117"></a>
 
-1.  Copy the application code to the developer board.
+1.  应用代码拷贝到开发板。
 
-    Go to the root directory of the classification network application \(python\) code as the  Mind Studio  installation user, for example,  **$HOME/sample-classificition-python**, and run the following command to copy the application code to the developer board:
+    以Mind Studio安装用户进入分类网络应用\(python\)代码所在根目录，如：$HOME/sample-classificition-python，执行以下命令将应用代码拷贝到开发板。
 
     **scp -r ../sample-classificition-python/ HwHiAiUser@192.168.1.2:/home/HwHiAiUser/HIAI\_PROJECTS**
 
-    Enter the password of the developer board as prompted. The default password is  **Mind@123**, as shown in  [Figure 1](#en-us_topic_0198304761_fig1660453512014).
+    提示password时输入开发板密码，开发板默认密码为**Mind@123**，如[图 应用代码拷贝](#zh-cn_topic_0198304761_fig1660453512014)。
 
-    **Figure  1**  Copying application code<a name="en-us_topic_0198304761_fig1660453512014"></a>  
+    **图 1** **应用代码拷贝**<a name="zh-cn_topic_0198304761_fig1660453512014"></a>  
     
 
-    ![](figures/en-us_image_0228832431.png)
+    ![](figures/zh-cn_image_0228832431.png)
 
-    Log in to the host side as the  **HwHiAiUser**  user in SSH mode on Ubuntu Server where  Mind Studio  is located.
+    在Mind Studio所在Ubuntu服务器中，以HwHiAiUser用户SSH登录到Host侧。
 
     **ssh HwHiAiUser@192.168.1.2**
 
-    Switch to the  **root**  user. The default password of the  **root**  user on the Atlas DK developer board is  **Mind@123**.
+    切换到root用户，开发板中root用户默认密码为**Mind@123**。
 
     **su root**
 
-2.  Configure the network connection of the developer board.
+2.  配置开发板联网。
 
-    Configure the network connection of the Atlas DK developer board by referring to  [https://github.com/Atlas200dk/sample-README/tree/master/DK\_NetworkConnect](https://github.com/Atlas200dk/sample-README/tree/master/DK_NetworkConnect).
+    请参考[https://gitee.com/Atlas200DK/sample-README/tree/master/DK\_NetworkConnect](https://gitee.com/Atlas200DK/sample-README/tree/master/DK_NetworkConnect)  ，进行开发板网络连接配置。
 
-3.  Install the environment dependency.
+3.  安装环境依赖。
 
-    Configure the environment dependency by referring to  [https://github.com/Atlas200dk/sample-README/tree/master/DK\_Environment](https://github.com/Atlas200dk/sample-README/tree/master/DK_Environment).
+    请参考[https://gitee.com/Atlas200DK/sample-README/tree/master/DK\_Environment](https://gitee.com/Atlas200DK/sample-README/tree/master/DK_Environment)  ，进行环境依赖配置。
 
 
-## Application Running<a name="section6245151616426"></a>
+## 程序运行<a name="section6245151616426"></a>
 
-1.  Switch to the  **HwHiAiUser**  user and go to the directory where the classification network application code is located.
+1.  切换HwHiAiUser用户，并进入分类网络应用代码所在目录。
 
     **su HwHiAiUser**
 
     **cd \~/HIAI\_PROJECTS/sample-classificition-python/classificationapp**
 
-2.  Run the application.
+2.  执行应用程序。
 
-    Run the  **classify.py**  script to print the inference result on the execution terminal.
+    执行**classify.py**脚本会将推理结果在执行终端直接打印显示。
 
-    Command example:
+    命令示例如下所示：
 
     **python classify.py**
 
-    [Figure 2](#fig1863053617417)  shows the inference result after the execution is successful.
+    执行成功后效果如[图 推理成功示意图](#fig1863053617417)所示。
 
-    **Figure  2**  Successful inference<a name="fig1863053617417"></a>  
+    **图 2**  推理成功示意图<a name="fig1863053617417"></a>  
     
 
-    ![](figures/en-us_image_0228757215.png)
+    ![](figures/zh-cn_image_0228757215.png)
 
-3.  Query the execution result.
+3.  执行结果查看。
 
-    The execution result is stored in  **resent18Result**  of the current directory. You need to run the following command on the Atlas200 DK to copy the result to the Ubuntu server to view the inference result image:
+    执行结果保存在当前目录下的resent18Result目录下，需要在Atlas200DK中用以下命令将结果拷贝到Ubuntu服务器中查看推理结果图片。
 
     **scp -r username@host\_ip:/home/username/HIAI\_PROJECTS/sample-classification-python/resent18Result \~**
 
-    -   **username**: user name of the developer board. The default value is  **HwHiAiUser**.
-    -   **host\_ip**: IP address of the developer board. Generally, the IP address is  **192.168.1.2**  for USB connection and  **192.168.0.2**  for network cable connection.
+    -   username：开发板用户﻿名，默认为HwHiAiUser。
+    -   host\_ip：开发板ip，USB连接一般为192.168.1.2.网线连接时一般为192.168.0.2。
 
-    Command example:
+    **命令示例：**
 
     **scp -r HwHiAiUser@192.168.1.2:/home/HwHiAiUser/HIAI\_PROJECTS/sample-classification-python/resent18Result \~**
 
-    This command copies the inference result to the home directory of the Mind Studio installation user. You can view the inference result directly.
+    该命令会把推理结果拷贝到Mindstudio安装用户的家目录中，可以直接查看。
 
 
-## Remarks<a name="section1092612277429"></a>
+## 相关说明<a name="section1092612277429"></a>
 
--   The process of the classification network application \(Python\) is as follows:
-    1.  Read a JPEG image from the  **ImageNetRaw**  directory.
-    2.  Call OpenCV to resize the read JPEG image to 256 x 224 and convert it to YUV420SP.
-    3.  Send the converted YUV420SP image data to Matrix for inference. The demo uses the ResNet-18 network, and the inference result is the confidence of 1000 classes.
-    4.  Post-process the image. 1000 classification confidence levels are sorted, the highest confidence level and its classification label are selected, and the image is labeled. A labeled image is stored in the  **resnet18Result**  directory.
+-   **分类网络应用（Python）的流程说明如下**：
+    1.  从ImageNetRaw目录下读取jpeg图片。
+    2.  将读取的jpeg图片调用opencv resize到256\*224，并转换成YUV420SP。
+    3.  将转换后的YUV420SP图片数据送入Matrix进行推理。demo采用的是resnet18网络，推理结果是1000个分类的置信度
+    4.  后处理阶段，将1000个分类置信度排序，选取最高置信度及其分类标签，再图片上进行标注。标注后图片存放在resnet18Result目录下。
 
--   The directory structure of the classification network application \(Python\) is described as follows:
-    -   **ImageNetRaw**: storing input images
-    -   **classify.py**: main program
-    -   **imageNetClasses.py**: labeling for 1000 classes of ImageNet
-    -   **jpegHandler.py**: JPEG image processing, such as resizing, color space conversion \(CSC\), and text labeling
-    -   **models**: storing model networks
-    -   **resnet18Result**: storing labeled images
+-   **分类网络应用（Python）的文件架构说明如下**：
+    -   ImageNetRaw：存放输入图片
+    -   classify.py：主程序
+    -   imageNetClasses.py：imageNet 1000种分类标签
+    -   jpegHandler.py：jpeg图片处理，如resize、色域转换、文字标注等
+    -   models：存放模型网络
+    -   resnet18Result：存放标注后的图片
 
 

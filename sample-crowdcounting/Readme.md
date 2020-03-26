@@ -1,89 +1,89 @@
-English|[中文](Readme_cn.md)
+中文|[English](Readme_EN.md)
 
-# Dense Crowd Counting<a name="EN-US_TOPIC_0219059426"></a>
+# 密集人群人数统计<a name="ZH-CN_TOPIC_0219059426"></a>
 
-Developers can deploy this application on the Atlas 200 DK or the AI acceleration cloud server to decode local MP4 files or RTSP video streams, predict the number of people in the crowd images, and send the result to the Presenter Server for storage and display.
+开发者将本应用部署至Atlas 200 DK或者AI加速云服务器上实现对本地mp4文件或者RTSP视频流进行解码，对视频帧中的人群图像进行人头数量的预测，并将预测的结果信息发送至Presenter Server端进行展示。
 
-The applications in the current version branch adapt to  [DDK&RunTime](https://ascend.huawei.com/resources) **1.32.0.0 and later**.
+当前分支中的应用适配**1.32.0.0及以上**版本的[DDK&RunTime](https://ascend.huawei.com/resources)。
 
-## Prerequisites<a name="section137245294533"></a>
+## 前提条件<a name="section137245294533"></a>
 
-Before deploying this sample, ensure that:
+部署此Sample前，需要准备好以下环境：
 
--   Mind Studio  has been installed.
--   The Atlas 200 DK developer board has been connected to  Mind Studio, the cross compiler has been installed, the SD card has been prepared, and basic information has been configured.
+-   已完成Mind Studio的安装。
+-   已完成Atlas 200 DK开发者板与Mind Studio的连接，交叉编译器的安装，SD卡的制作及基本信息的配置等。
 
-## Software Preparation<a name="section8534138124114"></a>
+## 软件准备<a name="section8534138124114"></a>
 
-Before running the sample, obtain the source code package and configure the environment as follows:
+运行此Sample前，需要按照此章节获取源码包，并进行相关的环境配置。
 
-1.  <a name="li953280133816"></a>Obtain the source code package.
-    1.  By downloading the package
+1.  <a name="li953280133816"></a>获取源码包。
+    1.  下载压缩包方式获取。
 
-        Download all the code in the repository at  [https://github.com/Atlas200dk/sample-crowdcounting/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-facedetection/tree/1-3x-0-0/)  to any directory on Ubuntu Server where Mind Studio is located as the Mind Studio installation user, for example,  **$HOME/AscendProjects/sample-crowdcounting**.
+        将[https://gitee.com/Atlas200DK/sample-crowdcounting/tree/1.3x.0.0/](https://gitee.com/Atlas200DK/sample-facedetection/tree/1.3x.0.0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-crowdcounting。
 
-    2.  By running the  **git**  command
+    2.  命令行使用git命令方式获取。
 
-        Run the following command in the  **$HOME/AscendProjects**  directory to download code:
+        在命令行中：$HOME/AscendProjects目录下执行以下命令下载代码。
 
-        **git clone https://github.com/Atlas200dk/sample-crowdcounting.git --branch 1-3x-0-0**
+        **git clone https://gitee.com/Atlas200DK/sample-crowdcounting.git --branch 1.3x.0.0**
 
-2.  <a name="li8221184418455"></a>Obtain the source network model required by the application.
+2.  <a name="li8221184418455"></a>获取此应用中所需要的原始网络模型。
 
-    Obtain the source network model used in the application by referring to  [Table 1](#table117203103464)  and save the model to any directory on Ubuntu Server where Mind Studio is located, for example:  **$HOME/models/crowdcounting**.
+    参考[表 crowd\_counting中使用的模型](#table117203103464)获取此应用中所用到的原始网络模型，并将其存放到Mind Studio所在Ubuntu服务器的任意目录。例如：$HOME/models/crowdcounting。
 
-    **Table  1**  Model used in the crowd counting application
+    **表 1**  crowd\_counting中使用的模型
 
     <a name="table117203103464"></a>
-    <table><thead align="left"><tr id="row4859191074617"><th class="cellrowborder" valign="top" width="17%" id="mcps1.2.4.1.1"><p id="p18859111074613"><a name="p18859111074613"></a><a name="p18859111074613"></a>Model Name</p>
+    <table><thead align="left"><tr id="row4859191074617"><th class="cellrowborder" valign="top" width="17.32173217321732%" id="mcps1.2.4.1.1"><p id="p18859111074613"><a name="p18859111074613"></a><a name="p18859111074613"></a>模型名称</p>
     </th>
-    <th class="cellrowborder" valign="top" width="18%" id="mcps1.2.4.1.2"><p id="p17859171013469"><a name="p17859171013469"></a><a name="p17859171013469"></a>Description</p>
+    <th class="cellrowborder" valign="top" width="9.68096809680968%" id="mcps1.2.4.1.2"><p id="p17859171013469"><a name="p17859171013469"></a><a name="p17859171013469"></a>模型说明</p>
     </th>
-    <th class="cellrowborder" valign="top" width="65%" id="mcps1.2.4.1.3"><p id="p1385991094614"><a name="p1385991094614"></a><a name="p1385991094614"></a>Download Path</p>
+    <th class="cellrowborder" valign="top" width="72.997299729973%" id="mcps1.2.4.1.3"><p id="p1385991094614"><a name="p1385991094614"></a><a name="p1385991094614"></a>模型下载路径</p>
     </th>
     </tr>
     </thead>
-    <tbody><tr id="row88591310124617"><td class="cellrowborder" valign="top" width="17%" headers="mcps1.2.4.1.1 "><p id="p13106121801715"><a name="p13106121801715"></a><a name="p13106121801715"></a>crowd_counting</p>
+    <tbody><tr id="row88591310124617"><td class="cellrowborder" valign="top" width="17.32173217321732%" headers="mcps1.2.4.1.1 "><p id="p13106121801715"><a name="p13106121801715"></a><a name="p13106121801715"></a>crowd_counting</p>
     </td>
-    <td class="cellrowborder" valign="top" width="18%" headers="mcps1.2.4.1.2 "><p id="p13106171831710"><a name="p13106171831710"></a><a name="p13106171831710"></a>Dense crowd counting network model</p>
+    <td class="cellrowborder" valign="top" width="9.68096809680968%" headers="mcps1.2.4.1.2 "><p id="p13106171831710"><a name="p13106171831710"></a><a name="p13106171831710"></a>密集人群人数统计网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="65%" headers="mcps1.2.4.1.3 "><p id="p110671813170"><a name="p110671813170"></a><a name="p110671813170"></a>Download the model file of the source network by referring to <strong id="b0819154417137"><a name="b0819154417137"></a><a name="b0819154417137"></a>README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/crowd_counting" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/crowd_counting</a>.</p>
+    <td class="cellrowborder" valign="top" width="72.997299729973%" headers="mcps1.2.4.1.3 "><p id="p110671813170"><a name="p110671813170"></a><a name="p110671813170"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/crowd_counting" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/object_detect/crowd_counting</a>目录中README.md下载原始网络模型文件。</p>
     </td>
     </tr>
     </tbody>
     </table>
 
-3.  Log in to Ubuntu Server where Mind Studio is located as the Mind Studio installation user, determine the current DDK version number, and set the environment variables  **DDK\_HOME**,  **tools\_version**,  **LD\_LIBRARY\_PATH**.
-    1.  <a name="en-us_topic_0203223294_li61417158198"></a>Query the current DDK version number.
+3.  以Mind Studio安装用户登录Mind Studio所在Ubuntu服务器，确定当前使用的DDK版本号并设置环境变量DDK\_HOME，tools\_version，LD\_LIBRARY\_PATH。
+    1.  <a name="zh-cn_topic_0203223294_li61417158198"></a>查询当前使用的DDK版本号。
 
-        A DDK version number can be queried by using either Mind Studio or the DDK software package.
+        可通过Mind Studio工具查询，也可以通过DDK软件包进行获取。
 
-        -   Using Mind Studio
+        -   使用Mind Studio工具查询。
 
-            On the project page of Mind Studio, choose  **File \> Settings \> System Settings \> Ascend DDK**  to access  [Querying the DDK version number](#en-us_topic_0203223294_fig17553193319118).
+            在Mind Studio工程界面依次选择“File \> Settings \> System Settings \> Ascend DDK“，弹出如[图 DDK版本号查询](#zh-cn_topic_0203223294_fig17553193319118)所示界面。
 
-            **Figure  1**  Querying the DDK version number<a name="en-us_topic_0203223294_fig17553193319118"></a>  
-            ![](figures/querying-the-ddk-version-number.png "querying-the-ddk-version-number")
+            **图 1**  DDK版本号查询<a name="zh-cn_topic_0203223294_fig17553193319118"></a>  
+            ![](figures/DDK版本号查询.png "DDK版本号查询")
 
-            The displayed  **DDK Version**  is the current DDK version number, for example,  **1.31.T15.B150**.
+            其中显示的**DDK Version**就是当前使用的DDK版本号，如**1.31.T15.B150**。
 
-        -   Using the DDK software package
+        -   通过DDK软件包进行查询。
 
-            Obtain the DDK version number based on the DDK package name.
+            通过安装的DDK的包名获取DDK的版本号。
 
-            DDK package name format:  **Ascend\_DDK-\{software version\}-\{interface version\}-x86\_64.ubuntu16.04.tar.gz**
+            DDK包的包名格式为：**Ascend\_DDK-\{software version\}-\{interface version\}-x86\_64.ubuntu16.04.tar.gz**
 
-            _Software version_  indicates the DDK software version number.
+            其中**software version**就是DDK的软件版本号。
 
-            For example:
+            例如：
 
-            If the DDK package name is  **Ascend\_DDK-1.31.T15.B150-1.1.1-x86\_64.ubuntu16.04.tar.gz**, the DDK version is  **1.31.T15.B150**.
+            DDK包的包名为Ascend\_DDK-1.31.T15.B150-1.1.1-x86\_64.ubuntu16.04.tar.gz，则此DDK的版本号为1.31.T15.B150。
 
-    2.  Set environment variables.
+    2.  设置环境变量。
 
         **vim \~/.bashrc**
 
-        Run the following commands to add the environment variables  **DDK\_HOME**  and  **LD\_LIBRARY\_PATH**  to the last line:
+        执行如下命令在最后一行添加DDK\_HOME及LD\_LIBRARY\_PATH的环境变量。
 
         **export tools\_version=_1.31.X.X_**
 
@@ -91,59 +91,59 @@ Before running the sample, obtain the source code package and configure the envi
 
         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
 
-        >![](public_sys-resources/icon-note.gif) **NOTE:**   
-        >-   **_1.31.X.X_**  indicates the DDK version queried in  [a](#en-us_topic_0203223294_li61417158198). Set this parameter based on the query result, for example,  **1.31.T15.B150**.  
-        >-   If the environment variables have been added, skip this step.  
+        >![](public_sys-resources/icon-note.gif) **说明：**   
+        >-   **_1.31.X.X_**是[a](#zh-cn_topic_0203223294_li61417158198)中查询到的DDK版本号，需要根据查询结果对应填写，如**1.31.T15.B150**  
+        >-   如果此环境变量已经添加，则此步骤可跳过。  
 
-        Type  **:wq!**  to save settings and exit.
+        输入:wq!保存退出。
 
-        Run the following command for the environment variable to take effect:
+        执行如下命令使环境变量生效。
 
         **source \~/.bashrc**
 
-4.  Convert the source network model to a model supported by the Ascend AI processor.
-    1.  Choose  **Tools \> Model Convert**  from the main menu of  Mind Studio.
-    2.  On the  **Model Conversion**  page that is displayed, configure model conversion.
-        -   Select the model file downloaded in  [Step 2](#li8221184418455)  for  **Model File**.
-        -   Set  **Model Name**  to the model name in  [Table 1](#table117203103464).
-        -   [Figure 2](#fig8912228135419)  shows the non-default configuration during the crowd\_counting model conversion.
-        -   Retain the default values for other parameters.
+4.  将原始网络模型转换为适配昇腾AI处理器的模型。
+    1.  在Mind Studio操作界面的顶部菜单栏中选择**Tools \> Model Convert**，进入模型转换界面。
+    2.  在弹出的**Model** **Conversion**操作界面中，进行模型转换配置。
+        -   Model File选择[步骤2](#li8221184418455)中下载的模型文件。
+        -   Model Name填写为[表1](#table117203103464)对应的**模型名称**。
+        -   crowd\_counting模型转换时的非默认配置如：[图2 crowd\_counting模型转换](#fig8912228135419)。
+        -   其他保持默认值
 
-            **Figure  2**  crowd\_counting model conversion<a name="fig8912228135419"></a>  
+            **图 2**  crowd\_counting模型转换<a name="fig8912228135419"></a>  
             
 
-            ![](figures/en-us_image_0219068294.png)
+            ![](figures/zh-cn_image_0219068294.png)
 
-            ![](figures/en-us_image_0219068655.png)
+            ![](figures/zh-cn_image_0219068655.png)
 
-    3.  Click  **OK**  to start model conversion.
+    3.  单击**OK**开始转换模型。
 
-        After successful conversion, an .om offline model is generated in the  **$HOME/modelzoo/crowd\_counting/device**  directory.
+        模型转换成功后，后缀为.om的离线模型存放地址为：$HOME/modelzoo/crowd\_counting/device。
 
-        >![](public_sys-resources/icon-note.gif) **NOTE:**   
-        >-   For details about the descriptions of each step and parameters in model conversion, see "Model Conversion" in the  [Mind Studio User Guide](https://ascend.huawei.com/doc/mindstudio/).  
+        >![](public_sys-resources/icon-note.gif) **说明：**   
+        >-   Mind Studio模型转换中每一步的具体意义和参数说明可以参考[Mind Studio用户手册](https://ascend.huawei.com/doc/mindstudio/)中的“模型转换“章节。  
 
 
-5.  Upload the converted .om model file to the  **sample-crowdcounting/script**  directory in the source code path in  [Step 1](#li953280133816).
+5.  将转换好的模型文件（.om文件）上传到[步骤1](#li953280133816)中源码所在路径的“**sample-crowdcounting/script**”目录下。
 
-## Build<a name="section1759513564117"></a>
+## 编译<a name="section1759513564117"></a>
 
-1.  Open the project.
+1.  打开对应的工程。
 
-    Go to the directory that stores the decompressed installation package as the Mind Studio installation user in CLI mode, for example,  **$HOME/MindStudio-ubuntu/bin**. Run the following command to start Mind Studio:
+    以Mind Studio安装用户在命令行中进入安装包解压后的“MindStudio-ubuntu/bin”目录，如：$HOME/MindStudio-ubuntu/bin。执行如下命令启动Mind Studio
 
     **./MindStudio.sh**
 
-    Open the  **sample-crowdcounting**  project.
+    启动成功后，打开**sample-crowdcounting**工程。
 
-2.  Configure project information in the  **src/param\_configure.conf**  file.
+2.  在src/param\_configure.conf文件中配置相关工程信息。
 
-    **Figure  3**  Configuration file path<a name="fig1557065718252"></a>  
+    **图 3**  配置文件路径<a name="fig1557065718252"></a>  
     
 
-    ![](figures/en-us_image_0219071560.png)
+    ![](figures/zh-cn_image_0219071560.png)
 
-    Content of the configuration file:
+    该配置文件内容如下：
 
     ```
     remote_host=
@@ -152,14 +152,14 @@ Before running the sample, obtain the source code package and configure the envi
     rtsp_video_stream=
     ```
 
-    Parameter settings to be manually added:
+    需要手动添加参数配置:
 
-    -   **remote\_host**: IP address of the Atlas 200 DK developer board
-    -   **presenter\_view\_app\_name**: value of  **View Name**  on the  **Presenter Server**  page, which must be unique. The value consists of 3 to 20 characters and supports only uppercase letters, lowercase letters, digits, and underscores \(\_\).
-    -   **video\_path\_of\_host**: absolute path of a video file on the host side
-    -   **rtsp\_video\_stream**: URL of RTSP video streams
+    -   remote\_host：配置为Atlas 200 DK开发者板的IP地址。
+    -   presenter\_view\_app\_name: 用户自定义的在PresenterServer界面展示的View Name，此View Name需要在Presenter Server展示界面唯一，只能为大小写字母、数字、“\_”的组合，位数3\~20。
+    -   video\_path\_of\_host：配置为HOST侧的视频文件的绝对路径。
+    -   rtsp\_video\_stream：配置为RTSP视频流的URL。
 
-    Sample of video file configuration:
+    视频文件配置示例如下：
 
     ```
     remote_host=192.168.1.2
@@ -168,7 +168,7 @@ Before running the sample, obtain the source code package and configure the envi
     rtsp_video_stream=
     ```
 
-    Sample of RTSP video stream configuration:
+    Rtsp视频流配置示例如下：
 
     ```
     remote_host=192.168.1.2
@@ -177,121 +177,121 @@ Before running the sample, obtain the source code package and configure the envi
     rtsp_video_stream=rtsp://192.168.2.37:554/cam/realmonitor?channel=1&subtype=0
     ```
 
-    >![](public_sys-resources/icon-note.gif) **NOTE:**   
-    >-   **remote\_host**  and  **presenter\_view\_app\_name**  must be set. Otherwise, the build fails.  
-    >-   Do not use double quotation marks \(""\) during parameter settings.  
-    >-   Either  **video\_path\_of\_host**  or  **rtsp\_video\_stream**  must be set.  
-    >-   Currently, RTSP video streams support only the  **rtsp://ip:port/path**  format. To use URLs in other formats, you need to delete the** IsValidRtsp**  function from the  **video\_decode.cpp**  file or configure the  **IsValidRtsp**  function to directly return  **true**  to skip regular expression matching.  
-    >-   The RTSP stream URL provided in this sample cannot be directly used. If RTSP streams are required, create RTSP streams locally either using LIVE555 or other methods, which must support playback in the VLC. Type the URL of the RTSP video streams in the configuration file.  
+    >![](public_sys-resources/icon-note.gif) **说明：**   
+    >-   参数remote\_host和presenter\_view\_app\_name：必须全部填写，否则无法通过build。  
+    >-   注意所填参数不用使用“”。  
+    >-   参数video\_path\_of\_host和rtsp\_video\_stream必须至少填写一项。  
+    >-   当前RTSP视频流只支持rtsp://ip:port/path格式，如果需要使用其它格式的url，需要把video\_decode.cpp中的IsValidRtsp函数去除，或者直接返回true，跳过正则表达式匹配。  
+    >-   本样例中提供的RTSP流地址不可以直接使用。如果需要使用RTSP，请在本地使用live555或其它方式制作RTSP视频流，并且可以在VLC中播放。然后将本地制作好的RTSP视频流的URL填入配置文件的相应参数中，即可运行。  
 
-3.  Run the  **deploy.sh**  script to adjust configuration parameters and download and compile the third-party library. Open the  **Terminal**  window of Mind Studio. By default, the home directory of the code is used. Run the  **deploy.sh**  script in the background to deploy the environment, as shown in  [Figure 4](#fig202009167369).
+3.  执行deploy脚本， 进行配置参数调整及第三方库下载编译 打开Mind Studio工具的Terminal，此时默认在代码主目录下，执行如下命令在后台指执行deploy脚本，进行环境部署。如[图 执行deploy脚本](#fig202009167369)所示。
 
-    **Figure  4**  Running the deploy.sh script<a name="fig202009167369"></a>  
-    ![](figures/running-the-deploy-sh-script-30.png "running-the-deploy-sh-script-30")
+    **图 4**  执行deploy脚本<a name="fig202009167369"></a>  
+    ![](figures/执行deploy脚本-32.png "执行deploy脚本-32")
 
-    >![](public_sys-resources/icon-note.gif) **NOTE:**   
-    >-   During the first deployment, if no third-party library is used, the system automatically downloads and builds the third-party library, which may take a long time. The third-party library can be directly used for the subsequent build.  
-    >-   During deployment, select the IP address of the host that communicates with the developer board. Generally, the IP address is the IP address configured for the virtual NIC. If the IP address is in the same network segment as the IP address of the developer board, it is automatically selected for deployment. If they are not in the same network segment, you need to manually type the IP address of the host that communicates with the Atlas DK to complete the deployment.  
+    >![](public_sys-resources/icon-note.gif) **说明：**   
+    >-   首次deploy时，没有部署第三方库时会自动下载并编译，耗时可能比较久，请耐心等待。后续再重新编译时，不会重复下载编译，部署如上图所示。  
+    >-   deploy时，需要选择与开发板通信的主机侧ip，一般为虚拟网卡配置的ip。如果此ip和开发板ip属于同网段，则会自动选择并部署。如果非同网段，则需要手动输入与开发板通信的主机侧ip才能完成deploy。  
 
-4.  Start building. Open Mind Studio and choose  **Build \> Build \> Build-Configuration**  from the main menu. The  **build**  and  **run**  folders are generated in the directory.
+4.  开始编译，打开Mind Studio工具，在工具栏中点击**Build \> Build \> Build-Configuration**。会在目录下生成build和run文件夹。
 
-    >![](public_sys-resources/icon-notice.gif) **NOTICE:**   
-    >When you build a project for the first time,  **Build \> Build**  is unavailable. You need to choose  **Build \> Edit Build Configuration**  to set parameters before the build.  
+    >![](public_sys-resources/icon-notice.gif) **须知：**   
+    >首次编译工程时，**Build \> Build**为灰色不可点击状态。需要点击**Build \> Edit Build Configuration**，配置编译参数后再进行编译。  
 
-5.  <a name="li499911453439"></a>Start Presenter Server.
+5.  <a name="li499911453439"></a>启动Presenter Server。
 
-    Open the  **Terminal**  window of Mind Studio. Under the code storage path, run the following command to start the Presenter Server program of the license crowd counting application on the server, as shown in  [Figure 5](#fig102142024389).
+    打开Mindstudio工具的Terminal，在应用代码存放路径下，执行如下命令在后台启动Crowd Counting应用的Presenter Server主程序。如[图 启动PresenterServer](#fig102142024389)所示。
 
     **bash run\_present\_server.sh**
 
-    **Figure  5**  Starting Presenter Server<a name="fig102142024389"></a>  
+    **图 5**  启动PresenterServer<a name="fig102142024389"></a>  
     
 
-    ![](figures/en-us_image_0219072221.png)
+    ![](figures/zh-cn_image_0219072221.png)
 
-    -   When the message  **Please choose one to show the presenter in browser\(default: 127.0.0.1\):**  is displayed, type the IP address \(usually IP address for accessing Mind Studio\) used for accessing the Presenter Server service in the browser.
+    -   当提示“Please choose one to show the presenter in browser\(default: 127.0.0.1\):“时，请输入在浏览器中访问Presenter Server服务所使用的IP地址（一般为访问Mind Studio的IP地址）。
 
-        Select the IP address used by the browser to access the Presenter Server service in  **Current environment valid ip list**  and type the path for storing video analysis data, as shown in  [Figure 6](#fig73590910118).
+        如[图6](#fig73590910118)所示，请在“Current environment valid ip list“中选择通过浏览器访问Presenter Server服务使用的IP地址，并输入存储视频解析数据的路径。
 
-        **Figure  6**  Project deployment<a name="fig73590910118"></a>  
+        **图 6**  工程部署示意图<a name="fig73590910118"></a>  
         
 
-        ![](figures/en-us_image_0219072532.png)
+        ![](figures/zh-cn_image_0219072532.png)
 
-    [Figure 7](#fig19953175965417)  shows that the Presenter Server service has been started successfully.
+    如[图7](#fig19953175965417)所示，表示presenter\_server的服务启动成功。
 
-    **Figure  7**  Starting the Presenter Server process<a name="fig19953175965417"></a>  
+    **图 7**  Presenter Server进程启动<a name="fig19953175965417"></a>  
     
 
-    ![](figures/en-us_image_0219072725.png)
+    ![](figures/zh-cn_image_0219072725.png)
 
-    Use the URL shown in the preceding figure to log in to Presenter Server \(only Google Chrome is supported\). The IP address is that typed in  [Figure 6](#fig73590910118)  and the default port number is  **7007**. The following figure indicates that Presenter Server has been started successfully.
+    使用上图提示的URL登录Presenter Server，仅支持Chrome浏览器，IP地址为[图6](#fig73590910118)中输入的IP地址，端口号默为7007，如下图所示，表示Presenter Server启动成功。
 
-    **Figure  8**  Home page<a name="fig129539592546"></a>  
-    ![](figures/home-page-31.png "home-page-31")
+    **图 8**  主页显示<a name="fig129539592546"></a>  
+    ![](figures/主页显示-33.png "主页显示-33")
 
-    The following figure shows the IP address used by Presenter Server and  Mind Studio  to communicate with the Atlas 200 DK.
+    Presenter Server、Mind Studio与Atlas 200 DK之间通信使用的IP地址示例如下图所示：
 
-    **Figure  9**  IP address example<a name="fig195318596543"></a>  
-    ![](figures/ip-address-example-32.png "ip-address-example-32")
+    **图 9**  IP地址示例<a name="fig195318596543"></a>  
+    ![](figures/IP地址示例-34.png "IP地址示例-34")
 
-    -   The IP address of the Atlas 200 DK developer board is  **192.168.1.2**  \(connected in USB mode\).
-    -   The IP address used by Presenter Server to communicate with the Atlas 200 DK is in the same network segment as the IP address of the Atlas 200 DK on the UI Host server. For example:  **192.168.1.223**.
-    -   The following describes how to access the IP address \(such as  **10.10.0.1**\) of Presenter Server using a browser. Because Presenter Server and  Mind Studio  are deployed on the same server, you can access  Mind Studio  through the browser using the same IP address.
+    -   Atlas 200 DK开发者板使用的IP地址为192.168.1.2（USB方式连接）。
+    -   Presenter Server与Atlas 200 DK通信的IP地址为UI Host服务器中与Atlas 200 DK在同一网段的IP地址，例如：192.168.1.223。
+    -   通过浏览器访问Presenter Server的IP地址本示例为：10.10.0.1，由于Presenter Server与Mind Studio部署在同一服务器，此IP地址也为通过浏览器访问Mind Studio的IP。
 
-6.  The crowd counting application can parse local videos and RTSP video streams.
-    -   Before parsing a local video, upload the video file to the host.
+6.  密集人群人数统计应用支持解析本地视频和RTSP视频流。
+    -   如果需要解析本地视频，需要将视频文件传到Host侧。
 
-        For example, upload the video file  **crowd.mp4**  to the  **/home/HwHiAiUser/**  directory on the host.
+        例如将视频文件crowd.mp4上传到Host侧的“/home/HwHiAiUser/“目录下。
 
-        >![](public_sys-resources/icon-note.gif) **NOTE:**   
-        >H.264 and H.265 MP4 files are supported. If an MP4 file needs to be edited, you are advised to use FFmpeg. If a video file is edited by other tools, FFmpeg may fail to parse the file.  
+        >![](public_sys-resources/icon-note.gif) **说明：**   
+        >支持H264与H265格式的MP4文件，如果MP4文件需要剪辑，建议使用开源工具ffmpeg，使用其他工具剪辑的视频文件ffmpeg工具可能不支持解析。  
 
-    -   If only RTSP video streams need to be parsed, skip this step.
+    -   如果仅解析RTSP视频流，本步骤可跳过。
 
 
-## Run<a name="section6245151616426"></a>
+## 运行<a name="section6245151616426"></a>
 
-1.  Run the crowd counting application.
+1.  运行Crowd Counting程序
 
-    On the toolbar of Mind Studio, click  **Run**  and choose  **Run \> Run 'sample-crowdcounting'**. As shown in  [Figure 10](#fig12953163061713), the executable application is running on the developer board.
+    在Mind Studio工具的工具栏中找到Run按钮，点击**Run \> Run 'sample-crowdcounting'**，如[图10](#fig12953163061713)所示，可执行程序已经在开发板执行。
 
-    **Figure  10**  Application running<a name="fig12953163061713"></a>  
+    **图 10**  程序运行示意图<a name="fig12953163061713"></a>  
     
 
-    ![](figures/en-us_image_0219073392.png)
+    ![](figures/zh-cn_image_0219073392.png)
 
-2.  Use the URL displayed upon the start of the Presenter Server service to log in to Presenter Server. For details, see  [Start Presenter Server](#li499911453439).
+2.  使用启动Presenter Server服务时提示的URL登录 Presenter Server 网站，详细可参考[启动Presenter Server](#li499911453439)。
 
-    Wait for Presenter Agent to transmit data to the server. Click  **Refresh**. When there is data, the icon in the  **Status**  column for the corresponding channel changes to green, as shown in  [Figure 11](#fig69382913311).
+    等待Presenter Agent传输数据给服务端，单击“Refresh”刷新，当有数据时相应的Channel 的Status变成绿色，如[图 Presenter Server界面](#fig69382913311)所示
 
-    **Figure  11**  Presenter Server page<a name="fig69382913311"></a>  
-    ![](figures/presenter-server-page-33.png "presenter-server-page-33")
+    **图 11**  Presenter Server界面<a name="fig69382913311"></a>  
+    ![](figures/Presenter-Server界面-35.png "Presenter-Server界面-35")
 
-    >![](public_sys-resources/icon-note.gif) **NOTE:**   
-    >-   For the crowd counting application, Presenter Server supports a maximum of 10 channels at the same time \(each  _presenter\_view\_app\_name_  parameter corresponds to a channel\).  
-    >-   Due to hardware limitations, each channel supports a maximum frame rate of 20 fps. A lower frame rate is automatically used when the network bandwidth is low.  
+    >![](public_sys-resources/icon-note.gif) **说明：**   
+    >-   Crowd Counting的Presenter Server最多支持10路Channel同时显示，每个  _presenter\_view\_app\_name_  对应一路Channel。  
+    >-   由于硬件的限制，每一路支持的最大帧率是20fps，受限于网络带宽的影响，帧率会自动适配为较低的帧率进行展示。  
 
-3.  Click a link in the  **View Name**  column, for example,  **video**  in the preceding figure, and view the result.
+3.  单击右侧对应的View Name链接，比如上图的“video”，查看结果。
 
-## Follow-up Operations<a name="section1092612277429"></a>
+## 后续处理<a name="section1092612277429"></a>
 
--   Stopping the crowd counting application
+-   **停止Crowd Counting应用**
 
-    The crowd counting application is running continually after being executed. To stop it, perform the following operation:
+    Crowd Counting应用执行后会处于持续运行状态，若要停止Crowd Counting应用程序，可执行如下操作。
 
-    Click the stop button to stop the crowd counting application. As shown in  [Figure 12](#fig464152917203), the crowd counting application has stopped running.
+    单击停止按钮停止Crowd Counting应用程序。如[图 Crowd Counting应用程序运行结束](#fig464152917203)所示应用程序已停止运行
 
-    **Figure  12**  Stop of the crowd counting application<a name="fig464152917203"></a>  
+    **图 12**  Crowd Counting应用程序运行结束<a name="fig464152917203"></a>  
     
 
-    ![](figures/en-us_image_0219075771.png)
+    ![](figures/zh-cn_image_0219075771.png)
 
--   **Stopping the Presenter Server service**
+-   **停止Presenter Server服务**
 
-    The Presenter Server service is always in running state after being started. To stop the Presenter Server service for the crowd counting application, perform the following operations:
+    Presenter Server服务启动后会一直处于运行状态，若想停止Crowd Counting应用对应的Presenter Server服务，可执行如下操作。
 
-    On the server with  Mind Studio  installed, run the following command as the  Mind Studio  installation user to check the process of the Presenter Server service corresponding to the crowd counting application:
+    以Mind Studio安装用户在Mind Studio所在服务器中的命令行中执行如下命令查看Crowd Counting应用对应的Presenter Server服务的进程。
 
     **ps -ef | grep presenter | grep crowd\_counting**
 
@@ -300,9 +300,9 @@ Before running the sample, obtain the source code package and configure the envi
      ascend    7701  1615  0 14:21 pts/8    00:00:00 python3 presenterserver/presenter_server.py --app crowd_counting
     ```
 
-    In the preceding information,  _7701_  indicates the process ID of the Presenter Server service for the crowd counting application.
+    如上所示  _7701_  即为crowd\_counting应用对应的Presenter Server服务的进程ID。
 
-    To stop the service, run the following command:
+    若想停止此服务，执行如下命令：
 
     **kill -9** _7701_
 

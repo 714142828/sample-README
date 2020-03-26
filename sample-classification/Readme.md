@@ -1,218 +1,218 @@
-English|[中文](Readme_cn.md)
+中文|[English](Readme_EN.md)
 
-# Classification Network Application \(C++\)<a name="EN-US_TOPIC_0203223265"></a>
+# 分类网络应用（C++）<a name="ZH-CN_TOPIC_0203223265"></a>
 
-This application can run on the Atlas 200 DK or the AI acceleration cloud server to implement inference on a common classification network and output the first  _n_  inference results.
+本Application支持运行在Atlas 200 DK或者AI加速云服务器上，实现了对常见的分类网络的推理功能并输出前n个推理结果。
 
-The applications in the current version branch adapt to  [DDK&RunTime](https://ascend.huawei.com/resources) **1.32.0.0 and later**.
+当前分支中的应用适配**1.32.0.0及以上**版本的[DDK&RunTime](https://ascend.huawei.com/resources)。
 
-## Prerequisites<a name="section137245294533"></a>
+## 前提条件<a name="section137245294533"></a>
 
-Before deploying this sample, ensure that:
+部署此Sample前，需要准备好以下环境：
 
--   Mind Studio  has been installed.
--   The Atlas 200 DK developer board has been connected to  Mind Studio, the cross compiler has been installed, the SD card has been prepared, and basic information has been configured.
+-   已完成Mind Studio的安装。
+-   已完成Atlas 200 DK开发者板与Mind Studio的连接，交叉编译器的安装，SD卡的制作及基本信息的配置等。
 
-## Software Preparation<a name="section181111827718"></a>
+## 软件准备<a name="section181111827718"></a>
 
-Before running the sample, obtain the source code package and configure the environment as follows:
+运行此Sample前，需要按照此章节获取源码包，并进行相关的环境配置。
 
-1.  <a name="li953280133816"></a>Obtain the source code package.
-    1.  By downloading the package
+1.  <a name="li953280133816"></a>获取源码包。
+    1.  下载压缩包方式获取。
 
-        Download the code in the  [https://github.com/Atlas200dk/sample-classification/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-classification/tree/1-3x-0-0/)  repository to any directory on the Ubuntu server where Mind Studio is located as the Mind Studio installation user. The two files must be stored in the same directory. For example, the code can be stored in  **$HOME/AscendProjects/sample-classification**.
+        将[https://gitee.com/Atlas200DK/sample-classification/tree/1.3x.0.0/](https://gitee.com/Atlas200DK/sample-classification/tree/1.3x.0.0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如代码存放路径为：$HOME/AscendProjects/sample-classification。
 
-    2.  By running the  **git**  command
+    2.  命令行使用git命令方式获取。
 
-        Run the following command in the  **$HOME/AscendProjects**  directory to download code:
+        在命令行中：$HOME/AscendProjects目录下执行以下命令下载代码。
 
-        **git clone https://github.com/Atlas200dk/sample-classification.git --branch 1-3x-0-0**
+        **git clone https://gitee.com/Atlas200DK/sample-classification.git --branch 1.3x.0.0**
 
-2.  <a name="li29641938112018"></a>Obtain the source network model required by the application.
+2.  <a name="li29641938112018"></a>获取此应用中所需要的原始网络模型。
 
-    Obtain the source network model and its weight file used in the application by referring to  [Table 1](#table1119094515272)  and save them to the same directory on Ubuntu Server where  Mind Studio  is located, for example,  **$HOME/models/classification**.
+    参考[表1](#table1119094515272)获取此应用中所用到的原始网络模型及其对应的权重文件，并将其存放到Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如：$HOME/models/classification。
 
-    **Table  1**  Models used in the general  **classification**  network application
+    **表 1**  通用分类网络应用使用模型
 
     <a name="table1119094515272"></a>
-    <table><thead align="left"><tr id="row677354502719"><th class="cellrowborder" valign="top" width="21%" id="mcps1.2.4.1.1"><p id="p167731845122717"><a name="p167731845122717"></a><a name="p167731845122717"></a>Model Name</p>
+    <table><thead align="left"><tr id="row677354502719"><th class="cellrowborder" valign="top" width="12.85%" id="mcps1.2.4.1.1"><p id="p167731845122717"><a name="p167731845122717"></a><a name="p167731845122717"></a>模型名称</p>
     </th>
-    <th class="cellrowborder" valign="top" width="23%" id="mcps1.2.4.1.2"><p id="p277317459276"><a name="p277317459276"></a><a name="p277317459276"></a>Description</p>
+    <th class="cellrowborder" valign="top" width="12.57%" id="mcps1.2.4.1.2"><p id="p277317459276"><a name="p277317459276"></a><a name="p277317459276"></a>模型说明</p>
     </th>
-    <th class="cellrowborder" valign="top" width="56.00000000000001%" id="mcps1.2.4.1.3"><p id="p9773114512270"><a name="p9773114512270"></a><a name="p9773114512270"></a>Download Path</p>
+    <th class="cellrowborder" valign="top" width="74.58%" id="mcps1.2.4.1.3"><p id="p9773114512270"><a name="p9773114512270"></a><a name="p9773114512270"></a>模型下载路径</p>
     </th>
     </tr>
     </thead>
-    <tbody><tr id="row3122314144215"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p14407251134314"><a name="p14407251134314"></a><a name="p14407251134314"></a>alexnet</p>
+    <tbody><tr id="row3122314144215"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p14407251134314"><a name="p14407251134314"></a><a name="p14407251134314"></a>alexnet</p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p116141194720"><a name="p116141194720"></a><a name="p116141194720"></a>Image classification inference model.</p>
-    <p id="p86191184712"><a name="p86191184712"></a><a name="p86191184712"></a>It is a AlexNet model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p116141194720"><a name="p116141194720"></a><a name="p116141194720"></a>图片分类推理模型。</p>
+    <p id="p86191184712"><a name="p86191184712"></a><a name="p86191184712"></a>是基于Caffe的AlexNet模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p67311330479"><a name="p67311330479"></a><a name="p67311330479"></a>Download the source network model file and its weight file by referring to<strong id="b1034018421764"><a name="b1034018421764"></a><a name="b1034018421764"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/alexnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/alexnet</a>.</p>
-    </td>
-    </tr>
-    <tr id="row2399521134819"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p3400192113488"><a name="p3400192113488"></a><a name="p3400192113488"></a>caffenet</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p5645133234810"><a name="p5645133234810"></a><a name="p5645133234810"></a>Image classification inference model.</p>
-    <p id="p14645153244816"><a name="p14645153244816"></a><a name="p14645153244816"></a>It is a CaffeNet model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p1537844912482"><a name="p1537844912482"></a><a name="p1537844912482"></a>Download the source network model file and its weight file by referring to<strong id="b62781122719"><a name="b62781122719"></a><a name="b62781122719"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/caffenet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/caffenet</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p67311330479"><a name="p67311330479"></a><a name="p67311330479"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/alexnet" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/alexnet</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
-    <tr id="row3773114518271"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p17738455277"><a name="p17738455277"></a><a name="p17738455277"></a>densenet</p>
+    <tr id="row2399521134819"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p3400192113488"><a name="p3400192113488"></a><a name="p3400192113488"></a>caffenet</p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p16773124511270"><a name="p16773124511270"></a><a name="p16773124511270"></a>Image classification inference model.</p>
-    <p id="p2773745162718"><a name="p2773745162718"></a><a name="p2773745162718"></a>It is a DenseNet121 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p5645133234810"><a name="p5645133234810"></a><a name="p5645133234810"></a>图片分类推理模型。</p>
+    <p id="p14645153244816"><a name="p14645153244816"></a><a name="p14645153244816"></a>是基于Caffe的CaffeNet模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p187731945132715"><a name="p187731945132715"></a><a name="p187731945132715"></a>Download the source network model file and its weight file by referring to<strong id="b1799182010714"><a name="b1799182010714"></a><a name="b1799182010714"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/densenet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/densenet</a>.</p>
-    </td>
-    </tr>
-    <tr id="row137731845122710"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p477316457275"><a name="p477316457275"></a><a name="p477316457275"></a>googlenet</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p197731456270"><a name="p197731456270"></a><a name="p197731456270"></a>Image classification inference model.</p>
-    <p id="p1877394515274"><a name="p1877394515274"></a><a name="p1877394515274"></a>It is a GoogLeNet model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p197738453275"><a name="p197738453275"></a><a name="p197738453275"></a>Download the source network model file and its weight file by referring to<strong id="b43191836877"><a name="b43191836877"></a><a name="b43191836877"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/googlenet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/googlenet</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p1537844912482"><a name="p1537844912482"></a><a name="p1537844912482"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/caffenet" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/caffenet</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
-    <tr id="row977374512716"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p1977324512272"><a name="p1977324512272"></a><a name="p1977324512272"></a>inception_v2</p>
+    <tr id="row3773114518271"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p17738455277"><a name="p17738455277"></a><a name="p17738455277"></a>densenet</p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p14773445122712"><a name="p14773445122712"></a><a name="p14773445122712"></a>Image classification inference model.</p>
-    <p id="p877311459270"><a name="p877311459270"></a><a name="p877311459270"></a>It is an Inception V2 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p16773124511270"><a name="p16773124511270"></a><a name="p16773124511270"></a>图片分类推理模型。</p>
+    <p id="p2773745162718"><a name="p2773745162718"></a><a name="p2773745162718"></a>是基于Caffe的DenseNet121模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p16773145162719"><a name="p16773145162719"></a><a name="p16773145162719"></a>Download the source network model file and its weight file by referring to<strong id="b1689165415711"><a name="b1689165415711"></a><a name="b1689165415711"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/inception_v2" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/inception_v2</a>.</p>
-    </td>
-    </tr>
-    <tr id="row429165985115"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p1050712711523"><a name="p1050712711523"></a><a name="p1050712711523"></a>inception_v3</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p18641141115218"><a name="p18641141115218"></a><a name="p18641141115218"></a>Image classification inference model.</p>
-    <p id="p06411511105213"><a name="p06411511105213"></a><a name="p06411511105213"></a>It is an Inception V3 model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p1241971612520"><a name="p1241971612520"></a><a name="p1241971612520"></a>Download the source network model file and its weight file by referring to<strong id="b91541571817"><a name="b91541571817"></a><a name="b91541571817"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/inception_v3" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/inception_v3</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p187731945132715"><a name="p187731945132715"></a><a name="p187731945132715"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/densenet" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/densenet</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
-    <tr id="row6482142185210"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p12508168115214"><a name="p12508168115214"></a><a name="p12508168115214"></a>inception_v4</p>
+    <tr id="row137731845122710"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p477316457275"><a name="p477316457275"></a><a name="p477316457275"></a>googlenet</p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p8785612105217"><a name="p8785612105217"></a><a name="p8785612105217"></a>Image classification inference model.</p>
-    <p id="p47851512105212"><a name="p47851512105212"></a><a name="p47851512105212"></a>It is an Inception V4 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p197731456270"><a name="p197731456270"></a><a name="p197731456270"></a>图片分类推理模型。</p>
+    <p id="p1877394515274"><a name="p1877394515274"></a><a name="p1877394515274"></a>是基于Caffe的GoogLeNet模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p1028761705212"><a name="p1028761705212"></a><a name="p1028761705212"></a>Download the source network model file and its weight file by referring to<strong id="b1192510212080"><a name="b1192510212080"></a><a name="b1192510212080"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/inception_v4" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/inception_v4</a>.</p>
-    </td>
-    </tr>
-    <tr id="row77732045152717"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p0773114572715"><a name="p0773114572715"></a><a name="p0773114572715"></a>mobilenet_v1</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p11774645162715"><a name="p11774645162715"></a><a name="p11774645162715"></a>Image classification inference model.</p>
-    <p id="p47741455273"><a name="p47741455273"></a><a name="p47741455273"></a>It is a MobileNet V1 model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p5586471511"><a name="p5586471511"></a><a name="p5586471511"></a>Download the source network model file and its weight file by referring to<strong id="b1788218341812"><a name="b1788218341812"></a><a name="b1788218341812"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/mobilenet_v1" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/mobilenet_v1</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p197738453275"><a name="p197738453275"></a><a name="p197738453275"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/googlenet" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/googlenet</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
-    <tr id="row12774164515277"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p187741345112718"><a name="p187741345112718"></a><a name="p187741345112718"></a>mobilenet_v2</p>
+    <tr id="row977374512716"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p1977324512272"><a name="p1977324512272"></a><a name="p1977324512272"></a><span>inception_v2</span></p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p277414519274"><a name="p277414519274"></a><a name="p277414519274"></a>Image classification inference model.</p>
-    <p id="p8774174502713"><a name="p8774174502713"></a><a name="p8774174502713"></a>It is a MobileNet V2 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p14773445122712"><a name="p14773445122712"></a><a name="p14773445122712"></a>图片分类推理模型。</p>
+    <p id="p877311459270"><a name="p877311459270"></a><a name="p877311459270"></a>是基于Caffe的Inception V2模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p1677414514274"><a name="p1677414514274"></a><a name="p1677414514274"></a>Download the source network model file and its weight file by referring to<strong id="b45351545586"><a name="b45351545586"></a><a name="b45351545586"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/mobilenet_v2" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/mobilenet_v2</a>.</p>
-    </td>
-    </tr>
-    <tr id="row1577434516271"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p3774194512713"><a name="p3774194512713"></a><a name="p3774194512713"></a>resnet18</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p7774245122713"><a name="p7774245122713"></a><a name="p7774245122713"></a>Image classification inference model.</p>
-    <p id="p577494517271"><a name="p577494517271"></a><a name="p577494517271"></a>It is a ResNet 18 model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p16774144510270"><a name="p16774144510270"></a><a name="p16774144510270"></a>Download the source network model file and its weight file by referring to<strong id="b1728815118918"><a name="b1728815118918"></a><a name="b1728815118918"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet18" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet18</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p16773145162719"><a name="p16773145162719"></a><a name="p16773145162719"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/inception_v2" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/inception_v2</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
-    <tr id="row377414452276"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p10774545142714"><a name="p10774545142714"></a><a name="p10774545142714"></a>resnet50</p>
+    <tr id="row429165985115"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p1050712711523"><a name="p1050712711523"></a><a name="p1050712711523"></a><span>inception_v3</span></p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p97741245142712"><a name="p97741245142712"></a><a name="p97741245142712"></a>Image classification inference model.</p>
-    <p id="p177412456271"><a name="p177412456271"></a><a name="p177412456271"></a>It is a ResNet 50 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p18641141115218"><a name="p18641141115218"></a><a name="p18641141115218"></a>图片分类推理模型。</p>
+    <p id="p06411511105213"><a name="p06411511105213"></a><a name="p06411511105213"></a>是基于Caffe的Inception V3模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p57747459272"><a name="p57747459272"></a><a name="p57747459272"></a>Download the source network model file and its weight file by referring to<strong id="b135771417991"><a name="b135771417991"></a><a name="b135771417991"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet50" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet50</a>.</p>
-    </td>
-    </tr>
-    <tr id="row377484514279"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p1777454516275"><a name="p1777454516275"></a><a name="p1777454516275"></a>resnet101</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p15774124516274"><a name="p15774124516274"></a><a name="p15774124516274"></a>Image classification inference model.</p>
-    <p id="p7774134552720"><a name="p7774134552720"></a><a name="p7774134552720"></a>It is a ResNet 101 model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p117741545132710"><a name="p117741545132710"></a><a name="p117741545132710"></a>Download the source network model file and its weight file by referring to<strong id="b1586253018915"><a name="b1586253018915"></a><a name="b1586253018915"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet101" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet101</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p1241971612520"><a name="p1241971612520"></a><a name="p1241971612520"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/inception_v3" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/inception_v3</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
-    <tr id="row14774154513279"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p1077413452272"><a name="p1077413452272"></a><a name="p1077413452272"></a>resnet152</p>
+    <tr id="row6482142185210"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p12508168115214"><a name="p12508168115214"></a><a name="p12508168115214"></a><span>inception_v4</span></p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p177434517275"><a name="p177434517275"></a><a name="p177434517275"></a>Image classification inference model.</p>
-    <p id="p877515459276"><a name="p877515459276"></a><a name="p877515459276"></a>It is a ResNet 152 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p8785612105217"><a name="p8785612105217"></a><a name="p8785612105217"></a>图片分类推理模型。</p>
+    <p id="p47851512105212"><a name="p47851512105212"></a><a name="p47851512105212"></a>是基于Caffe的Inception V4模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p777514582712"><a name="p777514582712"></a><a name="p777514582712"></a>Download the source network model file and its weight file by referring to<strong id="b749519434920"><a name="b749519434920"></a><a name="b749519434920"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet152" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/resnet152</a>.</p>
-    </td>
-    </tr>
-    <tr id="row37752450270"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p977544513278"><a name="p977544513278"></a><a name="p977544513278"></a>vgg16</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p1177514522713"><a name="p1177514522713"></a><a name="p1177514522713"></a>Image classification inference model.</p>
-    <p id="p10775194582713"><a name="p10775194582713"></a><a name="p10775194582713"></a>It is a VGG16 model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p18775124582720"><a name="p18775124582720"></a><a name="p18775124582720"></a>Download the source network model file and its weight file by referring to<strong id="b19172155512916"><a name="b19172155512916"></a><a name="b19172155512916"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/vgg16" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/vgg16</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p1028761705212"><a name="p1028761705212"></a><a name="p1028761705212"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/inception_v4" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/inception_v4</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
-    <tr id="row2775194518272"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p5775154516272"><a name="p5775154516272"></a><a name="p5775154516272"></a>vgg19</p>
+    <tr id="row77732045152717"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p0773114572715"><a name="p0773114572715"></a><a name="p0773114572715"></a><span>mobilenet_v1</span></p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p0775204532711"><a name="p0775204532711"></a><a name="p0775204532711"></a>Image classification inference model.</p>
-    <p id="p1477554519275"><a name="p1477554519275"></a><a name="p1477554519275"></a>It is a VGG19 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p11774645162715"><a name="p11774645162715"></a><a name="p11774645162715"></a>图片分类推理模型。</p>
+    <p id="p47741455273"><a name="p47741455273"></a><a name="p47741455273"></a>是基于Caffe的MobileNet V1模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p777554542713"><a name="p777554542713"></a><a name="p777554542713"></a>Download the source network model file and its weight file by referring to<strong id="b1268419531013"><a name="b1268419531013"></a><a name="b1268419531013"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/vgg19" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/vgg19</a>.</p>
-    </td>
-    </tr>
-    <tr id="row17513194404914"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p7513164419495"><a name="p7513164419495"></a><a name="p7513164419495"></a>squeezenet</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p1315111145015"><a name="p1315111145015"></a><a name="p1315111145015"></a>Image classification inference model.</p>
-    <p id="p1515131114501"><a name="p1515131114501"></a><a name="p1515131114501"></a>It is a SqueezeNet model based on Caffe.</p>
-    </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p16265437125015"><a name="p16265437125015"></a><a name="p16265437125015"></a>Download the source network model file and its weight file by referring to<strong id="b12997191414105"><a name="b12997191414105"></a><a name="b12997191414105"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/squeezenet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/squeezenet</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p5586471511"><a name="p5586471511"></a><a name="p5586471511"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/mobilenet_v1" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/mobilenet_v1</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
-    <tr id="row17757454270"><td class="cellrowborder" valign="top" width="21%" headers="mcps1.2.4.1.1 "><p id="p17759452279"><a name="p17759452279"></a><a name="p17759452279"></a>dpn98</p>
+    <tr id="row12774164515277"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p187741345112718"><a name="p187741345112718"></a><a name="p187741345112718"></a><span>mobilenet_v2</span></p>
     </td>
-    <td class="cellrowborder" valign="top" width="23%" headers="mcps1.2.4.1.2 "><p id="p4775545162716"><a name="p4775545162716"></a><a name="p4775545162716"></a>Image classification inference model.</p>
-    <p id="p1577504516278"><a name="p1577504516278"></a><a name="p1577504516278"></a>It is a DPN-98 model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p277414519274"><a name="p277414519274"></a><a name="p277414519274"></a>图片分类推理模型。</p>
+    <p id="p8774174502713"><a name="p8774174502713"></a><a name="p8774174502713"></a>是基于Caffe的MobileNet V2模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="56.00000000000001%" headers="mcps1.2.4.1.3 "><p id="p19776154592711"><a name="p19776154592711"></a><a name="p19776154592711"></a>Download the source network model file and its weight file by referring to<strong id="b1087911266106"><a name="b1087911266106"></a><a name="b1087911266106"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/dpn98" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/classification/dpn98</a>.</p>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p1677414514274"><a name="p1677414514274"></a><a name="p1677414514274"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/mobilenet_v2" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/mobilenet_v2</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    </td>
+    </tr>
+    <tr id="row1577434516271"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p3774194512713"><a name="p3774194512713"></a><a name="p3774194512713"></a><span>resnet18</span></p>
+    </td>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p7774245122713"><a name="p7774245122713"></a><a name="p7774245122713"></a>图片分类推理模型。</p>
+    <p id="p577494517271"><a name="p577494517271"></a><a name="p577494517271"></a>是基于Caffe的ResNet 18模型。</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p16774144510270"><a name="p16774144510270"></a><a name="p16774144510270"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet18" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet18</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    </td>
+    </tr>
+    <tr id="row377414452276"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p10774545142714"><a name="p10774545142714"></a><a name="p10774545142714"></a><span>resnet50</span></p>
+    </td>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p97741245142712"><a name="p97741245142712"></a><a name="p97741245142712"></a>图片分类推理模型。</p>
+    <p id="p177412456271"><a name="p177412456271"></a><a name="p177412456271"></a>是基于Caffe的ResNet 50模型。</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p57747459272"><a name="p57747459272"></a><a name="p57747459272"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet50" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet50</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    </td>
+    </tr>
+    <tr id="row377484514279"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p1777454516275"><a name="p1777454516275"></a><a name="p1777454516275"></a><span>resnet101</span></p>
+    </td>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p15774124516274"><a name="p15774124516274"></a><a name="p15774124516274"></a>图片分类推理模型。</p>
+    <p id="p7774134552720"><a name="p7774134552720"></a><a name="p7774134552720"></a>是基于Caffe的ResNet 101模型。</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p117741545132710"><a name="p117741545132710"></a><a name="p117741545132710"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet101" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet101</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    </td>
+    </tr>
+    <tr id="row14774154513279"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p1077413452272"><a name="p1077413452272"></a><a name="p1077413452272"></a><span>resnet15</span>2</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p177434517275"><a name="p177434517275"></a><a name="p177434517275"></a>图片分类推理模型。</p>
+    <p id="p877515459276"><a name="p877515459276"></a><a name="p877515459276"></a>是基于Caffe的ResNet 152模型。</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p777514582712"><a name="p777514582712"></a><a name="p777514582712"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet152" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/resnet152</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    </td>
+    </tr>
+    <tr id="row37752450270"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p977544513278"><a name="p977544513278"></a><a name="p977544513278"></a><span>vgg16</span></p>
+    </td>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p1177514522713"><a name="p1177514522713"></a><a name="p1177514522713"></a>图片分类推理模型。</p>
+    <p id="p10775194582713"><a name="p10775194582713"></a><a name="p10775194582713"></a>是基于Caffe的VGG16模型。</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p18775124582720"><a name="p18775124582720"></a><a name="p18775124582720"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/vgg16" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/vgg16</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    </td>
+    </tr>
+    <tr id="row2775194518272"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p5775154516272"><a name="p5775154516272"></a><a name="p5775154516272"></a><span>vgg19</span></p>
+    </td>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p0775204532711"><a name="p0775204532711"></a><a name="p0775204532711"></a>图片分类推理模型。</p>
+    <p id="p1477554519275"><a name="p1477554519275"></a><a name="p1477554519275"></a>是基于Caffe的VGG19模型。</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p777554542713"><a name="p777554542713"></a><a name="p777554542713"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/vgg19" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/vgg19</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    </td>
+    </tr>
+    <tr id="row17513194404914"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p7513164419495"><a name="p7513164419495"></a><a name="p7513164419495"></a>squeezenet</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p1315111145015"><a name="p1315111145015"></a><a name="p1315111145015"></a>图片分类推理模型。</p>
+    <p id="p1515131114501"><a name="p1515131114501"></a><a name="p1515131114501"></a>是基于Caffe的SqueezeNet模型。</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p16265437125015"><a name="p16265437125015"></a><a name="p16265437125015"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/squeezenet" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/squeezenet</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
+    </td>
+    </tr>
+    <tr id="row17757454270"><td class="cellrowborder" valign="top" width="12.85%" headers="mcps1.2.4.1.1 "><p id="p17759452279"><a name="p17759452279"></a><a name="p17759452279"></a><span>dpn98</span></p>
+    </td>
+    <td class="cellrowborder" valign="top" width="12.57%" headers="mcps1.2.4.1.2 "><p id="p4775545162716"><a name="p4775545162716"></a><a name="p4775545162716"></a>图片分类推理模型。</p>
+    <p id="p1577504516278"><a name="p1577504516278"></a><a name="p1577504516278"></a>是基于Caffe的<span>dpn98</span>模型。</p>
+    </td>
+    <td class="cellrowborder" valign="top" width="74.58%" headers="mcps1.2.4.1.3 "><p id="p19776154592711"><a name="p19776154592711"></a><a name="p19776154592711"></a>请参考<a href="https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/dpn98" target="_blank" rel="noopener noreferrer">https://gitee.com/HuaweiAscend/models/tree/master/computer_vision/classification/dpn98</a>目录中README.md下载原始网络模型文件及其对应的权重文件。</p>
     </td>
     </tr>
     </tbody>
     </table>
 
-3.  Log in to Ubuntu Server where Mind Studio is located as the Mind Studio installation user, determine the current DDK version number, and set the environment variables  **DDK\_HOME**,  **tools\_version**,  **LD\_LIBRARY\_PATH**.
-    1.  <a name="en-us_topic_0203223294_li61417158198"></a>Query the current DDK version number.
+3.  以Mind Studio安装用户登录Mind Studio所在Ubuntu服务器，确定当前使用的DDK版本号并设置环境变量DDK\_HOME，tools\_version，LD\_LIBRARY\_PATH。
+    1.  <a name="zh-cn_topic_0203223294_li61417158198"></a>查询当前使用的DDK版本号。
 
-        A DDK version number can be queried by using either Mind Studio or the DDK software package.
+        可通过Mind Studio工具查询，也可以通过DDK软件包进行获取。
 
-        -   Using Mind Studio
+        -   使用Mind Studio工具查询。
 
-            On the project page of Mind Studio, choose  **File \> Settings \> System Settings \> Ascend DDK**  to access  [Querying the DDK version number](#en-us_topic_0203223294_fig17553193319118).
+            在Mind Studio工程界面依次选择“File \> Settings \> System Settings \> Ascend DDK“，弹出如[图 DDK版本号查询](#zh-cn_topic_0203223294_fig17553193319118)所示界面。
 
-            **Figure  1**  Querying the DDK version number<a name="en-us_topic_0203223294_fig17553193319118"></a>  
-            ![](figures/querying-the-ddk-version-number.png "querying-the-ddk-version-number")
+            **图 1**  DDK版本号查询<a name="zh-cn_topic_0203223294_fig17553193319118"></a>  
+            ![](figures/DDK版本号查询.png "DDK版本号查询")
 
-            The displayed  **DDK Version**  is the current DDK version number, for example,  **1.31.T15.B150**.
+            其中显示的**DDK Version**就是当前使用的DDK版本号，如**1.31.T15.B150**。
 
-        -   Using the DDK software package
+        -   通过DDK软件包进行查询。
 
-            Obtain the DDK version number based on the DDK package name.
+            通过安装的DDK的包名获取DDK的版本号。
 
-            DDK package name format:  **Ascend\_DDK-\{software version\}-\{interface version\}-x86\_64.ubuntu16.04.tar.gz**
+            DDK包的包名格式为：**Ascend\_DDK-\{software version\}-\{interface version\}-x86\_64.ubuntu16.04.tar.gz**
 
-            _Software version_  indicates the DDK software version number.
+            其中**software version**就是DDK的软件版本号。
 
-            For example:
+            例如：
 
-            If the DDK package name is  **Ascend\_DDK-1.31.T15.B150-1.1.1-x86\_64.ubuntu16.04.tar.gz**, the DDK version is  **1.31.T15.B150**.
+            DDK包的包名为Ascend\_DDK-1.31.T15.B150-1.1.1-x86\_64.ubuntu16.04.tar.gz，则此DDK的版本号为1.31.T15.B150。
 
-    2.  Set environment variables.
+    2.  设置环境变量。
 
         **vim \~/.bashrc**
 
-        Run the following commands to add the environment variables  **DDK\_HOME**  and  **LD\_LIBRARY\_PATH**  to the last line:
+        执行如下命令在最后一行添加DDK\_HOME及LD\_LIBRARY\_PATH的环境变量。
 
         **export tools\_version=_1.31.X.X_**
 
@@ -220,143 +220,143 @@ Before running the sample, obtain the source code package and configure the envi
 
         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
 
-        >![](public_sys-resources/icon-note.gif) **NOTE:**   
-        >-   **_1.31.X.X_**  indicates the DDK version queried in  [a](#en-us_topic_0203223294_li61417158198). Set this parameter based on the query result, for example,  **1.31.T15.B150**.  
-        >-   If the environment variables have been added, skip this step.  
+        >![](public_sys-resources/icon-note.gif) **说明：**   
+        >-   **_1.31.X.X_**是[a](#zh-cn_topic_0203223294_li61417158198)中查询到的DDK版本号，需要根据查询结果对应填写，如**1.31.T15.B150**  
+        >-   如果此环境变量已经添加，则此步骤可跳过。  
 
-        Type  **:wq!**  to save settings and exit.
+        输入:wq!保存退出。
 
-        Run the following command for the environment variable to take effect:
+        执行如下命令使环境变量生效。
 
         **source \~/.bashrc**
 
-4.  Convert the source network model to a model supported by the Ascend AI processor.
+4.  将原始网络模型转换为适配昇腾AI处理器的模型。
 
-    1.  Choose  **Tools \> Model Convert**  from the main menu of  Mind Studio.
-    2.  On the  **Model Conversion**  page that is displayed, configure model conversion.
-        -   Select the model file downloaded in  [Step 2](#li29641938112018)  for  **Model File**. The weight file is automatically matched and filled in  **Weight File**.
-        -   Set  **Model Name**  to the model name in  [Table 1](#table1119094515272).
+    1.  在Mind Studio操作界面的顶部菜单栏中选择**Tools \> Model Convert**，进入模型转换界面。
+    2.  在弹出的**Model Conversion**操作界面中，进行模型转换配置。
+        -   Model File选择[步骤2](#li29641938112018)中下载的模型文件，此时会自动匹配到权重文件并填写在Weight File中。
+        -   Model Name填写为[表1](#table1119094515272)中对应的**模型名称**。
 
-            ![](figures/en-us_image_0208264607.png)
+            ![](figures/zh-cn_image_0208264607.png)
 
-        -   For the GoogleNet and Inception\_v2 models, a general classification network application processes one image at a time. Therefore, the value of  **N**  in  **Input Node: data**  must be set to  **1**  during conversion, as shown in  [Figure 2](#fig95695336322). In the  **AIPP**  configuration, set  **Input Image Size**  to  **256**  and  **224**, respectively. In this sample, the value must be 128 x 16 aligned. Set  **Model Image Format**  to  **BGR888\_U8**, as shown in  [Figure 3](#fig14632122193310).
+        -   googlenet、inception\_v2模型转换时中，由于通用分类网络应用一次处理一张图片，所以转换时需要将Input Node配置中的**N**修改为1，如[图2](#fig95695336322)所示。AIPP配置中的  **Input Image Size**  需要分别修改为256、224，此处需要128\*16对齐，**Model Image Format**  选择BGR888\_U8，如[图3](#fig14632122193310)所示。
 
-            **Figure  2**  Nodes configuration example<a name="fig95695336322"></a>  
-            ![](figures/nodes-configuration-example.png "nodes-configuration-example")
+            **图 2**  Nodes配置示例<a name="fig95695336322"></a>  
+            ![](figures/Nodes配置示例.png "Nodes配置示例")
 
-            **Figure  3**  AIPP configuration example<a name="fig14632122193310"></a>  
-            ![](figures/aipp-configuration-example.png "aipp-configuration-example")
+            **图 3**  AIPP配置示例<a name="fig14632122193310"></a>  
+            ![](figures/AIPP配置示例.png "AIPP配置示例")
 
-    3.  Click  **OK**  to start model conversion.
+    3.  单击OK开始转换模型。
 
-        After successful conversion, an .om offline model is generated in the  **$HOME/modelzoo/XXX/device**  directory.
+        模型转换成功后，后缀为.om的离线模型存放地址为：$HOME/modelzoo/XXX/device。
 
-    >![](public_sys-resources/icon-note.gif) **NOTE:**   
-    >-   For details about the descriptions of each step and parameters in model conversion on Mind Studio, see "Model Conversion" in the  [Mind Studio User Guide](https://ascend.huawei.com/doc/mindstudio/).  
-    >-   **XXX**  indicates the name of the model to be converted. For example,  **googlenet.om**  is stored in  **$HOME/modelzoo/googlenet/device**.  
+    >![](public_sys-resources/icon-note.gif) **说明：**   
+    >-   Mind Studio模型转换中每一步的具体意义和参数说明可以参考[Mind Studio用户手册](https://ascend.huawei.com/doc/mindstudio/)中的“模型转换“章节。  
+    >-   XXX表示当前转换的模型名称，如googlenet.om存放地址为：$HOME/modelzoo/googlenet/device。  
 
-5.  <a name="li470213205618"></a>Upload the converted .om model file to the  **sample-classification/script**  directory under the source code path in  [Step 1](#li953280133816).
+5.  <a name="li470213205618"></a>将转换好的模型文件（.om文件）上传到[步骤1](#li953280133816)中源码所在路径下的“**sample-classification/script**”目录下。
 
-## Build<a name="section18931344873"></a>
+## 编译<a name="section18931344873"></a>
 
-1.  Open the project.
+1.  打开对应的工程。
 
-    Go to the directory that stores the decompressed installation package as the Mind Studio installation user in CLI mode, for example,  **$HOME/MindStudio-ubuntu/bin**. Run the following command to start Mind Studio:
+    以Mind Studio安装用户在命令行进入安装包解压后的“MindStudio-ubuntu/bin”目录，如：$HOME/MindStudio-ubuntu/bin。执行如下命令启动Mind Studio。
 
     **./MindStudio.sh**
 
-    Open the  **sample-classification**  project, as shown in  [Figure 4](#fig11106241192810).
+    启动成功后，打开**sample-classification**工程，如[图 打开classification工程](#fig11106241192810)所示。
 
-    **Figure  4**  Opening the classification project<a name="fig11106241192810"></a>  
-    ![](figures/opening-the-classification-project.png "opening-the-classification-project")
+    **图 4**  打开classification工程<a name="fig11106241192810"></a>  
+    ![](figures/打开classification工程.png "打开classification工程")
 
-2.  Configure project information in the  **src/param\_configure.conf**  file.
+2.  在**src/param\_configure.conf**文件中配置相关工程信息。
 
-    **Figure  5**  Configuration file path<a name="fig0391184062214"></a>  
-    ![](figures/configuration-file-path-13.png "configuration-file-path-13")
+    **图 5**  配置文件路径<a name="fig0391184062214"></a>  
+    ![](figures/配置文件路径-14.png "配置文件路径-14")
 
-    Content of the configuration file:
+    该配置文件内容如下：
 
     ```
     remote_host=
     model_name=
     ```
 
-    Parameter settings to be manually added:
+    需要手动添加参数配置：
 
-    -   **remote\_host**: IP address of the Atlas 200 DK developer board
-    -   **model\_name**: offline model name
+    -   remote\_host：Atlas 200 DK开发者板的IP地址。
+    -   model\_name : 离线模型名称。
 
-    Configuration example:
+    配置示例：
 
     ```
     remote_host=192.168.1.2
     model_name=googlenet.om
     ```
 
-    >![](public_sys-resources/icon-note.gif) **NOTE:**   
-    >-   All the three parameters must be set. Otherwise, the build fails.  
-    >-   Do not use double quotation marks \(""\) during parameter settings.  
-    >-   Only one model name can be typed into the configuration file. The typed model must be one of the models stored in  [Step 5](#li470213205618). GoogleNet is used as an example. You can use any of other models listed in this sample and execute it by performing the preceding steps.  
+    >![](public_sys-resources/icon-note.gif) **说明：**   
+    >-   参数必须全部填写，否则无法通过build。  
+    >-   注意参数填写时不需要使用“”符号。  
+    >-   配置文件中只能填入单个模型名称，填入的模型必须为[步骤5](#li470213205618)中存储的模型之一。本示例是以googlenet举例，用户可以使用本样例列举的其它模型按照文档步骤进行替换运行。  
 
-3.  Run the  **deploy.sh**  script to adjust configuration parameters and download and compile the third-party library. Open the  **Terminal**  window of Mind Studio. By default, the home directory of the code is used. Run the  **deploy.sh**  script in the background to deploy the environment, as shown in  [Figure 6](#fig478266192619).
+3.  执行deploy脚本， 进行配置参数调整及第三方库下载编译 打开Mind Studio工具的Terminal，此时默认在代码主目录下，执行如下命令在后台指执行deploy脚本，进行环境部署。如[图 执行deploy脚本](#fig478266192619)所示。
 
-    **Figure  6**  Running the deploy.sh script<a name="fig478266192619"></a>  
-    ![](figures/running-the-deploy-sh-script-14.png "running-the-deploy-sh-script-14")
+    **图 6**  执行deploy脚本<a name="fig478266192619"></a>  
+    ![](figures/执行deploy脚本-15.png "执行deploy脚本-15")
 
-    >![](public_sys-resources/icon-note.gif) **NOTE:**   
-    >-   During the first deployment, if no third-party library is used, the system automatically downloads and builds the third-party library, which may take a long time. The third-party library can be directly used for the subsequent build.  
-    >-   During deployment, select the IP address of the host that communicates with the developer board. Generally, the IP address is the IP address configured for the virtual NIC. If the IP address is in the same network segment as the IP address of the developer board, it is automatically selected for deployment. If they are not in the same network segment, you need to manually type the IP address of the host that communicates with the Atlas DK to complete the deployment.  
+    >![](public_sys-resources/icon-note.gif) **说明：**   
+    >-   首次deploy时，没有部署第三方库时会自动下载并编译，耗时可能比较久，请耐心等待。后续再重新编译时，不会重复下载编译，部署如上图所示。  
+    >-   deploy时，需要选择与开发板通信的主机侧ip，一般为虚拟网卡配置的ip。如果此ip和开发板ip属于同网段，则会自动选择并部署。如果非同网段，则需要手动输入与开发板通信的主机侧ip才能完成deploy。  
 
-4.  Start building. Open Mind Studio and choose  **Build \> Build \> Build-Configuration**  from the main menu. The  **build**  and  **run**  folders are generated in the directory, as shown in  [Figure 7](#fig1741464713019).
+4.  开始编译，打开Mind Studio工具，在工具栏中点击**Build \> Build \> Build-Configuration**。如[图 编译操作及生成文件](#fig1741464713019)所示，会在目录下生成build和run文件夹。
 
-    **Figure  7**  Build and file generating<a name="fig1741464713019"></a>  
-    ![](figures/build-and-file-generating-15.png "build-and-file-generating-15")
+    **图 7**  编译操作及生成文件<a name="fig1741464713019"></a>  
+    ![](figures/编译操作及生成文件-16.png "编译操作及生成文件-16")
 
-    >![](public_sys-resources/icon-notice.gif) **NOTICE:**   
-    >When you build a project for the first time,  **Build \> Build**  is unavailable. You need to choose  **Build \> Edit Build Configuration**  to set parameters before the build.  
+    >![](public_sys-resources/icon-notice.gif) **须知：**   
+    >首次编译工程时，**Build \> Build**为灰色不可点击状态。需要点击**Build \> Edit Build Configuration**，配置编译参数后再进行编译。  
 
-5.  Upload the images to be inferred to any directory of the  **HwHiAiUser**  user on the host side.
+5.  将需要推理的图片上传至Host侧任一属组为HwHiAiUser用户的目录。
 
-    The image requirements are as follows:
+    图片要求如下：
 
-    -   Format: jpg, png, and bmp
-    -   Width of the input image: an integer ranging from 16px to 4096px
-    -   Height of the input image: an integer ranging from 16px to 4096px
+    -   格式：jpg、png、bmp。
+    -   输入图片宽度：16px\~4096px之间的整数。
+    -   输入图片高度：16px\~4096px之间的整数。
 
 
-## Run<a name="section372782554919"></a>
+## 运行<a name="section372782554919"></a>
 
-1.  On the toolbar of Mind Studio, click  **Run**  and choose  **Run \> Run 'sample-classification'**. As shown in  [Figure 8](#fig93931954162719), the executable application is running on the developer board.
+1.  在Mind Studio工具的工具栏中找到Run按钮，单击  **Run \> Run 'sample-classification'**，如[图 程序已执行示意图](#fig93931954162719)所示，可执行程序已经在开发者板执行。
 
-    **Figure  8**  Running application<a name="fig93931954162719"></a>  
-    ![](figures/running-application.png "running-application")
+    **图 8**  程序已执行示意图<a name="fig93931954162719"></a>  
+    ![](figures/程序已执行示意图.png "程序已执行示意图")
 
-    You can ignore the error information reported during the execution because Mind Studio cannot transfer parameters for an executable application. In the preceding steps, the executable application and dependent library files are deployed to the developer board. You need to log in to the developer board in SSH mode and manually execute the files in the corresponding directory. For details, see the following steps.
+    以上报错信息请忽略，因为Mind Studio无法为可执行程序传参，上述步骤是将可执行程序与依赖的库文件部署到开发者板，此步骤需要ssh登录到开发者板至相应的目录文件下手动执行，具体请参考以下步骤。
 
-2.  Log in to the host side as the  **HwHiAiUser**  user in SSH mode on Ubuntu Server where  Mind Studio  is located.
+2.  在Mind Studio所在Ubuntu服务器中，以HwHiAiUser用户SSH登录到Host侧。
 
     **ssh HwHiAiUser@**_host\_ip_
 
-    For the Atlas 200 DK, the default value of  _**host\_ip**_  is  **192.168.1.2**  \(USB connection mode\) or  **192.168.0.2**  \(NIC connection mode\).
+    对于Atlas 200 DK，host\_ip默认为192.168.1.2（USB连接）或者192.168.0.2（NIC连接）。
 
-3.  Go to the path of the executable files of the classification network application.
+3.  进入通用分类网络应用的可执行文件所在路径。
 
     **cd \~/HIAI\_PROJECTS/ascend\_workspace/classification/out**
 
-4.  Run the application.
+4.  执行应用程序。
 
-    Run the  **run\_classification.py**  script to print the inference result on the execution terminal.
+    执行**run\_classification.py**脚本会将推理结果在执行终端直接打印显示。
 
-    Command example:
+    命令示例如下所示：
 
     **python3 run\_classification.py -w  _224_  -h  _224_  -i** **_./example.jpg_  -n  _10_**
 
-    -   **-w/model\_width**: width of the input image of a model. The value is an integer ranging from 16px to 4096px. Obtain the input width and height required by each model by referring to the README file of each model file on Gitee. For details, see  [Table 1](#table1119094515272).
-    -   **-h/model\_height**: height of the input image of a model. The value is an integer ranging from 16px to 4096px. Obtain the input width and height required by each model by referring to the README file of each model file on Gitee. For details, see  [Table 1](#table1119094515272).
-    -   **-i/input\_path**: path of the input image. It can be a directory, indicating that all images in the current directory are used as input. \(Multiple inputs can be specified\).
-    -   **-n/top\_n**: the first  _n_  inference results that are output
+    -   -w/model\_width：模型的输入图片宽度，为16\~4096之间的整数，请参考[表1](#table1119094515272)在Gitee上查看所使用模型文件的Readme，获取模型要求的输入数据的宽和高。
+    -   -h/model\_height：模型的输入图片高度，为16\~4096之间的整数，请参考[表1](#table1119094515272)在Gitee上查看所使用模型文件的Readme，获取模型要求的输入数据的宽和高。
+    -   -i/input\_path：输入图片的路径，可以是目录，表示当前目录下的所有图片都作为输入（可以指定多个输入）。
+    -   -n/top\_n：输出前n个推理结果。
 
-    For other parameters, run the  **python3 run\_classification.py --help**  command to check help information.
+    其他详细参数请执行**python3 run\_classification.py --help**命令参见帮助信息。
 
 
