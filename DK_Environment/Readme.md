@@ -1,25 +1,25 @@
-中文|[English](Readme_EN.md)
+English|[中文](Readme_cn.md)
 
-# 开发板环境依赖安装<a name="ZH-CN_TOPIC_0228768065"></a>
+# Installing Environment Dependencies for the Developer Board<a name="EN-US_TOPIC_0228768065"></a>
 
-开发板环境依赖安装包括python、opencv、hiai库等。请按照以下步骤进行依赖安装
+The environment dependencies of the developer board include Python, OpenCV, and HiAI libraries. Perform the following steps to install the dependencies:
 
-1.  在开发板的root用户下更换源。
+1.  Run the following command to replace the source as the  **root**  user of the developer board:
 
     **vim /etc/apt/sources.list**
 
-    把原有源更换为arm源，可用的国内arm源有中科大源和清华源等。
+    Replace the original source with an available Arm source in China such as the USTC source and Tsinghua source.
 
-    >![](public_sys-resources/icon-note.gif) **说明：**   
-    >arm源可参考[https://bbs.huaweicloud.com/forum/thread-37023-1-1.html](https://bbs.huaweicloud.com/forum/thread-37023-1-1.html)  
+    >![](public_sys-resources/icon-note.gif) **NOTE:**   
+    >For details about the Arm source, visit  [https://bbs.huaweicloud.com/forum/thread-37023-1-1.html](https://bbs.huaweicloud.com/forum/thread-37023-1-1.html).  
 
-    源更新后，执行以下命令更新软件列表。
+    After the source is updated, run the following command to update the software list:
 
     **apt-get update**
 
-2.  安装相关依赖，环境依赖分为python2和python3版本。当前python样例大多使用python2环境，如果有python3使用需求的可以按照[python3环境依赖安装](#li81699892817)进行安装。
-    1.  Python2开发环境的依赖安装。
-        1.  安装python2的依赖。
+2.  Install related dependencies. Environment dependencies are classified into Python 2 and Python 3. Currently, most Python samples use the Python 2 environment. Install Python 3 if required by referring to  [2.b](#li81699892817).
+    1.  Installing the Python 2 environment dependency
+        1.  Install the Python 2 dependency.
 
             ```
             apt-get install python-setuptools python-dev build-essential python-pip
@@ -29,33 +29,33 @@
             pip install numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf
             ```
 
-        2.  安装python2的hiai库。
+        2.  Install the HiAI library of Python 2.
 
-            下载python2\_hiai\_install脚本到开发者板的/home/HwHiAiUser目录下，并以root用户执行该脚本。
+            Download the  **python2\_hiai\_install**  script to the  **/home/HwHiAiUser**  directory of the developer board and execute the script as the  **root**  user.
 
             **bash python2\_hiai\_install.sh**
 
-            安装后如[图1](#fig961803392713)所示，则为安装成功。
+            If the information shown in  [Figure 1](#fig961803392713)  is displayed, the installation is successful.
 
-            **图 1**  hiai安装成功验证<a name="fig961803392713"></a>  
-            ![](figures/hiai安装成功验证.png "hiai安装成功验证")
+            **Figure  1**  Verifying HiAI installation<a name="fig961803392713"></a>  
+            ![](figures/verifying-hiai-installation.png "verifying-hiai-installation")
 
-        3.  以root用户下开发者板的/home/HwHiAiUser目录下执行以下命令安装OpenCV Python库。
+        3.  Run the following command in the  **/home/HwHiAiUser**  directory of the developer board as the  **root**  user to install the OpenCV Python library:
 
             **apt-get install python-opencv**
 
-            安装后如[图2](#fig861883362717)所示，则为安装成功。
+            If the information shown in  [Figure 2](#fig861883362717)  is displayed, the installation is successful.
 
-            **图 2**  opencv安装成功验证<a name="fig861883362717"></a>  
-            ![](figures/opencv安装成功验证.png "opencv安装成功验证")
+            **Figure  2**  Verifying OpenCV installation<a name="fig861883362717"></a>  
+            ![](figures/verifying-opencv-installation.png "verifying-opencv-installation")
 
-            >![](public_sys-resources/icon-note.gif) **说明：**   
-            >-   pip install安装有报错“SSLError”时，请使用：pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf 安装依赖，表示可信赖的主机解决问题。  
-            >-   python2\_hiai\_install脚本下载路径：[https://gitee.com/HuaweiAscend/tools/blob/master/python2\_hiai\_install.sh](https://gitee.com/HuaweiAscend/tools/blob/master/python2_hiai_install.sh)  。  
+            >![](public_sys-resources/icon-note.gif) **NOTE:**   
+            >-   If the message "SSLError" is displayed during installation, run  **pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf**  to install the dependency, indicating that the problem is resolved on a trusted host.  
+            >-   Download the  **python2\_hiai\_install**  script from  [https://github.com/Ascend-Huawei/tools/blob/master/python2\_hiai\_install.sh](https://github.com/Ascend-Huawei/tools/blob/master/python2_hiai_install.sh).  
 
 
-    2.  <a name="li81699892817"></a>Python3开发环境的依赖安装。
-        1.  安装python3的依赖。
+    2.  <a name="li81699892817"></a>Installing the Python 3 environment dependency
+        1.  Install the Python 3 dependency.
 
             ```
             apt-get install python3-setuptools python3-dev build-essential python3-pip
@@ -65,31 +65,31 @@
             pip3 install numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf
             ```
 
-        2.  安装python3的hiai库。
+        2.  Install the HiAI library of Python 3.
 
-            下载python3\_hiai\_install脚本到开发板的/home/HwHiAiUser目录下，并以root用户执行该脚本。
+            Download the  **python3\_hiai\_install**  script to the  **/home/HwHiAiUser**  directory of the developer board and execute the script as the  **root**  user.
 
             **bash python3\_hiai\_install.sh**
 
-        3.  Python3安装OpenCV需要使用源码安装，安装步骤如下。
+        3.  Installing OpenCV using Python 3 requires source code. Perform the following operations:
 
-            在开发板者中以root用户在/home/HwHiAiUser目录下执行以下命令下载源码。
+            On the developer board, run the following commands in the  **/home/HwHiAiUser**  directory as the  **root**  user to download the source code:
 
-            -   执行如下命令下载OpenCV源码。
+            -   Run the following command to download the OpenCV source code:
 
                 **git clone  [https://github.com/opencv/opencv.git](https://github.com/opencv/opencv.git)**
 
-            -   执行如下命令下载OpenCV的依赖。
+            -   Run the following command to download the OpenCV dependency:
 
                 **git clone  [https://github.com/opencv/opencv\_contrib.git](https://github.com/opencv/opencv_contrib.git)**
 
-            执行以下代码安装构建opencv的工具。
+            Run the following code to install the tool for building OpenCV:
 
             ```
             apt-get install build-essential -yapt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev libv4l-dev -y
             ```
 
-            执行以下代码在opencv中构建环境。
+            Run the following code to build the environment in OpenCV:
 
             **cd opencv**
 
@@ -101,7 +101,7 @@
             cmake -D BUILD_opencv_python3=YES -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_LIBV4L=ON -D OPENCV_EXTRA_MODULES=../../opencv_contrib/modules -D PYTHON3_LIBRARIES=/usr/lib/arm-linux-gnueabihf/libpython3.5m.so -D PYTHON3_NUMPY_INCLUDE_DIRS=/usr/local/lib/python3.5/dist-packages/numpy/core/include/ ..
             ```
 
-            执行以下代码编译、安装并更新动态库。
+            Run the following code to build, install, and update the dynamic library:
 
             **make -j8**
 
@@ -109,9 +109,9 @@
 
             **ldconfig**
 
-            >![](public_sys-resources/icon-note.gif) **说明：**   
-            >-   pip3 install安装有报错“SSLError”时，请使用：pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf 安装依赖，表示可信赖的主机解决问题。  
-            >-   python3\_hiai\_install脚本下载路径：[https://gitee.com/HuaweiAscend/tools/blob/master/python3\_hiai\_install.sh](https://gitee.com/HuaweiAscend/tools/blob/master/python3_hiai_install.sh)  。  
+            >![](public_sys-resources/icon-note.gif) **NOTE:**   
+            >-   If the message "SSLError" is displayed during installation, run  **pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf**  to install the dependency, indicating that the problem is resolved on a trusted host.  
+            >-   Download the  **python3\_hiai\_install**  script from  **https://github.com/Ascend-Huawei/tools**.  
 
 
 
