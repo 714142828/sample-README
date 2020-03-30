@@ -1,12 +1,12 @@
 English|[中文](Readme_cn.md)
 
-# Semantic Segmentation Network Application \(Python\)<a name="EN-US_TOPIC_0228757085"></a>
+# Semantic Segmentation Network Application \(Python\)<a name="EN-US_TOPIC_0232637441"></a>
 
 This application can run on the Atlas 200 DK to implement the inference function of the ERFNet network and output images with inference result.
 
 The current application adapts to  [DDK&RunTime](https://ascend.huawei.com/resources)  of 1.3.0.0 as well as 1.32.0.0 and later versions.
 
-## Prerequisites<a name="section137245294533"></a>
+## Prerequisites<a name="en-us_topic_0228757085_section137245294533"></a>
 
 Before deploying this sample, ensure that:
 
@@ -15,11 +15,11 @@ Before deploying this sample, ensure that:
 -   The Atlas 200 DK developer board has been connected to  Mind Studio, the SD card has been created, and the compilation environment has been configured.
 -   The developer board is connected to the Internet over the USB port by default. The IP address of the developer board is  **192.168.1.2**.
 
-## Software Preparation<a name="section8534138124114"></a>
+## Software Preparation<a name="en-us_topic_0228757085_section8534138124114"></a>
 
 Before running this application, obtain the source code package and configure the environment as follows.
 
-1.  <a name="li953280133816"></a>Obtain the source code package.
+1.  <a name="en-us_topic_0228757085_li953280133816"></a>Obtain the source code package.
     1.  By downloading the package
 
         Download all code in the repository at  [https://github.com/Atlas200dk/sample-segmentation-python](https://github.com/Atlas200dk/sample-classification-python)  to any directory on Ubuntu Server where  Mind Studio  is located as the  Mind Studio  installation user, for example,  **$HOME/sample-segmentation-python**.
@@ -32,25 +32,25 @@ Before running this application, obtain the source code package and configure th
 
 2.  Obtain the network model required by the application.
 
-    Refer to  [Table 1](#table1119094515272)  to obtain the source network model used in this application and the corresponding weight file. Save them to any directory of the Ubuntu server with  Mind Studio  installed, for example,  **$HOME/ascend/models/sample-segmentation-python**.
+    Refer to  [Table 1](#en-us_topic_0228757085_table1119094515272)  to obtain the source network model used in this application and the corresponding weight file. Save them to any directory of the Ubuntu server with  Mind Studio  installed, for example,  **$HOME/ascend/models/sample-segmentation-python**.
 
     **Table  1**  Models used in a semantic segmentation network application
 
-    <a name="table1119094515272"></a>
-    <table><thead align="left"><tr id="row677354502719"><th class="cellrowborder" valign="top" width="12.15%" id="mcps1.2.4.1.1"><p id="p167731845122717"><a name="p167731845122717"></a><a name="p167731845122717"></a>Model Name</p>
+    <a name="en-us_topic_0228757085_table1119094515272"></a>
+    <table><thead align="left"><tr id="en-us_topic_0228757085_row677354502719"><th class="cellrowborder" valign="top" width="12.15%" id="mcps1.2.4.1.1"><p id="en-us_topic_0228757085_p167731845122717"><a name="en-us_topic_0228757085_p167731845122717"></a><a name="en-us_topic_0228757085_p167731845122717"></a>Model Name</p>
     </th>
-    <th class="cellrowborder" valign="top" width="17.53%" id="mcps1.2.4.1.2"><p id="p277317459276"><a name="p277317459276"></a><a name="p277317459276"></a>Description</p>
+    <th class="cellrowborder" valign="top" width="17.53%" id="mcps1.2.4.1.2"><p id="en-us_topic_0228757085_p277317459276"><a name="en-us_topic_0228757085_p277317459276"></a><a name="en-us_topic_0228757085_p277317459276"></a>Description</p>
     </th>
-    <th class="cellrowborder" valign="top" width="70.32000000000001%" id="mcps1.2.4.1.3"><p id="p9773114512270"><a name="p9773114512270"></a><a name="p9773114512270"></a>Download Path</p>
+    <th class="cellrowborder" valign="top" width="70.32000000000001%" id="mcps1.2.4.1.3"><p id="en-us_topic_0228757085_p9773114512270"><a name="en-us_topic_0228757085_p9773114512270"></a><a name="en-us_topic_0228757085_p9773114512270"></a>Download Path</p>
     </th>
     </tr>
     </thead>
-    <tbody><tr id="row3122314144215"><td class="cellrowborder" valign="top" width="12.15%" headers="mcps1.2.4.1.1 "><p id="p1910619166207"><a name="p1910619166207"></a><a name="p1910619166207"></a>ERFNet</p>
+    <tbody><tr id="en-us_topic_0228757085_row3122314144215"><td class="cellrowborder" valign="top" width="12.15%" headers="mcps1.2.4.1.1 "><p id="en-us_topic_0228757085_p1910619166207"><a name="en-us_topic_0228757085_p1910619166207"></a><a name="en-us_topic_0228757085_p1910619166207"></a>ERFNet</p>
     </td>
-    <td class="cellrowborder" valign="top" width="17.53%" headers="mcps1.2.4.1.2 "><p id="p2010681612020"><a name="p2010681612020"></a><a name="p2010681612020"></a>Semantic segmentation inference model.</p>
-    <p id="p1710615162207"><a name="p1710615162207"></a><a name="p1710615162207"></a>It is an ERFNet model based on Caffe.</p>
+    <td class="cellrowborder" valign="top" width="17.53%" headers="mcps1.2.4.1.2 "><p id="en-us_topic_0228757085_p2010681612020"><a name="en-us_topic_0228757085_p2010681612020"></a><a name="en-us_topic_0228757085_p2010681612020"></a>Semantic segmentation inference model.</p>
+    <p id="en-us_topic_0228757085_p1710615162207"><a name="en-us_topic_0228757085_p1710615162207"></a><a name="en-us_topic_0228757085_p1710615162207"></a>It is an ERFNet model based on Caffe.</p>
     </td>
-    <td class="cellrowborder" valign="top" width="70.32000000000001%" headers="mcps1.2.4.1.3 "><p id="p910617162206"><a name="p910617162206"></a><a name="p910617162206"></a>Download the source network model file and its weight file by referring to<strong id="b159782239917"><a name="b159782239917"></a><a name="b159782239917"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet</a>.</p>
+    <td class="cellrowborder" valign="top" width="70.32000000000001%" headers="mcps1.2.4.1.3 "><p id="en-us_topic_0228757085_p910617162206"><a name="en-us_topic_0228757085_p910617162206"></a><a name="en-us_topic_0228757085_p910617162206"></a>Download the source network model file and its weight file by referring to<strong id="en-us_topic_0228757085_b159782239917"><a name="en-us_topic_0228757085_b159782239917"></a><a name="en-us_topic_0228757085_b159782239917"></a> README.md</strong> at <a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/segmentation/erfnet</a>.</p>
     </td>
     </tr>
     </tbody>
@@ -58,8 +58,8 @@ Before running this application, obtain the source code package and configure th
 
 3.  Convert the source network model to a model supported by the Ascend AI processor.
     1.  Choose  **Tools \> Model Convert**  from the main menu of  Mind Studio.
-    2.  On the  **Model Conversion**  page, set  **Model File**  and  **Weight File**  to the model file and weight file downloaded in  [1](#li953280133816), respectively.
-        -   Set  **Model Name**  to the model name in  [Table 1](#table1119094515272).
+    2.  On the  **Model Conversion**  page, set  **Model File**  and  **Weight File**  to the model file and weight file downloaded in  [1](#en-us_topic_0228757085_li953280133816), respectively.
+        -   Set  **Model Name**  to the model name in  [Table 1](#en-us_topic_0228757085_table1119094515272).
         -   During ERFNet model conversion, set  **Model Image Format**  to  **BGR888\_U8**  and disable  **MeanLess**.
         -   Retain default values for other parameters.
 
@@ -67,12 +67,12 @@ Before running this application, obtain the source code package and configure th
 
         After a model of 1.1.0.0 or 1.3.0.0 version is successfully converted, a .om offline model is generated in the  **$HOME/tools/che/model-zoo/my-model/xxx**  directory.
 
-        After a model of 1.31.0.0 or a later version is successfully converted, an .om offline model is generated in the  **$HOME/modelzoo/xxx/device/xxx.om**  directory.
+        After a model of 1.31.0.0 or a later version is successfully converted, an .om offline model is generated in the  **$HOME/modelzoo/xxx/device/_xxx_.om**  directory.
 
-    4.  Upload the converted .om model file to the  **sample-segmentation-python/segmentationapp/models**  directory under the source code path in  [Step 1](#li953280133816).
+    4.  Upload the converted .om model file to the  **sample-segmentation-python/segmentationapp/models**  directory under the source code path in  [Step 1](#en-us_topic_0228757085_li953280133816).
 
 
-## Environment Deployment<a name="section218113616146"></a>
+## Environment Deployment and Preparation<a name="en-us_topic_0228757085_section218113616146"></a>
 
 1.  Copy the application code to the developer board.
 
@@ -80,9 +80,9 @@ Before running this application, obtain the source code package and configure th
 
     **scp -r ../sample-segmentation-python/ HwHiAiUser@192.168.1.2:/home/HwHiAiUser/HIAI\_PROJECTS**
 
-    Type the password of the developer board as prompted. The default password is  **Mind@123**, as shown in  [Figure 1](#en-us_topic_0219036254_fig1660453512014).
+    Type the password of the developer board as prompted. The default password is  **Mind@123**, as shown in  [Figure 1](#en-us_topic_0228757085_en-us_topic_0219036254_fig1660453512014).
 
-    **Figure  1**  Copying application code<a name="en-us_topic_0219036254_fig1660453512014"></a>  
+    **Figure  1**  Copying application code<a name="en-us_topic_0228757085_en-us_topic_0219036254_fig1660453512014"></a>  
     
 
     ![](figures/en-us_image_0228836881.png)
@@ -97,14 +97,14 @@ Before running this application, obtain the source code package and configure th
 
 2.  Configure the network connection of the developer board.
 
-    Configure the network connection of the developer board by referring to  [https://github.com/Atlas200dk/sample-README/tree/master/DK\_NetworkConnect](https://github.com/Atlas200dk/sample-README/tree/master/DK_NetworkConnect).
+    Configure the network connection of the Atlas DK developer board by referring to  [https://github.com/Atlas200dk/sample-README/tree/master/DK\_NetworkConnect](https://github.com/Atlas200dk/sample-README/tree/master/DK_NetworkConnect).
 
-3.  Install the environment dependency.
+3.  Install the environment dependencies.
 
     Configure the environment dependency by referring to  [https://github.com/Atlas200dk/sample-README/tree/master/DK\_Environment](https://github.com/Atlas200dk/sample-README/tree/master/DK_Environment).
 
 
-## Application Running<a name="section6245151616426"></a>
+## Application Running<a name="en-us_topic_0228757085_section6245151616426"></a>
 
 1.  Switch to the  **HwHiAiUser**  user and go to the directory where the semantic segmentation network application code is located.
 
@@ -120,9 +120,9 @@ Before running this application, obtain the source code package and configure th
 
     **python segmentation.py**
 
-    [Figure 2](#fig1863053617417)  shows the inference result after the execution is successful.
+    [Figure 2](#en-us_topic_0228757085_fig1863053617417)  shows the inference result after the execution is successful.
 
-    **Figure  2**  Successful inference<a name="fig1863053617417"></a>  
+    **Figure  2**  Successful inference<a name="en-us_topic_0228757085_fig1863053617417"></a>  
     
 
     ![](figures/en-us_image_0228757232.png)
@@ -143,7 +143,7 @@ Before running this application, obtain the source code package and configure th
     This command copies the inference result to the home directory of the Mind Studio installation user. You can view the inference result directly.
 
 
-## Remarks<a name="section1092612277429"></a>
+## Remarks<a name="en-us_topic_0228757085_section1092612277429"></a>
 
 -   **The process of the semantic segmentation network application \(Python\) is as follows:**
     1.  Read a JPEG image from the  **cityimage**  directory.

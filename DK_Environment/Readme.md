@@ -111,7 +111,7 @@ The environment dependencies of the developer board include Python, OpenCV, and 
 
             >![](public_sys-resources/icon-note.gif) **NOTE:**   
             >-   If the message "SSLError" is displayed during installation, run  **pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf**  to install the dependency, indicating that the problem is resolved on a trusted host.  
-            >-   Download the  **python3\_hiai\_install**  script from  **https://github.com/Ascend-Huawei/tools**.  
+            >-   Download the  **python3\_hiai\_install**  script from  **https://github.com/Ascend-Huawei/tools/blob/master/python3\_hiai\_install.sh**.  
 
 
 
