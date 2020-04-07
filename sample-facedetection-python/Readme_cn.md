@@ -1,3 +1,5 @@
+中文|[English](Readme.md)
+
 # 人脸检测（python）<a name="ZH-CN_TOPIC_0232620367"></a>
 
 开发者可以将本application部署至Atlas 200DK上实现对摄像头数据的实时采集、并对视频中的人脸信息进行预测的功能。
@@ -106,7 +108,7 @@
 
     请参考[https://github.com/Atlas200dk/sample-README/tree/master/DK\_NetworkConnect](https://github.com/Atlas200dk/sample-README/tree/master/DK_NetworkConnect)  ，进行开发板网络连接配置。
 
-2.  安装环境依赖。
+2.  安装环境依赖（请安装python3相关依赖，当前此案例只适配python3）。
 
     请参考[https://github.com/Atlas200dk/sample-README/tree/master/DK\_Environment](https://github.com/Atlas200dk/sample-README/tree/master/DK_Environment)  ，进行环境依赖配置。
 
@@ -173,10 +175,11 @@
 
 3.  执行应用程序。
 
-    **python main.py**
+    **python3 main.py**
 
     >![](public_sys-resources/icon-note.gif) **说明：**   
-    >可使用ctrl+c停止程序  
+    >- 可使用ctrl+c停止程序 
+    >- 当前此案例只支持python3 
 
 4.  使用启动Presenter Server服务时提示的URL登录 Presenter Server 网站。
 
