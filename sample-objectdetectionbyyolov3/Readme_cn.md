@@ -20,13 +20,13 @@
 1.  <a name="zh-cn_topic_0219028422_li953280133816"></a>获取源码包。
     1.  下载压缩包方式获取。
 
-        将[https://github.com/Atlas200dk/sample-objectdetctionbyyolov3/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-objectdetctionbyyolov3/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如代码存放路径为：$HOME/AscendProjects/sample-objectdetctionbyyolov3。
+        将[https://github.com/Atlas200dk/sample-objectdetectionbyyolov3/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-objectdetectionbyyolov3/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，这两个文件必须存放到同一个目录下。例如代码存放路径为：$HOME/AscendProjects/sample-objectdetectionbyyolov3。
 
     2.  命令行使用git命令方式获取。
 
         在命令行中：$HOME/AscendProjects目录下执行以下命令下载代码。
 
-        **git clone https://github.com/Atlas200dk/sample-objectdetctionbyyolov3.git --branch 1.3x.0.0**
+        **git clone https://github.com/Atlas200dk/sample-objectdetectionbyyolov3.git --branch 1.3x.0.0**
 
 2.  <a name="zh-cn_topic_0219028422_li2074865610364"></a>获取此应用中所需要的原始网络模型。
 

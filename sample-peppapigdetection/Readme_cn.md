@@ -1,8 +1,6 @@
-中文|[English](Readme.md)
+# 小猪佩奇检测<a name="ZH-CN_TOPIC_0219120973"></a>
 
-# 密集人群人数统计<a name="ZH-CN_TOPIC_0219120973"></a>
-
-开发者将本应用部署至Atlas 200 DK或者AI加速云服务器上实现对本地mp4文件或者RTSP视频流进行解码，对视频帧中的人群图像进行人头数量的预测，并将预测的结果信息发送至Presenter Server端进行展示。
+开发者将本应用部署至Atlas 200 DK或者AI加速云服务器上实现对本地mp4文件或者RTSP视频流进行解码，对视频帧中的小猪佩奇图像进行检测并对其属性进行预测，生成结构化信息发送至Presenter Server端进行保存、展示。
 
 当前分支中的应用适配**1.32.0.0及以上**版本的[DDK&RunTime](https://ascend.huawei.com/resources)。
 
@@ -11,7 +9,7 @@
 部署此Sample前，需要准备好以下环境：
 
 -   已完成Mind Studio的安装。
--   已完成Atlas 200 DK开发者板与Mind Studio的连接，交叉编译器的安装，SD卡的制作及基本信息的配置等。
+-   已完成Atlas 200 DK开发者板与Mind Studio的连接，SD卡的制作、编译环境的配置等。
 
 ## 软件准备<a name="zh-cn_topic_0219059426_section8534138124114"></a>
 
@@ -20,19 +18,19 @@
 1.  <a name="zh-cn_topic_0219059426_li953280133816"></a>获取源码包。
     1.  下载压缩包方式获取。
 
-        将[https://github.com/Atlas200dk/sample-crowdcounting/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-crowdcounting/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-crowdcounting。
+        将[https://github.com/Atlas200dk/sample-peppapigdetection/tree/1-3x-0-0/](https://github.com/Atlas200dk/sample-peppapigdetection/tree/1-3x-0-0/)仓中的代码以Mind Studio安装用户下载至Mind Studio所在Ubuntu服务器的任意目录，例如代码存放路径为：$HOME/AscendProjects/sample-peppapigdetection。
 
     2.  命令行使用git命令方式获取。
 
         在命令行中：$HOME/AscendProjects目录下执行以下命令下载代码。
 
-        **git clone https://github.com/Atlas200dk/sample-crowdcounting.git --branch 1.3x.0.0**
+        **git clone https://github.com/Atlas200dk/sample-peppapigdetection.git --branch 1.3x.0.0**
 
 2.  <a name="zh-cn_topic_0219059426_li8221184418455"></a>获取此应用中所需要的原始网络模型。
 
-    参考[表 crowd\_counting中使用的模型](#zh-cn_topic_0219059426_table117203103464)获取此应用中所用到的原始网络模型，并将其存放到Mind Studio所在Ubuntu服务器的任意目录。例如：$HOME/models/crowdcounting。
+    参考[表 小猪佩奇检查应用中使用的模型](#zh-cn_topic_0219059426_table117203103464)获取此应用中所用到的原始网络模型，并将其存放到Mind Studio所在Ubuntu服务器的任意目录。例如：$HOME/models/peppapigdetection。
 
-    **表 1**  crowd\_counting中使用的模型
+    **表 1**  小猪佩奇检查应用中使用的模型
 
     <a name="zh-cn_topic_0219059426_table117203103464"></a>
     <table><thead align="left"><tr id="zh-cn_topic_0219059426_row4859191074617"><th class="cellrowborder" valign="top" width="17.32173217321732%" id="mcps1.2.4.1.1"><p id="zh-cn_topic_0219059426_p18859111074613"><a name="zh-cn_topic_0219059426_p18859111074613"></a><a name="zh-cn_topic_0219059426_p18859111074613"></a>模型名称</p>
@@ -43,11 +41,11 @@
     </th>
     </tr>
     </thead>
-    <tbody><tr id="zh-cn_topic_0219059426_row88591310124617"><td class="cellrowborder" valign="top" width="17.32173217321732%" headers="mcps1.2.4.1.1 "><p id="zh-cn_topic_0219059426_p13106121801715"><a name="zh-cn_topic_0219059426_p13106121801715"></a><a name="zh-cn_topic_0219059426_p13106121801715"></a>crowd_counting</p>
+    <tbody><tr id="zh-cn_topic_0219059426_row88591310124617"><td class="cellrowborder" valign="top" width="17.32173217321732%" headers="mcps1.2.4.1.1 "><p id="zh-cn_topic_0219059426_p13106121801715"><a name="zh-cn_topic_0219059426_p13106121801715"></a><a name="zh-cn_topic_0219059426_p13106121801715"></a>peppapig_detection</p>
     </td>
-    <td class="cellrowborder" valign="top" width="9.68096809680968%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0219059426_p13106171831710"><a name="zh-cn_topic_0219059426_p13106171831710"></a><a name="zh-cn_topic_0219059426_p13106171831710"></a>密集人群人数统计网络模型。</p>
+    <td class="cellrowborder" valign="top" width="9.68096809680968%" headers="mcps1.2.4.1.2 "><p id="zh-cn_topic_0219059426_p13106171831710"><a name="zh-cn_topic_0219059426_p13106171831710"></a><a name="zh-cn_topic_0219059426_p13106171831710"></a>小猪佩奇网络统计网络模型。</p>
     </td>
-    <td class="cellrowborder" valign="top" width="72.997299729973%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0219059426_p110671813170"><a name="zh-cn_topic_0219059426_p110671813170"></a><a name="zh-cn_topic_0219059426_p110671813170"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/crowd_counting" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/crowd_counting</a>目录中README.md下载原始网络模型文件。</p>
+    <td class="cellrowborder" valign="top" width="72.997299729973%" headers="mcps1.2.4.1.3 "><p id="zh-cn_topic_0219059426_p110671813170"><a name="zh-cn_topic_0219059426_p110671813170"></a><a name="zh-cn_topic_0219059426_p110671813170"></a>请参考<a href="https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/peppapig_detection" target="_blank" rel="noopener noreferrer">https://github.com/Ascend-Huawei/models/tree/master/computer_vision/object_detect/peppapig_detection</a>目录中README.md下载原始网络模型文件。</p>
     </td>
     </tr>
     </tbody>
@@ -106,10 +104,10 @@
     2.  在弹出的**Model** **Conversion**操作界面中，进行模型转换配置。
         -   Model File选择[步骤2](#zh-cn_topic_0219059426_li8221184418455)中下载的模型文件。
         -   Model Name填写为[表1](#zh-cn_topic_0219059426_table117203103464)对应的**模型名称**。
-        -   crowd\_counting模型转换时的非默认配置如：[图2 crowd\_counting模型转换](#zh-cn_topic_0219059426_fig8912228135419)。
+        -   peppapig\_detection模型转换时的非默认配置如：[图2 peppapig\_detection模型转换](#zh-cn_topic_0219059426_fig8912228135419)。
         -   其他保持默认值
 
-            **图 2**  crowd\_counting模型转换<a name="zh-cn_topic_0219059426_fig8912228135419"></a>  
+            **图 2**  peppapig\_detection模型转换<a name="zh-cn_topic_0219059426_fig8912228135419"></a>  
             
 
             ![](figures/zh-cn_image_0219068294.png)
@@ -118,13 +116,13 @@
 
     3.  单击**OK**开始转换模型。
 
-        模型转换成功后，后缀为.om的离线模型存放地址为：$HOME/modelzoo/crowd\_counting/device。
+        模型转换成功后，后缀为.om的离线模型存放地址为：$HOME/modelzoo/peppapig\_detection/device。
 
         >![](public_sys-resources/icon-note.gif) **说明：**   
         >-   Mind Studio模型转换中每一步的具体意义和参数说明可以参考[Mind Studio用户手册](https://ascend.huawei.com/doc/mindstudio/)中的“模型转换“章节。  
 
 
-5.  将转换好的模型文件（.om文件）上传到[步骤1](#zh-cn_topic_0219059426_li953280133816)中源码所在路径的“**sample-crowdcounting/script**”目录下。
+5.  将转换好的模型文件（.om文件）上传到[步骤1](#zh-cn_topic_0219059426_li953280133816)中源码所在路径的“**sample-peppapigdetection/script**”目录下。
 
 ## 编译<a name="zh-cn_topic_0219059426_section1759513564117"></a>
 
@@ -134,7 +132,7 @@
 
     **./MindStudio.sh**
 
-    启动成功后，打开**sample-crowdcounting**工程。
+    启动成功后，打开**sample-peppapigdetection**工程。
 
 2.  在src/param\_configure.conf文件中配置相关工程信息。
 
@@ -148,7 +146,7 @@
     ```
     remote_host=192.168.1.2
     presenter_view_app_name=video
-    video_path_of_host=/home/HwHiAiUser/car.mp4
+    video_path_of_host=/home/HwHiAiUser/peiqi.mp4
     rtsp_video_stream=
     ```
 
@@ -162,7 +160,7 @@
     ```
     remote_host=192.168.1.2
     presenter_view_app_name=video
-    video_path_of_host=/home/HwHiAiUser/car.mp4
+    video_path_of_host=/home/HwHiAiUser/peiqi.mp4
     rtsp_video_stream=
     ```
 
@@ -199,7 +197,7 @@
 
 5.  启动Presenter Server。
 
-    打开Mindstudio工具的Terminal，在应用代码存放路径下，执行如下命令在后台启动Crowd Counting应用的Presenter Server主程序。如[图 启动PresenterServer](#zh-cn_topic_0219059426_fig102142024389)所示。
+    打开Mindstudio工具的Terminal，在应用代码存放路径下，执行如下命令在后台启动peppapig detection应用的Presenter Server主程序。如[图 启动PresenterServer](#zh-cn_topic_0219059426_fig102142024389)所示。
 
     **bash run\_present\_server.sh**
 
@@ -238,10 +236,10 @@
     -   Presenter Server与Atlas 200 DK通信的IP地址为UI Host服务器中与Atlas 200 DK在同一网段的IP地址，例如：192.168.1.223。
     -   通过浏览器访问Presenter Server的IP地址本示例为：10.10.0.1，由于Presenter Server与Mind Studio部署在同一服务器，此IP地址也为通过浏览器访问Mind Studio的IP。
 
-6.  密集人群人数统计应用支持解析本地视频和RTSP视频流。
+6.  小猪佩奇网络统计应用支持解析本地视频和RTSP视频流。
     -   如果需要解析本地视频，需要将视频文件传到Host侧。
 
-        例如将视频文件crowd.mp4上传到Host侧的“/home/HwHiAiUser/“目录下。
+        例如将视频文件peppapig.mp4上传到Host侧的“/home/HwHiAiUser/“目录下。
 
         >![](public_sys-resources/icon-note.gif) **说明：**   
         >支持H264与H265格式的MP4文件，如果MP4文件需要剪辑，建议使用开源工具ffmpeg，使用其他工具剪辑的视频文件ffmpeg工具可能不支持解析。  
@@ -251,9 +249,9 @@
 
 ## 运行<a name="zh-cn_topic_0219059426_section6245151616426"></a>
 
-1.  运行Crowd Counting程序
+1.  运行peppapig detection程序
 
-    在Mind Studio工具的工具栏中找到Run按钮，点击**Run \> Run 'sample-crowdcounting'**，如[图10](#zh-cn_topic_0219059426_fig12953163061713)所示，可执行程序已经在开发板执行。
+    在Mind Studio工具的工具栏中找到Run按钮，点击**Run \> Run 'sample-peppapigdetection'**，如[图10](#zh-cn_topic_0219059426_fig12953163061713)所示，可执行程序已经在开发板执行。
 
     **图 10**  程序运行示意图<a name="zh-cn_topic_0219059426_fig12953163061713"></a>  
     
@@ -268,38 +266,38 @@
     ![](figures/Presenter-Server界面.png "Presenter-Server界面")
 
     >![](public_sys-resources/icon-note.gif) **说明：**   
-    >-   Crowd Counting的Presenter Server最多支持10路Channel同时显示，每个  _presenter\_view\_app\_name_  对应一路Channel。  
+    >-   peppapig detection的Presenter Server最多支持10路Channel同时显示，每个  _presenter\_view\_app\_name_  对应一路Channel。  
     >-   由于硬件的限制，每一路支持的最大帧率是20fps，受限于网络带宽的影响，帧率会自动适配为较低的帧率进行展示。  
 
 3.  单击右侧对应的View Name链接，比如上图的“video”，查看结果。
 
 ## 后续处理<a name="zh-cn_topic_0219059426_section1092612277429"></a>
 
--   **停止Crowd Counting应用**
+-   **停止peppapig detection应用**
 
-    Crowd Counting应用执行后会处于持续运行状态，若要停止Crowd Counting应用程序，可执行如下操作。
+    peppapig detection应用执行后会处于持续运行状态，若要停止peppapig detection应用程序，可执行如下操作。
 
-    单击停止按钮停止Crowd Counting应用程序。如[图 Crowd Counting应用程序运行结束](#zh-cn_topic_0219059426_fig464152917203)所示应用程序已停止运行
+    单击停止按钮停止peppapig detection应用程序。如[图 peppapig detection应用程序运行结束](#zh-cn_topic_0219059426_fig464152917203)所示应用程序已停止运行
 
-    **图 12**  Crowd Counting应用程序运行结束<a name="zh-cn_topic_0219059426_fig464152917203"></a>  
+    **图 12**  peppapig detection应用程序运行结束<a name="zh-cn_topic_0219059426_fig464152917203"></a>  
     
 
     ![](figures/zh-cn_image_0219075771.png)
 
 -   **停止Presenter Server服务**
 
-    Presenter Server服务启动后会一直处于运行状态，若想停止Crowd Counting应用对应的Presenter Server服务，可执行如下操作。
+    Presenter Server服务启动后会一直处于运行状态，若想停止peppapig detection应用对应的Presenter Server服务，可执行如下操作。
 
-    以Mind Studio安装用户在Mind Studio所在服务器中的命令行中执行如下命令查看Crowd Counting应用对应的Presenter Server服务的进程。
+    以Mind Studio安装用户在Mind Studio所在服务器中的命令行中执行如下命令查看peppapig detection应用对应的Presenter Server服务的进程。
 
-    **ps -ef | grep presenter | grep crowd\_counting**
+    **ps -ef | grep presenter | grep peppapig\_detection**
 
     ```
-    ascend@ascend-HP-ProDesk-600-G4-PCI-MT:~/sample-crowdcounting$ ps -ef | grep presenter | grep crowd_counting 
-     ascend    7701  1615  0 14:21 pts/8    00:00:00 python3 presenterserver/presenter_server.py --app crowd_counting
+    ascend@ascend-HP-ProDesk-600-G4-PCI-MT:~/sample-peppapigdetection$ ps -ef | grep presenter | grep peppapig_detection 
+     ascend    7701  1615  0 14:21 pts/8    00:00:00 python3 presenterserver/presenter_server.py --app peppapig_detection
     ```
 
-    如上所示  _7701_  即为crowd\_counting应用对应的Presenter Server服务的进程ID。
+    如上所示  _7701_  即为peppapig\_detection应用对应的Presenter Server服务的进程ID。
 
     若想停止此服务，执行如下命令：
 

@@ -28,7 +28,7 @@
 
         在命令行中：$HOME/AscendProjects目录下执行以下命令下载代码。
 
-        **git clone https://github.com/Atlas200dk/sample-classfication-python.git**
+        **git clone https://github.com/Atlas200dk/sample-classification-python.git**
 
 2.  获取此应用中所需要的网络模型。
 
@@ -60,7 +60,8 @@
     1.  在Mind Studio操作界面的顶部菜单栏中选择**Tools \> Model Convert**，进入模型转换界面。
     2.  在弹出的**Model Conversion**操作界面中，Model File与Weight File分别选择[步骤1](#zh-cn_topic_0228757083_li953280133816)中下载的模型文件和权重文件。
         -   **Model Name**填写为[表 分类网络应用\(python\)使用模型](#zh-cn_topic_0228757083_table1119094515272)中对应的**模型名称**。
-        -   AIPP中修改**Input Image Size**的宽、高分别修改为为256、224，**Model Image Format**选择为BGR888\_U8。
+        -   AIPP中修改**Input Image Size**的宽、高分别修改为为224、224，**Input Image Format**选择为RGB888\_U8。
+        -   关闭**Model Image Format**。
         -   其他参数保持默认值。
 
     3.  单击OK开始转换模型。

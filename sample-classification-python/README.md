@@ -60,7 +60,8 @@ Before running this application, obtain the source code package and configure th
     1.  Choose  **Tools \> Model Convert**  from the main menu of  Mind Studio.
     2.  On the  **Model Conversion**  page, set  **Model File**  and  **Weight File**  to the model file and weight file downloaded in  [1](#en-us_topic_0228757083_li953280133816), respectively.
         -   Set  **Model Name**  to the model name in  [Table 1](#en-us_topic_0228757083_table1119094515272).
-        -   In the  **AIPP **configuration, set  **Input Image Size**  to  **256**and  **224**, respectively and  **Model Image Format**  to  **BGR888\_U8**.
+        -   In the  **AIPP** configuration, set  **Input Image Size**  to  **224**and  **224**, respectively and  **Input Image Format**  to  **RGB888\_U8**.
+        -   close **Model Image Format**
         -   Retain default values for other parameters.
 
     3.  Click  **OK**  to start model conversion.
