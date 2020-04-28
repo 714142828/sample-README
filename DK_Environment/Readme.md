@@ -22,11 +22,11 @@ The environment dependencies of the developer board include Python, OpenCV, and 
         1.  Install the Python 2 dependency.
 
             ```
-            apt-get install python-setuptools python-dev build-essential python-pip
+            apt-get install python-setuptools python-dev build-essential python-pip python-imaging
             ```
 
             ```
-            pip install numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf
+            pip install enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf numpy
             ```
 
         2.  Install the HiAI library of Python 2.
@@ -62,7 +62,7 @@ The environment dependencies of the developer board include Python, OpenCV, and 
             ```
 
             ```
-            pip3 install numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf
+            pip3 install enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf numpy
             ```
 
         2.  Install the HiAI library of Python 3.
@@ -86,7 +86,10 @@ The environment dependencies of the developer board include Python, OpenCV, and 
             Run the following code to install the tool for building OpenCV:
 
             ```
-            apt-get install build-essential -yapt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev libv4l-dev -y
+            apt-get install build-essential -y
+            ```
+            ```
+            apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev libv4l-dev -y
             ```
 
             Run the following code to build the environment in OpenCV:

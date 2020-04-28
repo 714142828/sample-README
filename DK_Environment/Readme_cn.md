@@ -22,11 +22,11 @@
         1.  安装python2的依赖。
 
             ```
-            apt-get install python-setuptools python-dev build-essential python-pip
+            apt-get install python-setuptools python-dev build-essential python-imaging
             ```
 
             ```
-            pip install numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf
+            pip install enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf numpy
             ```
 
         2.  安装python2的hiai库。
@@ -62,7 +62,7 @@
             ```
 
             ```
-            pip3 install numpy==1.11.2 enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf
+            pip3 install enum34==1.1.6 future==0.17.1 funcsigs==1.0.2 unique protobuf numpy
             ```
 
         2.  安装python3的hiai库。
@@ -86,7 +86,10 @@
             执行以下代码安装构建opencv的工具。
 
             ```
-            apt-get install build-essential -yapt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev libv4l-dev -y
+            apt-get install build-essential -y
+            ```
+            ```
+            apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev libv4l-dev -y
             ```
 
             执行以下代码在opencv中构建环境。
