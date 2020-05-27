@@ -88,9 +88,9 @@ Before running this application, obtain the source code package and configure th
 
         **export tools\_version=_1.32.X.X_**
 
-        **export DDK\_HOME= \\$HOME/.mindstudio/huawei/ddk/\\$tools\_version/ddk**
+        **export DDK\_HOME= $HOME/.mindstudio/huawei/ddk/$tools\_version/ddk**
 
-        **export LD\_LIBRARY\_PATH= \\$DDK\_HOME/lib/x86\_64-linux-gcc5.4:\\$DDK\_HOME/uihost/lib**
+        **export LD\_LIBRARY\_PATH= $DDK\_HOME/lib/x86\_64-linux-gcc5.4:$DDK\_HOME/uihost/lib**
 
     >![](public_sys-resources/icon-note.gif) **NOTE:**   
     >-   For 1.32.0.0 or later,  **1.32.X.X**  indicates the DDK version, which can be obtained from the DDK package name. For example, if the DDK package name is  **Ascend\_DDK-1.32.0.B080-1.1.1-x86\_64.ubuntu16.04.tar.gz**, the DDK version is  **1.32.0.B080**.  
