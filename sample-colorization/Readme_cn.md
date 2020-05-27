@@ -87,7 +87,7 @@
 
         **export tools\_version=_1.32.X.X_**
 
-        **export DDK\_HOME=\\$HOME/.mindstudio/huawei/ddk/\\$tools\_version/ddk**
+        **export DDK\_HOME=$HOME/.mindstudio/huawei/ddk/_1.32.X.X_/ddk**
 
         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
 
@@ -106,7 +106,7 @@
     2.  在弹出的**Model Conversion**操作界面中，进行模型转换配置。
         -   Model File选择[步骤2](#zh-cn_topic_0219108795_li2074865610364)中下载的模型文件，此时会自动匹配到权重文件并填写在Weight File中。
         -   Model Name填写为[表1](#zh-cn_topic_0219108795_table19942111763710)对应的**模型名称**：colorization。
-        -   colorization模型输入shape为\(1,3,224,224\)，所以输入节点参数（**Input Node:data**）需要设置为**1,1,224,224**。
+        -   colorization模型输入shape为\(1,1,224,224\)，所以输入节点参数（**Input Node:data**）需要设置为**1,1,224,224**。
         -   colorization模型需要在Aipp界面关闭**Image Pre-processing**。
 
     3.  单击Finish开始转换模型。

@@ -88,7 +88,7 @@ Before running the sample, obtain the source code package and configure the envi
 
         **export tools\_version=_1.32.X.X_**
 
-        **export DDK\_HOME=\\$HOME/.mindstudio/huawei/ddk/\\$tools\_version/ddk**
+        **export DDK\_HOME=$HOME/.mindstudio/huawei/ddk/_1.32.X.X_/ddk**
 
         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
 

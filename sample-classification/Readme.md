@@ -216,7 +216,7 @@ Before running the sample, obtain the source code package and configure the envi
 
         **export tools\_version=_1.32.X.X_**
 
-        **export DDK\_HOME=\\$HOME/.mindstudio/huawei/ddk/\\$tools\_version/ddk**
+        **export DDK\_HOME=$HOME/.mindstudio/huawei/ddk/_1.32.X.X_/ddk**
 
         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
 
@@ -347,8 +347,8 @@ Before running the sample, obtain the source code package and configure the envi
 
     **python3 run\_classification.py -w  _224_  -h  _224_  -i** **_./example.jpg_** **-n  _10_**
 
-    -   **-w/model\_width**: width of the input image of a model. The value is an integer ranging from 16px to 4096px. Obtain the input width and height required by each model by referring to the README file of each model file on Gitee. For details, see  [Table 1](#en-us_topic_0203223265_table1119094515272).
-    -   **-h/model\_height**: height of the input image of a model. The value is an integer ranging from 16px to 4096px. Obtain the input width and height required by each model by referring to the README file of each model file on Gitee. For details, see  [Table 1](#en-us_topic_0203223265_table1119094515272).
+    -   **-w/model\_width**: width of the input image of a model. The value is an integer ranging from 16 to 4096.Here is the width of the input data required for the sample model alexnet.om: 227. If you use other models, please refer to https://bbs.huaweicloud.com/forum/thread-54058-1-1.html Input data width
+    -   **-h/model\_height**: height of the input image of a model. The value is an integer ranging from 16 to 4096.Here is the sample model alexnet.om requires high input data: 227, if you use other models, please refer to https://bbs.huaweicloud.com/forum/thread-54058-1-1.html Input data high
     -   **-i/input\_path**: path of the input image. It can be a directory, indicating that all images in the current directory are used as input. \(Multiple inputs can be specified\).
     -   **-n/top\_n**: the first  _n_  inference results that are output
 

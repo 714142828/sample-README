@@ -216,7 +216,7 @@
 
         **export tools\_version=_1.32.X.X_**
 
-        **export DDK\_HOME=\\$HOME/.mindstudio/huawei/ddk/$tools\_version/ddk**
+        **export DDK\_HOME=$HOME/.mindstudio/huawei/ddk/_1.32.X.X_/ddk**
 
         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
 
@@ -345,10 +345,10 @@
 
     命令示例如下所示：
 
-    **python3 run\_classification.py -w  _224_  -h  _224_  -i** **_./example.jpg_** **-n  _10_**
+    **python3 run\_classification.py -w  _227_  -h  _227_  -i** **_./example.jpg_** **-n  _10_**
 
-    -   -w/model\_width：模型的输入图片宽度，为16\~4096之间的整数，请参考[表1](#zh-cn_topic_0203223265_table1119094515272)在Gitee上查看所使用模型文件的Readme，获取模型要求的输入数据的宽和高。
-    -   -h/model\_height：模型的输入图片高度，为16\~4096之间的整数，请参考[表1](#zh-cn_topic_0203223265_table1119094515272)在Gitee上查看所使用模型文件的Readme，获取模型要求的输入数据的宽和高。
+    -   -w/model\_width：模型的输入图片宽度，为16\~4096之间的整数，此处为样例模型alexnet.om要求输入数据的宽：227，如果使用其它模型，请参考https://bbs.huaweicloud.com/forum/thread-54058-1-1.html ，获取模型要求的输入数据的宽。
+    -   -h/model\_height：模型的输入图片高度，为16\~4096之间的整数，此处为样例模型alexnet.om要求输入数据的高：227，如果使用其它模型，请参考https://bbs.huaweicloud.com/forum/thread-54058-1-1.html ，获取模型要求的输入数据的高。
     -   -i/input\_path：输入图片的路径，可以是目录，表示当前目录下的所有图片都作为输入（可以指定多个输入）。
     -   -n/top\_n：输出前n个推理结果。
 

@@ -87,7 +87,7 @@ Before running the sample, obtain the source code package and configure the envi
 
         **export tools\_version=_1.32.X.X_**
 
-        **export DDK\_HOME=\\$HOME/.mindstudio/huawei/ddk/\\$tools\_version/ddk**
+        **export DDK\_HOME=$HOME/.mindstudio/huawei/ddk/_1.32.X.X_/ddk**
 
         **export LD\_LIBRARY\_PATH=$DDK\_HOME/lib/x86\_64-linux-gcc5.4**
 
@@ -106,7 +106,7 @@ Before running the sample, obtain the source code package and configure the envi
     2.  On the  **Model Conversion**  page that is displayed, configure model conversion.
         -   Select the model file downloaded in  [Step 2](#en-us_topic_0219108795_li2074865610364)  for  **Model File**. The weight file is automatically matched and filled in  **Weight File**.
         -   Set  **Model Name**  to the model name  **colorization**  in  [Table 1](#en-us_topic_0219108795_table19942111763710).
-        -   The input shape of the colorization model is \(1,3,224,224\). Therefore, the input node parameters \(**Input Node:data**\) must be set to  **1**,  **1**,  **224**, and  **224**  accordingly.
+        -   The input shape of the colorization model is \(1,1,224,224\). Therefore, the input node parameters \(**Input Node:data**\) must be set to  **1**,  **1**,  **224**, and  **224**  accordingly.
         -   Disable  **Image Pre-processing**  on the  **AIPP **page.
 
     3.  Click  **Finish**  to start model conversion.
